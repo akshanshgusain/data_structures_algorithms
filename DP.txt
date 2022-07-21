@@ -1,0 +1,139 @@
+0-1 KNAPSACK - 09Q
+
+03. 0-1 Knapsack.(Memoization)
+04. 0-1 Knapsack.(Top-Down)
+05. Subset sum.
+06. Equal sum partition.
+07. Count of subset sum with a given sum.(Memoization)
+08. Minimum subset sum difference.(Memoization)
+09. Count of subset sum with a given sum.(Top-Down)
+10. Count the number of subset with a given difference.(Top-Down)
+11. Target Sum. ---Technique(Count the number of subset with a given difference.)
+
+13. Unbound Knapsack - 06Q
+14. Rod Cutting.
+15. Coin Change 1- Max Ways.
+16. Coin Change 2- Min Coins.
+77. Count number of ways to reach a given score in a game
+96. Subset sum with repeating sum.
+
+18. Longest Common Sub-Sequence - 10Q
+
+20. Longest Common Subsequence.(Memoization)
+21. Longest Common Subsequence.(Top-Down)
+22. Longest Common Sub-String.
+23. Print longest common subsequence.(Top-Down and Trace back)
+24. Shortest Common super-sequence.
+25. Print Shortest Common super-sequence.------ Similar to Print LCS.
+26. Min. number of insertions and deletions to convert a string X to Y.
+27. Longest Repeating Subsequence.------ Similar to LCS with one additional condition.
+28. Longest Common Subsequence of 3 Strings.------ Similar to LCS.
+29. Sequence Pattern matching.
+
+Longest Increasing Sub-Sequence - 08Q
+
+33. Longest Increasing Subsequence.(Top-Down) O(N^2)
+34. Longest Increasing Subsequence. O(NlogN)
+35. Min. deletions to make subsequence sorted.----(Length of sequence - LIS)
+36. Longest Bitonic Subsequence. Similar to LIS
+37. Longest Alternating Subsequence.
+38. Maximum Sum Increasing Subsequence.
+39. Longest subsequence such that difference between adjacent is one.
+40. Maximum Length Chain of Pairs.
+
+
+Palindrome Subsequence - a variation of LCS - 02Q
+
+41. Longest palindromic Subsequence. (LPS)
+42. Minimum number of deletions in a string to make it a palindrome.( String Length - LPS)
+
+
+Matrix Chain Multiplication - 08Q
+
+43. Matrix Chain Multiplication.
+44. Palindromic Partitioning.(Mem, Bottom-Up) O(n^3)
+45. Palindromic Partitioning.(Mem) O(n^2)
+46. Evaluate expression to True-Boolean Parentheses.
+47. Minimum and Maximum values of an expression. (Imp.)
+48. Scrambled String.
+49. Egg Dropping Problem.
+50. Egg Dropping Problem - Optimised
+93. Balloon Burst.
+
+DP on Trees
+
+51. Diameter of a Binary Tree.
+52. Max. Path Sum from any Node to Any.
+53. Max. Path Sum from leaf to leaf.
+54. Diameter of N-Array Tree.  80. Largest independent set problem.
+
+Fibonacci Numbers/ JUMPS
+
+55. Fibonacci Numbers.
+56. Stair Case.
+57. Min. # of jumps to reach the end of an Array. O(N^2)
+58. House Thief. O(n)
+65. Friends Paring Problem.
+68. Painting the fence. (Tricky)
+
+59. Binomial Coefficient Problem.
+
+Catalan Numbers
+
+60. Catalan Numbers.
+61. # of BST. (nth Catalan number)
+62. # unlabeled Trees. (Same as nth Catalan number)
+63. # of non-intersecting Chords in a Circle. (Same as nth Catalan number)
+64. # of ways N parenthesis can be arranged. (Same as nth Catalan number)
+
+
+66. Gold Mine Problem.
+67. Assembly Line.
+
+Bottom Up DP
+
+69. Count all subsequences having product less than K.(Tricky)
+70. Maximum subsequence sum such that no three are consecutive.
+93. Word Break - Count Sentences. Also be done with Backtracking and Tries. (Hard)
+94. Word Wrap. (Hard)
+95. Mobile Numeric Keypad. (Hard)
+
+72. Maximum sum of pairs with specific difference. (could also be solved with LIS)
+
+73. Largest Sum Contiguous Array - Kadane
+74. Maximum difference of zeros and ones in binary string.
+75. Smallest sum contiguous subarray.
+
+76. Minimum removals from array to make max – min <= K
+
+
+Recursive
+78. Count All Palindromic Subsequence in a given String.
+79. Edit Distance.
+83. Count Derangement's (Permutation such that no element appears in its original position)
+92. String Interleaving.(Hard)
+
+
+Greedy - DP + Bottom Up DP
+// Problems which can't be solved by Greedy
+81. Weighted Job Scheduling.
+82. Coin game winner where every player has three choices.
+84. Optimal Strategy for a Game.
+
+
+Matrix/DP on Grids
+
+71. Largest square formed in a matrix/ Max. Sq. in a Matrix.
+85. Maximum sum rectangle in a 2D matrix.
+86. Largest rectangular sub-matrix whose sum is 0.
+87. Largest area rectangular sub-matrix with equal number of 1’s and 0’s. (Same as above).
+
+Shares Buying and selling
+
+88. Maximum profit by buying and selling a share - One Transaction.
+89. Maximum profit by buying and selling a share - At most Two Transactions. Array_027
+90. Maximum profit by buying and selling a share - At most K Transactions. Classic DP Problem.
+91. Maximum profit by buying and selling a share - Infinite Transactions. (Valley Peek). Array_028.
+91. Maximum profit by buying and selling a share - Infinite Transactions + fee. (HARD)
+
+
