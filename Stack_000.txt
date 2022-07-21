@@ -18,4 +18,5 @@
 18- Implement a method to insert an element at its bottom without using any other data structure. <T>
 19- Reverse a stack using recursion.<T>
 20- Sort a Stack using recursion.<T>
-21- Merge overlapping intervals.
+21- Merge overlapping intervals.<GQ>
+22- Largest rectangular area in a histogram.
