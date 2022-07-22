@@ -1,18 +1,20 @@
 //
-// Created by Akshansh Gusain on 05/04/21.
+// Created by Akshansh Gusain on 22/07/22.
 //
 
 #include<stdc++.h>
+
 using namespace std;
 
-void interLeaveQueue(queue<int>& q){
+
+void interLeaveQueue(queue<int> &q) {
     //check for even number of elements
-    if(q.size() %2 != 0){
-        cout<<"Input even number of integers. "<<endl;
+    if (q.size() % 2 != 0) {
+        cout << "Input even number of integers. " << endl;
     }
 
     stack<int> s;
-    int halfSize = q.size()/2;
+    int halfSize = q.size() / 2;
 
     // Push first half elements into the stack
     // queue:16 17 18 19 20, stack: 15(T) 14 13 12 11
@@ -45,7 +47,8 @@ void interLeaveQueue(queue<int>& q){
     }
 }
 
-int main(){
+int main() {
+
     queue<int> q;
     q.push(11);
     q.push(12);

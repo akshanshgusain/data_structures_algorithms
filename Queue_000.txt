@@ -2,5 +2,7 @@
 02. Implement a circular queue.
 03. LRU Cache.
 04. Reverse a queue using recursion.
-05. Reverse the first K elements of a queue.
-06.
+05. Reverse the first K elements of a queue. (Technique -- place k elements on stack and enqueue them back)
+06. Interleave the first half of the queue with second half. (Technique -- place k elements on stack and enqueue them back)
+07. Find the first circular tour that visits all Petrol Pumps. <T>
+08. Minimum time required to rot all oranges.
