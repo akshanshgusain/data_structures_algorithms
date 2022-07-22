@@ -2,8 +2,8 @@
 // Created by Akshansh Gusain on 04/04/21.
 //Given a string of balanced expression, find if it contains a redundant parenthesis or not.
 
-//If immediate pop hits a open parenthesis ‘(‘, then we have found a duplicate parenthesis. For example, (((a+b))+c) has duplicate brackets around a+b.
-// When we reach second “)” after a+b, we have “((” in the stack. Since the top of stack is a opening bracket, we conclude that there are duplicate brackets.
+//If immediate pop hits an open parenthesis ‘(‘, then we have found a duplicate parenthesis. For example, (((a+b))+c) has duplicate brackets around a+b.
+// When we reach second “)” after a+b, we have “((” in the stack. Since the top of stack is an opening bracket, we conclude that there are duplicate brackets.
 
 //If immediate pop doesn’t hit any operand(‘*’, ‘+’, ‘/’, ‘-‘) then it indicates the presence of unwanted brackets surrounded by expression. For instance,
 // (a)+b contain unwanted () around a thus it is redundant.

@@ -21,3 +21,7 @@
 21- Merge overlapping intervals.<GQ>
 22- Largest rectangular area in a histogram.<T>
 23- Length of longest valid sub-string.<T>
+24- Redundant brackets in expression.
+25. Implement Stack using Queue.
+26. Implement Stack using Dequeue.
+27. Stack Permutations (Check if an array is stack permutation of the other)
