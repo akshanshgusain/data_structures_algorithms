@@ -129,29 +129,29 @@ Final500DS/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/build
 .PHONY : Final500DS/fast
 
-Queue_003.o: Queue_003.cpp.o
-.PHONY : Queue_003.o
+StackQueue_queue_queueReversalKElements.o: StackQueue_queue_queueReversalKElements.cpp.o
+.PHONY : StackQueue_queue_queueReversalKElements.o
 
 # target to build an object file
-Queue_003.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_003.cpp.o
-.PHONY : Queue_003.cpp.o
+StackQueue_queue_queueReversalKElements.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/StackQueue_queue_queueReversalKElements.cpp.o
+.PHONY : StackQueue_queue_queueReversalKElements.cpp.o
 
-Queue_003.i: Queue_003.cpp.i
-.PHONY : Queue_003.i
+StackQueue_queue_queueReversalKElements.i: StackQueue_queue_queueReversalKElements.cpp.i
+.PHONY : StackQueue_queue_queueReversalKElements.i
 
 # target to preprocess a source file
-Queue_003.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_003.cpp.i
-.PHONY : Queue_003.cpp.i
+StackQueue_queue_queueReversalKElements.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/StackQueue_queue_queueReversalKElements.cpp.i
+.PHONY : StackQueue_queue_queueReversalKElements.cpp.i
 
-Queue_003.s: Queue_003.cpp.s
-.PHONY : Queue_003.s
+StackQueue_queue_queueReversalKElements.s: StackQueue_queue_queueReversalKElements.cpp.s
+.PHONY : StackQueue_queue_queueReversalKElements.s
 
 # target to generate assembly for a file
-Queue_003.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_003.cpp.s
-.PHONY : Queue_003.cpp.s
+StackQueue_queue_queueReversalKElements.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/StackQueue_queue_queueReversalKElements.cpp.s
+.PHONY : StackQueue_queue_queueReversalKElements.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Final500DS"
-	@echo "... Queue_003.o"
-	@echo "... Queue_003.i"
-	@echo "... Queue_003.s"
+	@echo "... StackQueue_queue_queueReversalKElements.o"
+	@echo "... StackQueue_queue_queueReversalKElements.i"
+	@echo "... StackQueue_queue_queueReversalKElements.s"
 .PHONY : help
 
 

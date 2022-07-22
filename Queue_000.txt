@@ -1,3 +1,6 @@
 01. Implement a queue using 2 stacks.
 02. Implement a circular queue.
 03. LRU Cache.
+04. Reverse a queue using recursion.
+05. Reverse the first K elements of a queue.
+06.

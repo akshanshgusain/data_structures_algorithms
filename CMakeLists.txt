@@ -3,4 +3,4 @@ project(Final500DSA)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Final500DS Queue_003.cpp)
+add_executable(Final500DS StackQueue_queue_queueReversalKElements.cpp)

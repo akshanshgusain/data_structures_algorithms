@@ -64,8 +64,13 @@ int main()
     Queue.push(90);
     Queue.push(100);
 
+    // 10 20 30 40 50 60 70 80 90 100
+
     int k = 5;
     reverseQueueFirstKElements(k, Queue);
+
     Print(Queue);
+
+    // 50 40 30 20 10 60 70 80 90 100
 }
 
