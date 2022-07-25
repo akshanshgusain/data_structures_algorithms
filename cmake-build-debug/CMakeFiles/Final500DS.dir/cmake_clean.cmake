@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Final500DS.dir/Queue_008.cpp.o"
+  "CMakeFiles/Final500DS.dir/Queue_011.cpp.o"
+  "CMakeFiles/Final500DS.dir/Queue_012.cpp.o"
+  "CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o"
   "Final500DS"
   "Final500DS.pdb"
 )

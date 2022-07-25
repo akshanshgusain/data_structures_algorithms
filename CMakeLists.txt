@@ -3,4 +3,4 @@ project(Final500DSA)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Final500DS Queue_008.cpp)
+add_executable(Final500DS StackQueue_queue_firstNegativeInteger.cpp Queue_011.cpp Queue_012.cpp)

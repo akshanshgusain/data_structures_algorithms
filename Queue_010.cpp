@@ -1,6 +1,8 @@
 //
-// Created by Akshansh Gusain on 06/04/21.
+// Created by Akshansh Gusain on 22/07/22.
+//
 
+//https://www.geeksforgeeks.org/first-negative-integer-every-window-size-k/
 // Given an array and a positive integer k, find the first negative integer for each
 // window(contiguous subarray) of size
 // k. If a window does not contain a negative integer, then print 0 for that window.

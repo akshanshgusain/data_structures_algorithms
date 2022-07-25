@@ -5,4 +5,12 @@
 05. Reverse the first K elements of a queue. (Technique -- place k elements on stack and enqueue them back)
 06. Interleave the first half of the queue with second half. (Technique -- place k elements on stack and enqueue them back)
 07. Find the first circular tour that visits all Petrol Pumps. <T>
-08. Minimum time required to rot all oranges.
+08. Minimum time required to rot all oranges. (BFS)
+09. Distance of the nearest cell having 1 in a binary matrix. (BFS)
+10. First negative integer in every window of size “k”.<T>
+11. Check if all levels of two trees are anagrams or not.(Dequeue w Sliding window)<T>
+12. Sum of minimum and maximum elements of all sub-arrays of size k. (Dequeue w Sliding window)<T>
+13. Minimum sum of squares of character counts in a given string after removing “k” characters
+    / Game with Strings.
+14. Queue based approach or first non-repeating character in a stream.
+15. Next Smaller Element.

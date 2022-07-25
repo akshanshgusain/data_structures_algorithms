@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/akshanshgusain/CLionProjects/Final500DSA/Queue_008.cpp" "/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles/Final500DS.dir/Queue_008.cpp.o"
+  "/Users/akshanshgusain/CLionProjects/Final500DSA/Queue_011.cpp" "/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles/Final500DS.dir/Queue_011.cpp.o"
+  "/Users/akshanshgusain/CLionProjects/Final500DSA/Queue_012.cpp" "/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles/Final500DS.dir/Queue_012.cpp.o"
+  "/Users/akshanshgusain/CLionProjects/Final500DSA/StackQueue_queue_firstNegativeInteger.cpp" "/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

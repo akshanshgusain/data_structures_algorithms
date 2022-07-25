@@ -78,7 +78,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Queue_008.cpp">
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Queue_011.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Queue_012.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/StackQueue_queue_firstNegativeInteger.cpp">
 			<Option target="Final500DS"/>
 		</Unit>
 		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/CMakeLists.txt">

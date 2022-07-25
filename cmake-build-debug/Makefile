@@ -129,29 +129,77 @@ Final500DS/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/build
 .PHONY : Final500DS/fast
 
-Queue_008.o: Queue_008.cpp.o
-.PHONY : Queue_008.o
+Queue_011.o: Queue_011.cpp.o
+.PHONY : Queue_011.o
 
 # target to build an object file
-Queue_008.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_008.cpp.o
-.PHONY : Queue_008.cpp.o
+Queue_011.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_011.cpp.o
+.PHONY : Queue_011.cpp.o
 
-Queue_008.i: Queue_008.cpp.i
-.PHONY : Queue_008.i
+Queue_011.i: Queue_011.cpp.i
+.PHONY : Queue_011.i
 
 # target to preprocess a source file
-Queue_008.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_008.cpp.i
-.PHONY : Queue_008.cpp.i
+Queue_011.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_011.cpp.i
+.PHONY : Queue_011.cpp.i
 
-Queue_008.s: Queue_008.cpp.s
-.PHONY : Queue_008.s
+Queue_011.s: Queue_011.cpp.s
+.PHONY : Queue_011.s
 
 # target to generate assembly for a file
-Queue_008.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_008.cpp.s
-.PHONY : Queue_008.cpp.s
+Queue_011.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_011.cpp.s
+.PHONY : Queue_011.cpp.s
+
+Queue_012.o: Queue_012.cpp.o
+.PHONY : Queue_012.o
+
+# target to build an object file
+Queue_012.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_012.cpp.o
+.PHONY : Queue_012.cpp.o
+
+Queue_012.i: Queue_012.cpp.i
+.PHONY : Queue_012.i
+
+# target to preprocess a source file
+Queue_012.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_012.cpp.i
+.PHONY : Queue_012.cpp.i
+
+Queue_012.s: Queue_012.cpp.s
+.PHONY : Queue_012.s
+
+# target to generate assembly for a file
+Queue_012.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Queue_012.cpp.s
+.PHONY : Queue_012.cpp.s
+
+StackQueue_queue_firstNegativeInteger.o: StackQueue_queue_firstNegativeInteger.cpp.o
+.PHONY : StackQueue_queue_firstNegativeInteger.o
+
+# target to build an object file
+StackQueue_queue_firstNegativeInteger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o
+.PHONY : StackQueue_queue_firstNegativeInteger.cpp.o
+
+StackQueue_queue_firstNegativeInteger.i: StackQueue_queue_firstNegativeInteger.cpp.i
+.PHONY : StackQueue_queue_firstNegativeInteger.i
+
+# target to preprocess a source file
+StackQueue_queue_firstNegativeInteger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.i
+.PHONY : StackQueue_queue_firstNegativeInteger.cpp.i
+
+StackQueue_queue_firstNegativeInteger.s: StackQueue_queue_firstNegativeInteger.cpp.s
+.PHONY : StackQueue_queue_firstNegativeInteger.s
+
+# target to generate assembly for a file
+StackQueue_queue_firstNegativeInteger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.s
+.PHONY : StackQueue_queue_firstNegativeInteger.cpp.s
 
 # Help Target
 help:
@@ -162,9 +210,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Final500DS"
-	@echo "... Queue_008.o"
-	@echo "... Queue_008.i"
-	@echo "... Queue_008.s"
+	@echo "... Queue_011.o"
+	@echo "... Queue_011.i"
+	@echo "... Queue_011.s"
+	@echo "... Queue_012.o"
+	@echo "... Queue_012.i"
+	@echo "... Queue_012.s"
+	@echo "... StackQueue_queue_firstNegativeInteger.o"
+	@echo "... StackQueue_queue_firstNegativeInteger.i"
+	@echo "... StackQueue_queue_firstNegativeInteger.s"
 .PHONY : help
 
 
