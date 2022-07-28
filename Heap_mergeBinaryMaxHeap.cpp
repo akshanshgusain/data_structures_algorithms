@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// log(H), H  = Heap height
 void maxHeapify(int arr[], int n, int idx) {
     // Find largest of node and its children
     if (idx >= n)

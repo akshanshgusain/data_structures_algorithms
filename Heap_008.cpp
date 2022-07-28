@@ -1,7 +1,13 @@
 //
-// Created by Akshansh Gusain on 08/04/21.
+// Created by Akshansh Gusain on 28/07/22.
 //
-#include<stdc++.h>
+#include<bits/stdc++.h>
+
+#define int long long int
+#define F first
+#define S second
+#define pb push_back
+#define all(p) p.begin(), p.end()
 
 using namespace std;
 
@@ -51,7 +57,8 @@ int kthLargestSum(int arr[], int n, int k) {
     return Q.top();
 }
 
-int main() {
+int32_t main() {
+
     int a[] = {10, -10, 20, -40};
     int n = sizeof(a) / sizeof(a[0]);
     int k = 6;
@@ -59,5 +66,6 @@ int main() {
     // calls the function to find out the
     // k-th largest sum
     cout << kthLargestSum(a, n, k);
+
     return 0;
 }

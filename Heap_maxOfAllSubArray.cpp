@@ -10,10 +10,12 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k){
     vector<int> ans;
 
     for(int i =0; i< nums.size(); i++){
+        // (i - k) Window size
         while(!heap.empty() and heap.top().second <= (i-k)){
             heap.pop();
         }
         heap.push(make_pair(nums[i], i));
+
         if(i >= k-1){
             ans.push_back(heap.top().first);
         }

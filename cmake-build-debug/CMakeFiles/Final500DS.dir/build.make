@@ -66,60 +66,150 @@ include CMakeFiles/Final500DS.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Final500DS.dir/flags.make
 
-CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o: CMakeFiles/Final500DS.dir/flags.make
-CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o: ../StackQueue_queue_firstNegativeInteger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/StackQueue_queue_firstNegativeInteger.cpp
+CMakeFiles/Final500DS.dir/Heap_004.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_004.cpp.o: ../Heap_004.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Final500DS.dir/Heap_004.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_004.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_004.cpp
 
-CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/StackQueue_queue_firstNegativeInteger.cpp > CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.i
+CMakeFiles/Final500DS.dir/Heap_004.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_004.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_004.cpp > CMakeFiles/Final500DS.dir/Heap_004.cpp.i
 
-CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/StackQueue_queue_firstNegativeInteger.cpp -o CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.s
+CMakeFiles/Final500DS.dir/Heap_004.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_004.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_004.cpp -o CMakeFiles/Final500DS.dir/Heap_004.cpp.s
 
-CMakeFiles/Final500DS.dir/Queue_011.cpp.o: CMakeFiles/Final500DS.dir/flags.make
-CMakeFiles/Final500DS.dir/Queue_011.cpp.o: ../Queue_011.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Final500DS.dir/Queue_011.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Queue_011.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Queue_011.cpp
+CMakeFiles/Final500DS.dir/Heap_005.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_005.cpp.o: ../Heap_005.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Final500DS.dir/Heap_005.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_005.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_005.cpp
 
-CMakeFiles/Final500DS.dir/Queue_011.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Queue_011.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Queue_011.cpp > CMakeFiles/Final500DS.dir/Queue_011.cpp.i
+CMakeFiles/Final500DS.dir/Heap_005.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_005.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_005.cpp > CMakeFiles/Final500DS.dir/Heap_005.cpp.i
 
-CMakeFiles/Final500DS.dir/Queue_011.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Queue_011.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Queue_011.cpp -o CMakeFiles/Final500DS.dir/Queue_011.cpp.s
+CMakeFiles/Final500DS.dir/Heap_005.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_005.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_005.cpp -o CMakeFiles/Final500DS.dir/Heap_005.cpp.s
 
-CMakeFiles/Final500DS.dir/Queue_012.cpp.o: CMakeFiles/Final500DS.dir/flags.make
-CMakeFiles/Final500DS.dir/Queue_012.cpp.o: ../Queue_012.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Final500DS.dir/Queue_012.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Queue_012.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Queue_012.cpp
+CMakeFiles/Final500DS.dir/Heap_006.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_006.cpp.o: ../Heap_006.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Final500DS.dir/Heap_006.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_006.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_006.cpp
 
-CMakeFiles/Final500DS.dir/Queue_012.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Queue_012.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Queue_012.cpp > CMakeFiles/Final500DS.dir/Queue_012.cpp.i
+CMakeFiles/Final500DS.dir/Heap_006.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_006.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_006.cpp > CMakeFiles/Final500DS.dir/Heap_006.cpp.i
 
-CMakeFiles/Final500DS.dir/Queue_012.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Queue_012.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Queue_012.cpp -o CMakeFiles/Final500DS.dir/Queue_012.cpp.s
+CMakeFiles/Final500DS.dir/Heap_006.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_006.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_006.cpp -o CMakeFiles/Final500DS.dir/Heap_006.cpp.s
+
+CMakeFiles/Final500DS.dir/Heap_007.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_007.cpp.o: ../Heap_007.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Final500DS.dir/Heap_007.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_007.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_007.cpp
+
+CMakeFiles/Final500DS.dir/Heap_007.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_007.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_007.cpp > CMakeFiles/Final500DS.dir/Heap_007.cpp.i
+
+CMakeFiles/Final500DS.dir/Heap_007.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_007.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_007.cpp -o CMakeFiles/Final500DS.dir/Heap_007.cpp.s
+
+CMakeFiles/Final500DS.dir/Heap_008.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_008.cpp.o: ../Heap_008.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Final500DS.dir/Heap_008.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_008.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_008.cpp
+
+CMakeFiles/Final500DS.dir/Heap_008.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_008.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_008.cpp > CMakeFiles/Final500DS.dir/Heap_008.cpp.i
+
+CMakeFiles/Final500DS.dir/Heap_008.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_008.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_008.cpp -o CMakeFiles/Final500DS.dir/Heap_008.cpp.s
+
+CMakeFiles/Final500DS.dir/Heap_009.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_009.cpp.o: ../Heap_009.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Final500DS.dir/Heap_009.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_009.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_009.cpp
+
+CMakeFiles/Final500DS.dir/Heap_009.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_009.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_009.cpp > CMakeFiles/Final500DS.dir/Heap_009.cpp.i
+
+CMakeFiles/Final500DS.dir/Heap_009.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_009.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_009.cpp -o CMakeFiles/Final500DS.dir/Heap_009.cpp.s
+
+CMakeFiles/Final500DS.dir/Heap_010.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_010.cpp.o: ../Heap_010.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Final500DS.dir/Heap_010.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_010.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_010.cpp
+
+CMakeFiles/Final500DS.dir/Heap_010.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_010.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_010.cpp > CMakeFiles/Final500DS.dir/Heap_010.cpp.i
+
+CMakeFiles/Final500DS.dir/Heap_010.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_010.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_010.cpp -o CMakeFiles/Final500DS.dir/Heap_010.cpp.s
+
+CMakeFiles/Final500DS.dir/Heap_011.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_011.cpp.o: ../Heap_011.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Final500DS.dir/Heap_011.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_011.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_011.cpp
+
+CMakeFiles/Final500DS.dir/Heap_011.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_011.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_011.cpp > CMakeFiles/Final500DS.dir/Heap_011.cpp.i
+
+CMakeFiles/Final500DS.dir/Heap_011.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_011.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_011.cpp -o CMakeFiles/Final500DS.dir/Heap_011.cpp.s
+
+CMakeFiles/Final500DS.dir/Heap_012.cpp.o: CMakeFiles/Final500DS.dir/flags.make
+CMakeFiles/Final500DS.dir/Heap_012.cpp.o: ../Heap_012.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Final500DS.dir/Heap_012.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Final500DS.dir/Heap_012.cpp.o -c /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_012.cpp
+
+CMakeFiles/Final500DS.dir/Heap_012.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Final500DS.dir/Heap_012.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_012.cpp > CMakeFiles/Final500DS.dir/Heap_012.cpp.i
+
+CMakeFiles/Final500DS.dir/Heap_012.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Final500DS.dir/Heap_012.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/akshanshgusain/CLionProjects/Final500DSA/Heap_012.cpp -o CMakeFiles/Final500DS.dir/Heap_012.cpp.s
 
 # Object files for target Final500DS
 Final500DS_OBJECTS = \
-"CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o" \
-"CMakeFiles/Final500DS.dir/Queue_011.cpp.o" \
-"CMakeFiles/Final500DS.dir/Queue_012.cpp.o"
+"CMakeFiles/Final500DS.dir/Heap_004.cpp.o" \
+"CMakeFiles/Final500DS.dir/Heap_005.cpp.o" \
+"CMakeFiles/Final500DS.dir/Heap_006.cpp.o" \
+"CMakeFiles/Final500DS.dir/Heap_007.cpp.o" \
+"CMakeFiles/Final500DS.dir/Heap_008.cpp.o" \
+"CMakeFiles/Final500DS.dir/Heap_009.cpp.o" \
+"CMakeFiles/Final500DS.dir/Heap_010.cpp.o" \
+"CMakeFiles/Final500DS.dir/Heap_011.cpp.o" \
+"CMakeFiles/Final500DS.dir/Heap_012.cpp.o"
 
 # External object files for target Final500DS
 Final500DS_EXTERNAL_OBJECTS =
 
-Final500DS: CMakeFiles/Final500DS.dir/StackQueue_queue_firstNegativeInteger.cpp.o
-Final500DS: CMakeFiles/Final500DS.dir/Queue_011.cpp.o
-Final500DS: CMakeFiles/Final500DS.dir/Queue_012.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_004.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_005.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_006.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_007.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_008.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_009.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_010.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_011.cpp.o
+Final500DS: CMakeFiles/Final500DS.dir/Heap_012.cpp.o
 Final500DS: CMakeFiles/Final500DS.dir/build.make
 Final500DS: CMakeFiles/Final500DS.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Final500DS"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Final500DS"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Final500DS.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

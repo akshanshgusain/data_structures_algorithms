@@ -78,13 +78,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Queue_011.cpp">
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_004.cpp">
 			<Option target="Final500DS"/>
 		</Unit>
-		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Queue_012.cpp">
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_005.cpp">
 			<Option target="Final500DS"/>
 		</Unit>
-		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/StackQueue_queue_firstNegativeInteger.cpp">
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_006.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_007.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_008.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_009.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_010.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_011.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_012.cpp">
 			<Option target="Final500DS"/>
 		</Unit>
 		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/CMakeLists.txt">
