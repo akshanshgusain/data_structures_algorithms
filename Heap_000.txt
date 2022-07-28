@@ -11,7 +11,7 @@
 11. Median in a stream of Integers. <GG> <T>
 12. Check if a Binary Tree is Heap.
 13. Connect “n” ropes with minimum cost.
-
+14. Convert BST to Min-Heap.
 
 
 
