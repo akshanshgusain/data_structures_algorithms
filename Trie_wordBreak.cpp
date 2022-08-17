@@ -1,128 +1,126 @@
 //
 // Created by Akshansh Gusain on 09/05/21.
 //
-#include<stdc++.h>
-
+// A DP and Trie based program to test whether
+// a given string can be segmented into
+// space separated words in dictionary
+#include <iostream>
 using namespace std;
-#define NULL 0
-#define MAX_CHAR 26
 
-//Trie Data structure
+const int ALPHABET_SIZE = 26;
 
-struct Trie {
-    char data;
-    int wordEnd;
-    Trie *children[MAX_CHAR];
+// trie node
+struct TrieNode {
+    struct TrieNode* children[ALPHABET_SIZE];
+
+    // isEndOfWord is true if the node represents
+    // end of a word
+    bool isEndOfWord;
 };
 
-Trie nodePool[100000]; // Pool of 100k Trie Nodes
-Trie *root; // Root of the tree
-int poolCount;//Always points to the next free trie node
+// Returns new trie node (initialized to NULLs)
+struct TrieNode* getNode(void)
+{
+    struct TrieNode* pNode = new TrieNode;
 
-//Initialize Trie
-void init() {
-    poolCount = 0;
-    root = &nodePool[poolCount++];
-    root->data = '%';
-    for (auto &i : root->children) {
-        i = nullptr;
-    }
+    pNode->isEndOfWord = false;
+
+    for (int i = 0; i < ALPHABET_SIZE; i++)
+        pNode->children[i] = NULL;
+
+    return pNode;
 }
 
-Trie *getNewNode(char ch) {
-    Trie *newNode = &nodePool[poolCount++];
-    newNode->data = ch;
-    for (auto &i : newNode->children) {
-        i = nullptr;
+// If not present, inserts key into trie
+// If the key is prefix of trie node, just
+// marks leaf node
+void insert(struct TrieNode* root, string key)
+{
+    struct TrieNode* pCrawl = root;
+
+    for (int i = 0; i < key.length(); i++) {
+        int index = key[i] - 'a';
+        if (!pCrawl->children[index])
+            pCrawl->children[index] = getNode();
+
+        pCrawl = pCrawl->children[index];
     }
-    newNode->wordEnd = 0;
-    return newNode;
+
+    // mark last node as leaf
+    pCrawl->isEndOfWord = true;
 }
 
-void insertWord(char *s) {
-    Trie *curr = root;
-    int index;
-    for (int i = 0; s[i] != '\0'; i++) {
-        index = s[i] - 'a'; // relative position of character s[i]
-        if (curr->children[index] == nullptr) {
-            curr->children[index] = getNewNode(s[i]);
-        }
-        curr->children[index]->wordEnd += 1;
-    }
-}
+// Returns true if key presents in trie, else
+// false
+bool search(struct TrieNode* root, string key)
+{
+    struct TrieNode* pCrawl = root;
 
-bool search(char *s) {
-    Trie *curr = root;
-    int index;
-    for (int i = 0; s[i] != '\0'; i++) {
-        index = s[i] - 'a'; // relative position of character s[i]
-        if (curr->children[index] == nullptr or curr->children[index]->wordEnd == 0) {
+    for (int i = 0; i < key.length(); i++) {
+        int index = key[i] - 'a';
+        if (!pCrawl->children[index])
             return false;
-        }
-        curr->children[index]->wordEnd += 1;
-        curr = curr->children[index];
+
+        pCrawl = pCrawl->children[index];
     }
-    return true;
+
+    return (pCrawl != NULL && pCrawl->isEndOfWord);
 }
 
-bool deleteWord(char *s) {
-    if (search(s)) {
-        Trie *curr = root;
-        int index;
-        for (int i = 0; s[i] != '\0'; i++) {
-            index = s[i] - 'a';
-            curr->children[index]->wordEnd -= 1;
-            curr = curr->children[index];
-        }
-    }
-}
-
-int countPrefix(string s) {
-    Trie *curr = root;
-    int index;
-    for (int i = 0; s[i] != '\0'; ++i) {
-        index = s[i] - 'a';
-        if (curr->children[index] == nullptr || curr->children[index]->wordEnd == 0)
-            return 0;   //No string with given prefix is present
-        curr = curr->children[index];
-    }
-    return curr->wordEnd;
-}
-
-bool wordBreak(string str) {
+// returns true if string can be segmented into
+// space separated words, otherwise returns false
+bool wordBreak(string str, TrieNode* root)
+{
     int size = str.size();
-    if (size == 0) {
+
+    // Base case
+    if (size == 0)
         return true;
+
+    // Try all prefixes of lengths from 1 to size
+    for (int i = 1; i <= size; i++) {
+        // The parameter for search is str.substr(0, i)
+        // str.substr(0, i) which is prefix (of input
+        // string) of length 'i'. We first check whether
+        // current prefix is in dictionary. Then we
+        // recursively check for remaining string
+        // str.substr(i, size-i) which is suffix of
+        // length size-i
+        if (search(root, str.substr(0, i))
+            && wordBreak(str.substr(i, size - i), root))
+            return true;
     }
 
-    //try all prefix lengths from  1 to 0
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (search(&str.substr(0, i)[0]) and wordBreak(str.substr(i, size - 1))) {
-            return true;
-        }
-    }
+    // If we have tried all prefixes and none
+    // of them worked
     return false;
 }
 
-int main() {
-
-    init();
-    string dictionary[] = {"mobile","samsung","sam",
-                           "sung","ma\n","mango",
-                           "icecream","and","go","i",
-                           "like","ice","cream"};
-    int n = sizeof(dictionary)/sizeof(dictionary[0]);
+// Driver program to test above functions
+int main()
+{
+    string dictionary[]
+            = { "mobile", "samsung", "sam", "sung", "ma\n",
+                "mango", "icecream", "and", "go", "i",
+                "like", "ice",	 "cream" };
+    int n = sizeof(dictionary) / sizeof(dictionary[0]);
+    struct TrieNode* root = getNode();
 
     // Construct trie
     for (int i = 0; i < n; i++)
-        insertWord(&dictionary[i][0]);
+        insert(root, dictionary[i]);
 
-    wordBreak("ilikesamsung")? cout <<"Yes\n": cout << "No\n";
-    wordBreak("iiiiiiii")? cout <<"Yes\n": cout << "No\n";
-    wordBreak("")? cout <<"Yes\n": cout << "No\n";
-    wordBreak("ilikelikeimangoiii")? cout <<"Yes\n": cout << "No\n";
-    wordBreak("samsungandmango")? cout <<"Yes\n": cout << "No\n";
-    wordBreak("samsungandmangok")? cout <<"Yes\n": cout << "No\n";
-
+    wordBreak("ilikesamsung", root) ? cout << "Yes\n"
+                                    : cout << "No\n";
+    wordBreak("iiiiiiii", root) ? cout << "Yes\n"
+                                : cout << "No\n";
+    wordBreak("", root) ? cout << "Yes\n" : cout << "No\n";
+    wordBreak("ilikelikeimangoiii", root) ? cout << "Yes\n"
+                                          : cout << "No\n";
+    wordBreak("samsungandmango", root) ? cout << "Yes\n"
+                                       : cout << "No\n";
+    wordBreak("samsungandmangok", root) ? cout << "Yes\n"
+                                        : cout << "No\n";
     return 0;
 }
+

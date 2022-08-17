@@ -1,0 +1,17 @@
+01. Construct a trie from scratch.
+02. Construct a trie - unordered-map.
+03. Find the shortest unique prefix for every word in a given list. technique : maintain number of times node is visited during insertion.
+04. Word Break.
+05. Given a sequence of word, print all anagrams together. technique: hashmap approach is better.
+06. Implement phone directory.
+07. Print unique rows in a given boolean matrix.
+
+
+
+
+
+-- Trie is an efficient information retrieval data structure. Using Trie, search complexities can be brought to optimal
+   limit (key length). If we store keys in a binary search tree, a well-balanced BST will need time proportional to
+   M * log N, where M is the maximum string length and N is the number of keys in the tree.
+
+   Using Trie, we can search the key in O(M) time. However, the penalty is on Trie storage requirements.

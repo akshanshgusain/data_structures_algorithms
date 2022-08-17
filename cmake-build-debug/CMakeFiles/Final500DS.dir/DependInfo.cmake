@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/akshanshgusain/CLionProjects/Final500DSA/Heap_016.cpp" "/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles/Final500DS.dir/Heap_016.cpp.o"
+  "/Users/akshanshgusain/CLionProjects/Final500DSA/Trie_006.cpp" "/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles/Final500DS.dir/Trie_006.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
