@@ -78,7 +78,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Trie_006.cpp">
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Greedy_010.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/Greedy_011.cpp">
 			<Option target="Final500DS"/>
 		</Unit>
 		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/CMakeLists.txt">

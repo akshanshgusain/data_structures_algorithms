@@ -3,4 +3,4 @@ project(Final500DSA)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Final500DS Trie_006.cpp)
+add_executable(Final500DS Greedy_010.cpp Greedy_011.cpp)
