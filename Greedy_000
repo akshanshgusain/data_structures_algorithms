@@ -9,3 +9,10 @@
 09. Find the minimum and maximum amount to buy all N candies.
 10. Minimize Cash Flow among a given set of friends who have borrowed money from each other <GQ>
 11. Minimum Cost to cut a board into squares.
+12. Check if it is possible to survive on Island.<GQ>
+13. Find maximum meetings in one room.
+14. Maximum product subset of an array. technique: constructive.
+15. Maximize sum after K negations.
+16. Maximize sum(arr[i]*i) of an Array.
+17. Maximum sum of absolute difference of any permutation.
+18. Maximize sum of consecutive differences in a circular array.

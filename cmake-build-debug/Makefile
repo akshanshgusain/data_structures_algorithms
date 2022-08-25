@@ -129,53 +129,29 @@ Final500DS/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/build
 .PHONY : Final500DS/fast
 
-Greedy_010.o: Greedy_010.cpp.o
-.PHONY : Greedy_010.o
+Greedy_017.o: Greedy_017.cpp.o
+.PHONY : Greedy_017.o
 
 # target to build an object file
-Greedy_010.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_010.cpp.o
-.PHONY : Greedy_010.cpp.o
+Greedy_017.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_017.cpp.o
+.PHONY : Greedy_017.cpp.o
 
-Greedy_010.i: Greedy_010.cpp.i
-.PHONY : Greedy_010.i
-
-# target to preprocess a source file
-Greedy_010.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_010.cpp.i
-.PHONY : Greedy_010.cpp.i
-
-Greedy_010.s: Greedy_010.cpp.s
-.PHONY : Greedy_010.s
-
-# target to generate assembly for a file
-Greedy_010.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_010.cpp.s
-.PHONY : Greedy_010.cpp.s
-
-Greedy_011.o: Greedy_011.cpp.o
-.PHONY : Greedy_011.o
-
-# target to build an object file
-Greedy_011.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_011.cpp.o
-.PHONY : Greedy_011.cpp.o
-
-Greedy_011.i: Greedy_011.cpp.i
-.PHONY : Greedy_011.i
+Greedy_017.i: Greedy_017.cpp.i
+.PHONY : Greedy_017.i
 
 # target to preprocess a source file
-Greedy_011.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_011.cpp.i
-.PHONY : Greedy_011.cpp.i
+Greedy_017.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_017.cpp.i
+.PHONY : Greedy_017.cpp.i
 
-Greedy_011.s: Greedy_011.cpp.s
-.PHONY : Greedy_011.s
+Greedy_017.s: Greedy_017.cpp.s
+.PHONY : Greedy_017.s
 
 # target to generate assembly for a file
-Greedy_011.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_011.cpp.s
-.PHONY : Greedy_011.cpp.s
+Greedy_017.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Greedy_017.cpp.s
+.PHONY : Greedy_017.cpp.s
 
 # Help Target
 help:
@@ -186,12 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Final500DS"
-	@echo "... Greedy_010.o"
-	@echo "... Greedy_010.i"
-	@echo "... Greedy_010.s"
-	@echo "... Greedy_011.o"
-	@echo "... Greedy_011.i"
-	@echo "... Greedy_011.s"
+	@echo "... Greedy_017.o"
+	@echo "... Greedy_017.i"
+	@echo "... Greedy_017.s"
 .PHONY : help
 
 
