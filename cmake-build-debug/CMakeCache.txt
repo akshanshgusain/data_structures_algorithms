@@ -35,6 +35,9 @@ CMAKE_CODEBLOCKS_EXECUTABLE:FILEPATH=CMAKE_CODEBLOCKS_EXECUTABLE-NOTFOUND
 // Enter e.g. -j<some_number> to get parallel builds
 CMAKE_CODEBLOCKS_MAKE_ARGUMENTS:STRING=-j8
 
+//Enable colored diagnostics throughout.
+CMAKE_COLOR_DIAGNOSTICS:BOOL=ON
+
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
@@ -100,6 +103,9 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Enable/Disable output of compile commands during generation.
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
+
+//Value Computed by CMake.
+CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/Users/akshanshgusain/CLionProjects/Final500DSA/cmake-build-debug/CMakeFiles/pkgRedirects
 
 //Path to a program.
 CMAKE_INSTALL_NAME_TOOL:FILEPATH=/usr/bin/install_name_tool
@@ -250,7 +256,7 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/Users/akshanshgusain/CLionProjects/Final500DSA/cma
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=23
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=24
 //Patch version of cmake used to create the current loaded cache
 CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
@@ -351,7 +357,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23
+CMAKE_ROOT:INTERNAL=/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG

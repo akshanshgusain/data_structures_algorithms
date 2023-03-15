@@ -45,6 +45,7 @@ int kthSmallest(int arr[], int l, int r, int k) {
             return kthSmallest(arr, pos + 1, r, k - pos + l - 1);
         }
     }
+    return -1;
 }
 
 

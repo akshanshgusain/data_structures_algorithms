@@ -16,6 +16,7 @@ int getMinDiff(vector<int> arr, int k){
         v.push_back({arr[i]+k, i});
     }
     sort(v.begin(), v.end());
+
     int ele = 0;
     int left = 0;
     int right = 0;

@@ -4,32 +4,21 @@
 
 
 #include <stdc++.h>
+using namespace std;
 
-using namespace std;
-using namespace std;
+bool isPalindrome(string ip){
+    int i = 0, j = ip.size()-1;
+    while(i <= j){
+        if(tolower(ip[i]) != tolower(ip[j])){
+            return false;
+        }
+        i++, j--;
+    }
+    return true;
+}
 
 int main() {
-  int n= 5;
-  int arr[5] = {3,0,5,7,4};
-
-    int arrMax = INT_MIN;
-    for (int i = 0; i < n; i++) {
-        if (arr[i] > arrMax) {
-            arrMax = arr[i];
-        }
-    }
-
-
-    for (int i = 0; i < arrMax; i++) {
-        for (int j = 0; j < n; j++) {
-            if ((arrMax - arr[j]) > i) {
-                cout << " "<<" ";
-            } else {
-                cout << "*"<<" ";
-            }
-        }
-        cout << endl;
-    }
-
+    string ip = "anant";
+    isPalindrome(ip)? cout<<"True" : cout<<"False";
     return 0;
 }
