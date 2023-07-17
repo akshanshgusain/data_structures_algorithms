@@ -37,7 +37,7 @@ void push(Node *&head, int key) {
     head = newNode;
 }
 
-Node* reverseList(Node *head) {
+Node* reverseList(Node* head) {
     Node *temp = nullptr;
 
     while (head != nullptr) {

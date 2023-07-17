@@ -16,7 +16,7 @@ public:
     }
 };
 
-void push(Node *&head_ref, int data) {
+void push(Node* &head_ref, int data) {
     Node *ptr1 = new Node(data);
     Node *temp = head_ref;
     ptr1->next = head_ref;

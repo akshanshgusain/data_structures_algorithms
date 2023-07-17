@@ -63,7 +63,7 @@ Matrix Chain Multiplication - 08Q
 DP on Trees
 
 51. Diameter of a Binary Tree.
-52. Max. Path Sum from any Node to Any.
+52. Max. Path Sum from any TreeNode to Any.
 53. Max. Path Sum from leaf to leaf.
 54. Diameter of N-Array Tree.  80. Largest independent set problem.
 

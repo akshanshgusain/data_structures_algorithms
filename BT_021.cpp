@@ -89,17 +89,23 @@ void printInOrder(Node *root) {
 
 
 ///----- OPTIMISED:
-int search(char arr[], int strt, int end, char value) {
-    int i;
-    for (i = strt; i <= end; i++) {
-        if (arr[i] == value)
-            return i;
-    }
-}
+//int search(char arr[], int strt, int end, char value) {
+//    int i;
+//    for (i = strt; i <= end; i++) {
+//        if (arr[i] == value)
+//            return i;
+//    }
+//}
 
-Node *buildTree(char inorder[], char preorder[], int inorderStart, int inorderEnd, unordered_map<char, int> &map) {
+Node *buildTree(
+        vector<char> &inorder,
+        vector<char> &preorder,
+        int inorderStart,
+        int inorderEnd,
+        int &preIndex,
+        unordered_map<char, int> &map
+) {
 
-    static int preIndex = 0;
     if (inorderStart > inorderEnd) {
         return nullptr;
     }
@@ -114,22 +120,23 @@ Node *buildTree(char inorder[], char preorder[], int inorderStart, int inorderEn
     }
 
     int inIndex = map[currentItem];
-    newNode->left = buildTree(inorder, preorder, inorderStart, inIndex - 1, map);
-    newNode->right = buildTree(inorder, preorder, inIndex + 1, inorderEnd, map);
+    newNode->left = buildTree(inorder, preorder, inorderStart, inIndex - 1, preIndex, map);
+    newNode->right = buildTree(inorder, preorder, inIndex + 1, preIndex, inorderEnd, map);
 
     return newNode;
 }
 
 int main() {
-    char in[] = {'D', 'B', 'E', 'A', 'F', 'C'};
-    char pre[] = {'A', 'B', 'D', 'E', 'C', 'F'};
-    int len = sizeof(in) / sizeof(in[0]);
+    vector<char> in = {'D', 'B', 'E', 'A', 'F', 'C'};
+    vector<char> pre = {'A', 'B', 'D', 'E', 'C', 'F'};
 
     unordered_map<char, int> map;
-    for (int i = 0; i < len; i++) {
+    int preIndex = 0;
+
+    for (int i = 0; i < in.size(); i++) {
         map[in[i]] = i;
     }
-    Node *root = buildTree(in, pre, 0, len - 1, map);
+    Node *root = buildTree(in, pre, 0, int(in.size()), preIndex, map);
 
     cout << "Inorder traversal of the constructed tree is \n";
     printInOrder(root); //D B E A F C

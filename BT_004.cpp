@@ -64,6 +64,13 @@ int heightOptimised(Node *root, int &ans) {
 int diameter(Node *root) {
     // Find Out max of left-height and right-height for every node
     // max(For every node - max(left-height, right-height))
+    // Max diameter is going to be one of the following:
+
+    //  1. Diameter Passes through current node.
+    //  2. Diameter DOES NOT pass thought the current Node:
+    //      2.1. Diameter of Left Sub Tree.
+    //      2.2. Diameter of Right Sub Tree.
+
     if (root == nullptr) {
         return 0;
     }
@@ -74,7 +81,10 @@ int diameter(Node *root) {
     int diameterOfLeftSubTree = diameter(root->left);
     int diameterOfRightSubTree = diameter(root->right);
 
-    return max((leftHeight + rightHeight + 1), max(diameterOfLeftSubTree, diameterOfRightSubTree));
+    return max(
+            (leftHeight + rightHeight + 1),
+            max(diameterOfLeftSubTree, diameterOfRightSubTree)
+            );
 }
 
 int diameterOptimised(Node *root) {  //Time: O(N)

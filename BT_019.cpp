@@ -32,23 +32,29 @@ struct Node {
 
 // root --> Root of Binary Tree
 // head --> Pointer to head node of created doubly linked list
-void binaryTree2DoubleLinkedList(Node *root, Node **head){
+void binaryTree2DoubleLinkedList(Node *root, Node* &head, Node* &previous){
     if(root == nullptr){
         return;
     }
 
-    static Node *previous = nullptr;
-    binaryTree2DoubleLinkedList(root->left, head);
+    /*
+     * When the static keyword is used in this context, it ensures that the variable previous retains its value between
+     * different function calls. The variable is initialized only once, and subsequent calls to the function will
+     * preserve the value assigned to previous from the previous call.
+     */
+    //static Node *previous = nullptr;
+
+    binaryTree2DoubleLinkedList(root->left, head, previous);
 
     if(previous == nullptr){
-        *head = root;
+        head = root;
     }else{
         root->left = previous;
         previous->right = root;
     }
     previous = root;
 
-    binaryTree2DoubleLinkedList(root->right, head);
+    binaryTree2DoubleLinkedList(root->right, head, previous);
 }
 
 void printList(Node *node)
@@ -70,7 +76,8 @@ int main() {
 
     // Convert to DLL
     Node *head = nullptr;
-    binaryTree2DoubleLinkedList(root, &head);
+    Node *previous = nullptr;
+    binaryTree2DoubleLinkedList(root, head, previous);
 
     // Print the converted list
     printList(head); // 25 12 30 10 36 15

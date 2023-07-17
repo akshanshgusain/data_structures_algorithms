@@ -63,7 +63,7 @@ bool isBTreeBalanced(Node *root) {
 bool isBalanced(Node *root, int *height) {
     int heightOfLeftSubTree = 0, heightOfRightSubTree = 0;
 
-    int isLSubTreeBalanced = false, isRSubTreeBalanced = false;
+    bool isLSubTreeBalanced = false, isRSubTreeBalanced = false;
 
     if (root == nullptr) {
         *height = 0;

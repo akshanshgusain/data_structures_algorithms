@@ -8,7 +8,7 @@ Count and Say problem.     ----- ( technique: 2 pointer)
 Write a program to find the longest Palindrome in a string.[ Longest palindromic Substring] ( technique: 2 pointer)/ can also be done with DP
 Print all Subsequences of a string.     ----- ( technique: LCS, Find in DP)
 Print all the permutations of the given string.     ----- ( technique: 1. Reccur for left and right sub part, 2. BackTracking)
-Split the Binary string into two substring with equal 0’s and 1’s
+Split the Binary string into two substring with equal 0’s and 1’s.
 Word Wrap Problem [VERY IMP].     ----- ( technique: Dynamic Programming)
 EDIT Distance [Very Imp].     ----- ( technique: LCS, Find in DP)
 Find next greater number with same set of digits. [Very Very IMP].     ----- ( technique: Descending order)

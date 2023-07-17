@@ -3,6 +3,7 @@
 //
 
 #include<stdc++.h>
+
 using namespace std;
 
 struct Node {
@@ -70,7 +71,7 @@ int findIndex(string str, int startIndex, int endIndex) {
     return -1;
 }
 
-Node *treeFromString(string input, int startIndex, int endIndex) {
+Node* treeFromString(string input, int startIndex, int endIndex) {
     if (startIndex > endIndex) {
         return nullptr;
     }
@@ -81,8 +82,10 @@ Node *treeFromString(string input, int startIndex, int endIndex) {
     // if next char is '(' find the index of
     // its complement ')'
     int index = -1;
-    if (startIndex + 1 <= endIndex && input[startIndex + 1] == '(')
+    if (startIndex + 1 <= endIndex && input[startIndex + 1] == '('){
         index = findIndex(input, startIndex + 1, endIndex);
+    }
+
 
     // If the index is found
     if (index != -1) {

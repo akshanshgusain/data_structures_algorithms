@@ -36,8 +36,8 @@ void printList(Node *node) {
     cout << node->data;
 }
 
-void rotate(Node* &head, int n) {
-    if (n == 0){
+void rotate(Node *&head, int n) {
+    if (n == 0) {
         return;
     }
     Node *current = head;

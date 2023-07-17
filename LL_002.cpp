@@ -16,12 +16,12 @@ public:
     }
 };
 
-void addAtEnd(Node* &head, int data) {
+void addAtEnd(Node** head, int data) {
     Node *node = new Node(data);
-    Node *last = head;
+    Node *last = *head;
 
-    if (head == nullptr) {
-        head = node;
+    if (*head == nullptr) {
+        *head = node;
         return;
     }
     while (last->next != nullptr) {
@@ -39,19 +39,19 @@ void printLL(Node *start) {
 }
 
 // Iterative
-void reverseLL(Node* &head) {
+void reverseLL(Node** head) {
     Node *previous, *next, *current;
-    current = head;
+    current = *head;
     previous = next = nullptr;
 
     while (current != nullptr) {
         next = current->next;
-        current->next = previous;
-        previous = current;
-        current = next;
+        current->next = previous; // reverse the ptr
+        previous = current; // forward prev ptr
+        current = next; // forward curr ptr
     }
 
-    head = previous;
+    *head = previous;
 }
 
 Node* reverseR(Node* &head){
@@ -68,15 +68,15 @@ Node* reverseR(Node* &head){
 
 int main() {
     Node* head = nullptr;
-    addAtEnd(head, 20);
-    addAtEnd(head, 30);
-    addAtEnd(head, 40);
-    addAtEnd(head, 50);
+    addAtEnd(&head, 20);
+    addAtEnd(&head, 30);
+    addAtEnd(&head, 40);
+    addAtEnd(&head, 50);
 
     printLL(head);
 //    Node *newHead = reverseR(head);
 //    printLL(newHead);
-    reverseLL(head);
+    reverseLL(&head);
     printLL(head);
 
     return 0;

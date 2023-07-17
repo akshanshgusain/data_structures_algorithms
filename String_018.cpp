@@ -5,9 +5,11 @@
 
 using namespace std;
 
+// Longest Prefix Suffix
+
 void computeLPS(char *pattern, int M, int *lps) {
     int len = 0;
-    lps[0] = 0;
+    lps[0] = 0; // longest prefix which is also a suffix
     int i = 1;
 
     while (i < M) {

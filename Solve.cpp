@@ -2,29 +2,95 @@
 // Created by Akshansh Gusain on 10/03/21.
 //
 #include<stdc++.h>
+#include "BT.cpp"
 
 using namespace std;
 
-int maxProduct(int index, vector<int> arr, int prod) {
-    if (index >= arr.size()) {
-        return 1;
+struct Node {
+    int data;
+    struct Node *left, *right;
+
+    Node() {
+        data = 0;
+        left = nullptr;
+        right = nullptr;
     }
 
-    int l = arr[index] * maxProduct(index + 1, arr, prod * arr[index]);
-    int r = arr[index];
-
-    if (prod < max(l, r)) {
-        prod = max(l, r);
+    Node(int key) {
+        data = key;
+        left = nullptr;
+        right = nullptr;
     }
-    return prod;
+
+    Node(int key, Node *left, Node *right) {
+        data = key;
+        this->left = left;
+        this->right = right;
+    }
+};
+
+void printLeaves(Node *root) {
+    if (root == nullptr) {
+        return;
+    }
+
+    printLeaves(root->left);
+
+    if((root->left == nullptr) and (root->right == nullptr)){
+        cout<<root->data<<" ";
+    }
+
+    printLeaves(root->right);
 }
 
 
-int main() {
-    vector<int> arr = {6, -3, -10, 0, 2}; // 180  // The subarray is {6, -3, -10}
-    vector<int> arr2 = {-1, -3, -10, 0, 60}; // 60  // The subarray is {60}
-    vector<int> arr3 = {-2, -40, 0, -2, -3}; // 80  // The subarray is {-2, -40}
+void printBoundaryLeft(Node *root) {
+    if (root == nullptr) {
+        return;
+    }
+    if (root->left != nullptr) {
+        cout << root->data << " ";
 
-    cout << maxProduct(0, arr3, 1);
+    } else if (root->right != nullptr) {
+        cout << root->data << " ";
+        printBoundaryLeft(root->left);
+    }
+}
+
+
+void printBoundaryRight(Node *root) {
+    if (root == nullptr) {
+        return;
+    }
+    if (root->right != nullptr) {
+        printBoundaryRight(root->right);
+        cout << root->data << " ";
+    } else if (root->left != nullptr) {
+        printBoundaryRight(root->left);
+        cout << root->data << " ";
+    }
+}
+
+void printBoundary(Node *root) {
+    if (root != nullptr) {
+        cout << root->data << " ";
+    }
+
+    printBoundaryLeft(root->left);
+    printLeaves(root);
+    printBoundaryRight(root->right);
+}
+
+int main() {
+    Node *root = new Node(20);
+    root->left = new Node(8);
+    root->left->left = new Node(4);
+    root->left->right = new Node(12);
+    root->left->right->left = new Node(10);
+    root->left->right->right = new Node(14);
+    root->right = new Node(22);
+    root->right->right = new Node(25);
+
+    printBoundary(root); // 20 8 4 10 14 25 22
     return 0;
 }

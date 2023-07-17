@@ -3,7 +3,6 @@
 //
 
 #include<stdc++.h>
-
 using namespace std;
 
 class Node {
@@ -48,7 +47,7 @@ void printList(Node *head) {
     cout << endl;
 }
 
-void deleteNode(Node *&head, int key) {
+void deleteNode(Node* &head, int key) {
 
     // If linked list is empty
     if (head == nullptr)

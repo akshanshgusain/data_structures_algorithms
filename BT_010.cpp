@@ -28,14 +28,14 @@ struct Node {
     }
 };
 
-void leftView(Node *root, int currentLevel, int *maxLevel){
+void leftView(Node *root, int currentLevel, int &maxLevel){
     if(root == nullptr){
         return;
     }
 
-    if(currentLevel > *maxLevel){
+    if(currentLevel > maxLevel){
         cout<<root->data<<" ";
-        *maxLevel = currentLevel;
+        maxLevel = currentLevel;
     }
 
     if(root->left != nullptr){
@@ -57,6 +57,6 @@ int main() {
     root->right->right->left = new Node(14);
 
     int maxLevel = INT_MIN;
-    leftView(root, 1, &maxLevel);
+    leftView(root, 1, maxLevel);
     return 0;
 }

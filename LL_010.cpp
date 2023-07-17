@@ -49,7 +49,7 @@ void print(Node *node) {
     cout << endl;
 }
 
-Node *addTwoNumbers(Node *&num1, Node *&num2) {
+Node *addTwoNumbers(Node* &num1, Node* &num2) {
     Node *result = nullptr;
     Node *temp = nullptr, *prev = nullptr;
     int carry = 0, sum = 0;

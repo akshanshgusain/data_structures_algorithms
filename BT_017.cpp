@@ -53,8 +53,9 @@ void diagonalTraversal(Node *root) {
     diagonalTraversal_(root, diagonal, diagonalMap);
 
     cout<<"Diagonal Traversal of the binary tree: "<<endl;
-    for(auto diagonal : diagonalMap){
-        for(auto node: diagonal.second){
+
+    for(auto diagonal_ : diagonalMap){
+        for(auto node: diagonal_.second){
             cout<<node<<" ";
         }
         cout<<endl;

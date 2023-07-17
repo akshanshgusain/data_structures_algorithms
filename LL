@@ -20,7 +20,7 @@ Deletion from a Circular Linked List.
 Reverse a Doubly Linked list.
 Find pairs with a given sum in a sorted DLL. ---- Technique( Two pointer Technique)
 Count triplets in a sorted DLL whose sum is equal to given value “X”. ---- Technique( Find Pair wrt every node).
-Sort a “k”sorted Doubly Linked list.[Very IMP]. ---- Technique(Min Heap).
+Merge a “k”sorted Doubly Linked list.[Very IMP]. ---- Technique(Min Heap).
 Rotate DoublyLinked list by N nodes.
 Rotate a Doubly Linked list in group of Given Size.[Very IMP]. ---- Technique(Recursively call reverse on k+1 th node)
 Can we reverse a linked list in less than O(n) ?----- NO

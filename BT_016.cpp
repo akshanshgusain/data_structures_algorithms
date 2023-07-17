@@ -37,8 +37,8 @@ void printLeaves(Node *root) {
 
     printLeaves(root->left);
 
-    if((root->left == nullptr) and (root->right == nullptr)){
-        cout<<root->data<<" ";
+    if ((root->left == nullptr) and (root->right == nullptr)) {
+        cout << root->data << " ";
     }
 
     printLeaves(root->right);
@@ -50,12 +50,17 @@ void printBoundaryLeft(Node *root) {
         return;
     }
     if (root->left != nullptr) {
+        // to ensure top down order, print the node
+        // before calling itself for left subtree
+
         cout << root->data << " ";
         printBoundaryLeft(root->left);
     } else if (root->right != nullptr) {
         cout << root->data << " ";
-        printBoundaryLeft(root->left);
+        printBoundaryLeft(root->right);
     }
+    // do nothing if it is a leaf node, this way we avoid
+    // duplicates in output
 }
 
 
@@ -64,12 +69,16 @@ void printBoundaryRight(Node *root) {
         return;
     }
     if (root->right != nullptr) {
+        // to ensure bottom up order, first call for right
+        // subtree, then print this node
         printBoundaryRight(root->right);
         cout << root->data << " ";
     } else if (root->left != nullptr) {
         printBoundaryRight(root->left);
         cout << root->data << " ";
     }
+    // do nothing if it is a leaf node, this way we avoid
+    // duplicates in output
 }
 
 void printBoundary(Node *root) {
