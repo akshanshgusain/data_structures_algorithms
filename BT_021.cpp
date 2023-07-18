@@ -32,9 +32,9 @@ TreeNode *buildTree(vector<char> &preOrder, int preStart, int preEnd,
     TreeNode *root = new TreeNode(preOrder[preStart]);
 
     int inRoot = inMap[root->data];
-    int numsLeft = inRoot - inStart;
+    int numsLeft = inRoot - inStart;// # of elements after preOrder[preStart] will form the new preorder
 
-    root->left = buildTree(preOrder, preStart + 1, preEnd + numsLeft,
+    root->left = buildTree(preOrder, preStart + 1, preStart + numsLeft,
                            inOrder, inStart, inRoot - 1, inMap);
     root->right = buildTree(preOrder, preStart + numsLeft + 1, preEnd,
                             inOrder, inRoot + 1, inEnd, inMap);
