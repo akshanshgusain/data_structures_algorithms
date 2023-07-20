@@ -1,10 +1,14 @@
-//
-// Created by Akshansh Gusain on 10/03/21.
-//
-#include<stdc++.h>
-#include "BT.cpp"
+#include<bits/stdc++.h>
+
+#define int long long int
+#define F first
+#define S second
+#define pb push_back
+#define all(p) p.begin(), p.end()
 
 using namespace std;
+const int inf = 1e15;
+const int M = 1e9 + 7;
 
 struct Node {
     int data;
@@ -29,68 +33,108 @@ struct Node {
     }
 };
 
-void printLeaves(Node *root) {
+Node *findMin(Node *root) {
+    Node *temp = root;
+    while (temp != nullptr and temp->left != nullptr) {
+        temp = temp->left;
+    }
+    return temp;
+}
+
+Node *deleteNode(Node *root, int key) {
+    if (root == nullptr) {
+        return nullptr;
+    }
+
+    if (key < root->data) {
+        root->left = deleteNode(root->left, key);
+    } else if (key > root->data) {
+        root->right = deleteNode(root->right, key);
+    } else {
+        // 1. Leaf node
+        if (root->left == nullptr and root->right == nullptr) {
+            free(root);
+            return nullptr;
+        }
+
+            // 2. Single Child
+        else if (root->left == nullptr) {
+            Node *temp = root->right;
+            free(root);
+            return temp;
+        } else if (root->right == nullptr) {
+            Node *temp = root->left;
+            free(root);
+            return temp;
+        }
+            // 3. 2 Children
+
+            Node *minNode = findMin(root->right);
+            root->data = minNode->data;
+            root->right = deleteNode(root->right, minNode->data);
+
+
+    }
+    return root;
+}
+
+
+void inOrder(Node *root) {
     if (root == nullptr) {
         return;
     }
-
-    printLeaves(root->left);
-
-    if((root->left == nullptr) and (root->right == nullptr)){
-        cout<<root->data<<" ";
-    }
-
-    printLeaves(root->right);
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
 }
 
-
-void printBoundaryLeft(Node *root) {
+Node *insertInBST(Node *root, int key) {
     if (root == nullptr) {
-        return;
+        return new Node(key);
     }
-    if (root->left != nullptr) {
-        cout << root->data << " ";
 
-    } else if (root->right != nullptr) {
-        cout << root->data << " ";
-        printBoundaryLeft(root->left);
+    if (root->data < key) {
+        root->right = insertInBST(root->right, key);
     }
+    else if (root->data > key) {
+        root->left = insertInBST(root->left, key);
+    }
+    return root;
+
 }
 
+int32_t main() {
 
-void printBoundaryRight(Node *root) {
-    if (root == nullptr) {
-        return;
-    }
-    if (root->right != nullptr) {
-        printBoundaryRight(root->right);
-        cout << root->data << " ";
-    } else if (root->left != nullptr) {
-        printBoundaryRight(root->left);
-        cout << root->data << " ";
-    }
-}
 
-void printBoundary(Node *root) {
-    if (root != nullptr) {
-        cout << root->data << " ";
-    }
+    Node *root = nullptr;
+    root = insertInBST(root, 50);
+    insertInBST(root, 30);
+    insertInBST(root, 20);
+    insertInBST(root, 40);
+    insertInBST(root, 70);
+    insertInBST(root, 60);
+    insertInBST(root, 80);
 
-    printBoundaryLeft(root->left);
-    printLeaves(root);
-    printBoundaryRight(root->right);
-}
+    cout << "Inorder traversal of the given tree \n";
+    inOrder(root);
+    cout << endl << endl;
 
-int main() {
-    Node *root = new Node(20);
-    root->left = new Node(8);
-    root->left->left = new Node(4);
-    root->left->right = new Node(12);
-    root->left->right->left = new Node(10);
-    root->left->right->right = new Node(14);
-    root->right = new Node(22);
-    root->right->right = new Node(25);
+    cout << "Case 1:Leaf Node: Delete 20" << endl;
+    root = deleteNode(root, 20);
+    cout << "Inorder traversal of the modified tree \n";
+    inOrder(root);
+    cout << endl << endl;
 
-    printBoundary(root); // 20 8 4 10 14 25 22
+    cout << "Case 2:Node with one child:  Delete 30" << endl;
+    root = deleteNode(root, 30);
+    cout << "Inorder traversal of the modified tree \n";
+    inOrder(root);
+    cout << endl << endl;
+
+    cout << "Case 3:Node with two children: Delete 50" << endl;
+    root = deleteNode(root, 50);
+    cout << "Inorder traversal of the modified tree \n";
+    inOrder(root);
+    cout << endl << endl;
     return 0;
 }

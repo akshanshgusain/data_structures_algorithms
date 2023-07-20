@@ -75,37 +75,37 @@ bool isSumTree(Node *root) {
 
 
 bool isSumTreeOp(Node *root) {
-    int leftSubTree;
-    int rightSubTree;
+    int leftSubTreeSum;
+    int rightSubTreeSum;
 
     if (root == nullptr or isLeaf(root)) {
         return true;
     }
 
-    if (isSumTree(root->left) and isSumTree(root->right)) {
+    if (isSumTreeOp(root->left) and isSumTreeOp(root->right)) {
 
         // Get the sum of nodes in left subtree
         if (root->left == nullptr) {
-            leftSubTree = 0;
+            leftSubTreeSum = 0;
         } else if (isLeaf(root->left)) {
-            leftSubTree = root->left->data;
+            leftSubTreeSum = root->left->data;
         } else {
-            leftSubTree = 2 * (root->left->data);
+            leftSubTreeSum = 2 * (root->left->data);
         }
 
         // Get the sum of nodes in left subtree
         if (root->right == nullptr) {
-            rightSubTree = 0;
+            rightSubTreeSum = 0;
         } else if (isLeaf(root->right)) {
-            rightSubTree = root->right->data;
+            rightSubTreeSum = root->right->data;
         } else {
-            rightSubTree = 2 * (root->right->data);
+            rightSubTreeSum = 2 * (root->right->data);
         }
 
 
         /* If root's data is equal to sum of nodes in left
            and right subtrees then return 1 else return 0*/
-        return (root->data == leftSubTree + rightSubTree);
+        return (root->data == leftSubTreeSum + rightSubTreeSum);
     }
 
     return false;
@@ -119,7 +119,7 @@ int main() {
     root->left->right = new Node(6);
     root->right->right = new Node(3);
 
-    if (isSumTree(root))
+    if (isSumTreeOp(root))
         cout << "The given tree is a SumTree ";
     else
         cout << "The given tree is not a SumTree ";

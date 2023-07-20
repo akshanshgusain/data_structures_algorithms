@@ -62,6 +62,7 @@ int main() {
     root->left->right = new Node(5);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
+
     cout << "LCA(4, 5) = " << findLCA(root, 4, 5)->data;
     cout << "\nLCA(4, 6) = " << findLCA(root, 4, 6)->data;
     cout << "\nLCA(3, 4) = " << findLCA(root, 3, 4)->data;

@@ -28,41 +28,43 @@ struct Node {
 };
 
 
-Node *findLCA(Node *root, int n1, int n2, int &d1, int &d2, int &dist, int level) {
-    if (root == nullptr) {
-        return nullptr;
-    }
-
-    if (root->data == n1) {
-        d1 = level;
-        return root;
-    }
-    if (root->data == n2) {
-        d2 = level;
-        return root;
-    }
-
-    Node *leftLCA = findLCA(root->left, n1, n2, d1, d2, dist, level + 1);
-    Node *rightLCA = findLCA(root->right, n1, n2, d1, d2, dist, level + 1);
-
-    if (leftLCA != nullptr and rightLCA != nullptr) {
-        dist = d1 + d2 - 2 * level;
-        return root;
-    }
-    if (leftLCA != nullptr) {
-        return leftLCA;
-    } else {
-        return rightLCA;
-    }
-}
+//Node *findLCA(Node *root, int n1, int n2, int &d1, int &d2, int &dist, int level) {
+//    if (root == nullptr) {
+//        return nullptr;
+//    }
+//
+//    if (root->data == n1) {
+//        d1 = level;
+//        return root;
+//    }
+//    if (root->data == n2) {
+//        d2 = level;
+//        return root;
+//    }
+//
+//    Node *leftLCA = findLCA(root->left, n1, n2, d1, d2, dist, level + 1);
+//    Node *rightLCA = findLCA(root->right, n1, n2, d1, d2, dist, level + 1);
+//
+//    if (leftLCA != nullptr and rightLCA != nullptr) {
+//        dist = d1 + d2 - 2 * level;
+//        return root;
+//    }
+//    if (leftLCA != nullptr) {
+//        return leftLCA;
+//    } else {
+//        return rightLCA;
+//    }
+//}
 
 Node *temp = NULL;
 
 // recursive function to calculate Kth ancestor
 Node *kthAncestorDFS(Node *root, int node, int &k) {
     // Base case
-    if (!root)
-        return NULL;
+    if (!root){
+        return nullptr;
+    }
+
 
     if (root->data == node ||
         (temp = kthAncestorDFS(root->left, node, k)) ||
@@ -75,7 +77,7 @@ Node *kthAncestorDFS(Node *root, int node, int &k) {
             cout << "Kth ancestor is: " << root->data;
 
             // return NULL to stop further backtracking
-            return NULL;
+            return nullptr;
         }
 
         // return current node to previous call

@@ -28,7 +28,7 @@ struct Node {
     }
 };
 
-bool check_(Node *root, int level, int *leafLevel) {
+bool check_(Node *root, int level, int &leafLevel) {
     if (root == nullptr) {
         return true;
     }
@@ -36,11 +36,11 @@ bool check_(Node *root, int level, int *leafLevel) {
     // Check if a leaf node is encountered
     if (root->left == nullptr and root->right == nullptr) {
 
-        if (*leafLevel == 0) {
-            *leafLevel = level;
+        if (leafLevel == 0) {
+            leafLevel = level;
             return true;
         }
-        return *leafLevel == level;
+        return leafLevel == level;
     }
 
     return check_(root->left, level + 1, leafLevel) and check_(root->right, level + 1, leafLevel);
@@ -48,7 +48,7 @@ bool check_(Node *root, int level, int *leafLevel) {
 
 bool check(Node *root) {
     int level = 0, leafLevel = 0;
-    return check_(root, level, &leafLevel);
+    return check_(root, level, leafLevel);
 }
 
 int main() {

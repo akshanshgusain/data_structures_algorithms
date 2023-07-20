@@ -17,13 +17,16 @@
 17. Diagonal Traversal of a BTree.  ---(Technique: Calculate Diagonal Distance(DD); DD remains the same when going right but, increments by one when going left)
 
 Re - Construction
+
 18. Construct Binary Tree from String with bracket representation.
 20. Convert a Tree to sum tree.
 19. Flatten the B Tree. (Convert BT to DLL).<T>
 21. Construct a Binary Tree from InOrder and PreOrder Traversal. <T>
 
+Re-Configuration
+
 22. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
-23. Check if Binary tree is Sum tree or not.<T>
+23. Check if Binary tree is Sum tree or not.
 24. Check if all leaf nodes are at the same level.
 25. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
 26. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
@@ -31,11 +34,19 @@ Re - Construction
 Right subtree of ‘a’ and left subtree of ‘b’ are mirror.).
 28. Sum of nodes on the longest path from root to leaf node.
 
+Implementation
+
 29. Check if the a given graph(undirected) is a tree or not. ---(Technique: 1) There is no cycle. 2) The graph is connected.)
 30. Find Largest subtree sum in a binary tree.
-31. Maximum sum of nodes in Binary tree such that no two are adjacent.  ---(Technique: (Memoization) We can solve this problem by considering the fact that both node and its children can’t be in sum at the same time, so when we take a node into our sum we will call recursively for its grandchildren or if we don’t take this node then we will call for all its children nodes and finally we will choose maximum from both of the results. )
+31. Maximum sum of nodes in Binary tree such that no two are adjacent.  ---(Technique: (Memoization) We can solve this
+ problem by considering the fact that both node and its children can’t be in sum at the same time, so when we take a
+ node into our sum we will call recursively for its grandchildren or if we don’t take this node then we will call for
+ all its children nodes and finally we will choose maximum from both of the results. )
+
 32. Print all k-sum paths in a binary tree. ---(Technique: preorder traversal and keep track of path)
 33. Print all the paths from root, with a specified sum in Binary tree.  ---(Technique: preorder traversal and keep track of path)
+
+Common Ancestors:
 
 34. Find the Lowest Common Ancestor in a BTree.
 35. Find distance between two nodes of a Binary Tree.<T> ---(Technique: Find the LCA and distance).

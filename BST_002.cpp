@@ -72,7 +72,7 @@ Node *deleteNode(Node *root, int key) {
     } else {
         /// Case 1: No Children - Leaf Node:
         if (root->left == nullptr and root->right == nullptr) {
-            //free(root);
+            free(root);
             return nullptr;
         }
 
