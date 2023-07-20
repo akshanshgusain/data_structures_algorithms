@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++ -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -mmacosx-version-min=11.2 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/Final500DSA.dir/BIT_countingBits.cpp.o CMakeFiles/Final500DSA.dir/BIT_countBitsInAllNums.cpp.o -o Final500DSA 
