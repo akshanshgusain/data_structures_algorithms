@@ -58,8 +58,7 @@ void inOrderTraversal(Node *root, Node *key, Node *successor) {
     inOrderTraversal(root->right, key, successor);
 }
 
-Node *inOrderSuccessor(Node *root,
-                       Node *n) {
+Node *inOrderSuccessor(Node *root, Node *n) {
     Node *succ = new Node(-1);
     inOrderTraversal(root, n, succ);
     return succ;
@@ -81,12 +80,13 @@ void inOrderTraversal2(Node *root, Node *key, Node *successor) {
 
 }
 
-Node *inOrderPredecessor(Node *root,
-                         Node *n) {
+Node *inOrderPredecessor(Node *root, Node *n) {
     Node *succ = new Node(-1);
     inOrderTraversal2(root, n, succ);
     return succ;
 }
+
+
 
 int main() {
     Node *root = nullptr;
@@ -112,6 +112,9 @@ int main() {
     else
         cout << "\n Inorder Successor doesn't exit";
 
+
+//     Inorder Successor of 60 is 70
+// Inorder Predecessor of 60 is 50
 
     return 0;
 }

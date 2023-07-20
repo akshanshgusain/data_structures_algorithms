@@ -80,21 +80,21 @@ void arrayToBST(Node *root, vector<int> sortedInOrder, int &index){
     arrayToBST(root->right, sortedInOrder, index);
 }
 
-Node *sortedArrayToBST(vector<int> arr, int start, int end) {
-    // Base case
-    if(start > end){
-        return nullptr;
-    }
-    // 1. Get the Middle of the array and make it root.
-    int mid = (start + end)/2;
-    Node *root = new Node (arr[mid]);
-
-    // 2. Recursively construct the left subtree and right subtree
-    root->left = sortedArrayToBST(arr, start, mid-1);
-    root->right = sortedArrayToBST(arr, mid+1, end);
-
-    return root;
-}
+//Node *sortedArrayToBST(vector<int> arr, int start, int end) {
+//    // Base case
+//    if(start > end){
+//        return nullptr;
+//    }
+//    // 1. Get the Middle of the array and make it root.
+//    int mid = (start + end)/2;
+//    Node *root = new Node (arr[mid]);
+//
+//    // 2. Recursively construct the left subtree and right subtree
+//    root->left = sortedArrayToBST(arr, start, mid-1);
+//    root->right = sortedArrayToBST(arr, mid+1, end);
+//
+//    return root;
+//}
 
 void binaryTreeToBST(Node *root){
     if(root == nullptr){
