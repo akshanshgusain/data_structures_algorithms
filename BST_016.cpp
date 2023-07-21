@@ -45,7 +45,7 @@ Node *insertInBST(Node *head, int key) {
     return head;
 }
 
-
+// Thread binary tree
 
 vector<int> getInOrder(Node *root){
     vector<int> inorder;

@@ -7,6 +7,7 @@
 7. Post-Order Traversal - Recursive.
 8. Vertical Traversal.
 14. Zig-Zag Traversal of a BTree.   ---(Technique: Alternate BFS)<T>
+16.Moris Traversal. O(1)
 9. Mirror of a BTree.
 10. Left View of a BTree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
 11. Right View of a BTree.
