@@ -2,8 +2,7 @@
 // Created by Akshansh Gusain on 25/07/22.
 //
 
-#include<stdc++.h>
-
+#include<bits/stdc++.h>
 using namespace std;
 
 vector<int> maxSlidingWindow(vector<int> &arr, int k) {
