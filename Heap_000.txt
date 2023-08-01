@@ -1,3 +1,4 @@
+17. Heapify
 01. Implement a MaxHeap/MinHeap using arrays and recursion.
 02. Sort an Array using heap. (HeapSort).
 03. Maximum of all sub-arrays of size k.
