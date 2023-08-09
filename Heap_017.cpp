@@ -8,7 +8,9 @@ using namespace std;
 
 // Top-Down Heapify (Heapify-Up)
 void topDownHeapify(vector<int> &heap, int idx) {
-    if (idx == 0) return; // Reached the root of the heap, no need to heapify further
+    if (idx == 0) {
+        return;
+    } // Reached the root of the heap, no need to heapify further
 
     int parentIdx = (idx - 1) / 2;
     if (heap[idx] > heap[parentIdx]) {
@@ -17,31 +19,25 @@ void topDownHeapify(vector<int> &heap, int idx) {
     }
 }
 
+
 // Bottom-Up Heapify (Heapify-Down)
 void bottomUpHeapify(vector<int> &heap, int idx) {
     int heapSize = heap.size();
     int leftChildIdx = 2 * idx + 1;
     int rightChildIdx = 2 * idx + 2;
-    int largest = idx;
+    int largestIdx = idx;
 
-    if (leftChildIdx < heapSize && heap[leftChildIdx] > heap[largest]) {
-        largest = leftChildIdx;
+    if (leftChildIdx < heapSize && heap[leftChildIdx] > heap[largestIdx]) {
+        largestIdx = leftChildIdx;
     }
-    if (rightChildIdx < heapSize && heap[rightChildIdx] > heap[largest]) {
-        largest = rightChildIdx;
+    if (rightChildIdx < heapSize && heap[rightChildIdx] > heap[largestIdx]) {
+        largestIdx = rightChildIdx;
     }
 
-    if (largest != idx) {
-        swap(heap[idx], heap[largest]);
-        bottomUpHeapify(heap, largest); // Recursively heapify downwards
+    if (largestIdx != idx) {
+        swap(heap[idx], heap[largestIdx]);
+        bottomUpHeapify(heap, largestIdx); // Recursively heapify downwards
     }
-}
-
-
-// Insert an element into the max-heap
-void insert(vector<int> &heap, int element) {
-    heap.push_back(element);
-    topDownHeapify(heap, heap.size() - 1);
 }
 
 // Extract the maximum element (root) from the max-heap
@@ -57,6 +53,15 @@ int extractMax(vector<int> &heap) {
     bottomUpHeapify(heap, 0);
     return maxValue;
 }
+
+
+// Insert an element into the max-heap
+void insert(vector<int> &heap, int element) {
+    heap.push_back(element);
+    topDownHeapify(heap, heap.size() - 1);
+}
+
+
 
 
 int main() {

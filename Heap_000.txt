@@ -1,6 +1,7 @@
 17. Heapify
 01. Implement a MaxHeap/MinHeap using arrays and recursion.
 02. Sort an Array using heap. (HeapSort).
+
 03. Maximum of all sub-arrays of size k.
 04. kth-largest element in an array.
 05. kth smallest and largest element in an unsorted array.
@@ -50,6 +51,7 @@ two types:
     -   Arr[(i-1)/2]	Returns the parent node.
     -   Arr[(2*i)+1]	Returns the left child node.
     -   Arr[(2*i)+2]	Returns the right child node
+    -   The parent nodes are located at indexes 0 to (n / 2) - 1
 
 
 -- Is Binary Tree a Heap?

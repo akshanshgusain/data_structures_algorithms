@@ -7,35 +7,37 @@ using namespace std;
 
 // To heapify a subtree rooted with node i which is
 // an index in arr[]. N is size of heap
-void heapify(vector<int> &arr, int n, int i) {
-    int largest = i;
-    int l = 2 * i + 1;
-    int r = 2 * i + 2;
+void bottomUpHeapify(vector<int> &heap, int idx) {
+    int largestIndex = idx;
+    int leftChildIdx = 2 * idx + 1;
+    int rightChildIdx = 2 * idx + 2;
+    int heapSize = heap.size();
 
     //if lest child is larger than root
-    if (l < n and arr[l] > arr[largest]) {
-        largest = l;
+    if (leftChildIdx < heapSize and heap[leftChildIdx] > heap[largestIndex]) {
+        largestIndex = leftChildIdx;
     }
-    if (r < n and arr[r] > arr[largest]) {
-        largest = r;
+    if (rightChildIdx < heapSize and heap[rightChildIdx] > heap[largestIndex]) {
+        largestIndex = rightChildIdx;
     }
 
-    if (largest != i) {
-        swap(arr[i], arr[largest]);
+    if (largestIndex != idx) {
+        swap(heap[idx], heap[largestIndex]);
         //Recursively heapify the affected sub-tree
-        heapify(arr, n, largest);
+        bottomUpHeapify(heap, largestIndex);
     }
 }
 
+// O(NlogN)
 void buildHeap(vector<int> &arr) {
     int n = arr.size();
 
-    //Index of last non-leaf node
+    //Index of last non-leaf node,< parent of the last element >
     int startIndex = (n / 2) - 1;
 
     // Perform reverse level order traversal from last non-leaf node and heapify each node
     for (int i = startIndex; i >= 0; i--) {
-        heapify(arr, n, i);
+        bottomUpHeapify(arr,  i);
     }
 }
 
