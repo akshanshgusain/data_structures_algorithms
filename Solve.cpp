@@ -2,64 +2,113 @@
 
 using namespace std;
 
-void bottomUpHeapify(vector<int> &heap, int heapSize, int idx){
-    int largestIndex = idx;
-    int leftChildIndex = 2 * idx + 1;
-    int rightChildIndex = 2 * idx + 2;
+#define d pair<int, pair<int, int>>
 
-    if(heapSize < leftChildIndex and heap[leftChildIndex] > heap[idx]){
-        largestIndex = leftChildIndex;
+struct Node {
+    int element;
+    int i;
+    int j;
+
+    Node(int el, int i, int j) {
+        element = el;
+        this->i = i;
+        this->j = j;
     }
 
-    if(heapSize < rightChildIndex and heap[rightChildIndex] > heap[idx]){
-        largestIndex = rightChildIndex;
+};
+
+struct NodeComparator {
+    bool operator()(const Node &a, const Node &b) const {
+        return a.element > b.element;  // Compare elements in descending order
+    }
+};
+
+vector<int> smallestRange2(vector<vector<int>> &nums) {
+    priority_queue<Node, vector<Node>, NodeComparator> minHeap;
+
+    int maxElement = INT_MIN;
+    int n = nums.size();
+
+    for (int i = 0; i < n; i++) {
+//        minHeap.push({nums[i][0], {i, 0}});
+        minHeap.emplace(nums[i][0], i, 0);
+        maxElement = max(maxElement, nums[i][0]);
     }
 
-    if(idx != largestIndex){
-        swap(heap[idx], heap[largestIndex]);
-        bottomUpHeapify(heap, heapSize, largestIndex);
-    }
-}
+    int first, second;
+    int rangeDifference = INT_MAX;
 
-int kthSmallest(vector<int> &arr, int k) {
-    int n = arr.size();
-    int parentIdx = (n - 1) / 2;
+    while (!minHeap.empty()) {
+        Node p = minHeap.top();
+        minHeap.pop();
 
-    for (int i = parentIdx; i >= 0; i--) {
-        bottomUpHeapify(arr, n, 0);
-    }
-
-    // one by one extract elements from the heap and reduce the heap.
-    for (int i = n - 1; i >= 0; i--) {
-        swap(arr[0], arr[i]);
-        bottomUpHeapify(arr, i, 0);
-    }
-
-    return arr[k-1];
-}
-
-vector<int> mergeKArrays(vector<vector<int>> &arr){
-    priority_queue<int, vector<int>,greater<>> heap;
-    for(auto i : arr){
-        for(auto it: i){
-            heap.push(it);
+        if (rangeDifference > maxElement - p.element) {
+            first = p.element;
+            second = maxElement;
+            rangeDifference = second - first;
         }
+        // move the pointer of the list with min value ahead 1 step
+        // check range
+        if (nums[p.i].size() - 1 > p.j) {
+            int nextIdx = p.j + 1;
+            minHeap.emplace(nums[p.i][nextIdx], p.i, nextIdx);
+            maxElement = max(maxElement, nums[p.i][nextIdx]);
+        } else {
+            break;
+        }
+
+    }
+    return {first, second};
+}
+
+
+vector<int> smallestRange(vector<vector<int>> &nums) {
+    priority_queue<d, vector<d>, greater<>> minHeap;
+    int maxElement = INT_MIN;
+    int n = nums.size();
+
+    for (int i = 0; i < n; i++) {
+        minHeap.push({nums[i][0], {i, 0}});
+        maxElement = max(maxElement, nums[i][0]);
     }
 
-    vector<int> res;
-    while(!heap.empty()){
-        res.push_back(heap.top());
-        heap.pop();
+    int first, second;
+    int rangeDifference = INT_MAX;
+
+    while (!minHeap.empty()) {
+        d p = minHeap.top();
+        minHeap.pop();
+
+        if (rangeDifference > maxElement - p.first) {
+            first = p.first;
+            second = maxElement;
+            rangeDifference = second - first;
+        }
+        // move the pointer of the list with min value ahead 1 step
+        // check range
+        if (nums[p.second.first].size() - 1 > p.second.second) {
+            int nextIdx = p.second.second + 1;
+            minHeap.push({nums[p.second.first][nextIdx], {p.second.first, nextIdx}});
+            maxElement = max(maxElement, nums[p.second.first][nextIdx]);
+        } else {
+            break;
+        }
+
     }
-    return res;
+    return {first, second};
 }
 
 int main() {
-    vector<vector<int>> arr = { { 2, 6, 12 },{ 1, 9 },{ 23, 34, 90, 2000 } };
-    vector<int> output = mergeKArrays(arr);
-    cout << "Merged array is " << endl;
-    for (auto x : output)
-        cout << x << " ";
 
+    vector<vector<int>> arr = {
+            {4, 7,  9,  12, 15},
+            {0, 8,  10, 14, 20},
+            {6, 12, 16, 30, 50}
+    };
+
+    vector<int> sol = smallestRange2(arr);
+    for (auto a: sol) {
+        cout << a << " ";
+    }
     return 0;
 }

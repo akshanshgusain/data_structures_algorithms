@@ -6,12 +6,6 @@
 
 #include<bits/stdc++.h>
 
-#define int long long int
-#define F first
-#define S second
-#define pb push_back
-#define all(p) p.begin(), p.end()
-
 using namespace std;
 
 string reorganizeString(const string &s) {
@@ -56,8 +50,7 @@ string reorganizeString(const string &s) {
 }
 
 
-int32_t main() {
-
+int main() {
     vector<string> input = {"aab", "aaab"};
 
     for (const auto &it: input) {
