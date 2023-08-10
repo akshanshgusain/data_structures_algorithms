@@ -9,10 +9,8 @@
 07. Merge 2 Binary Max Heaps.
 08. Kth-largest sum continuous sub-arrays.
 09. Reorganize String. <GG>
-
 12. Check if a Binary Tree is Heap.
 13. Connect “n” ropes with minimum cost.
-
 15. Convert Min-Heap to Max-Heap.
 16. Minimum sum of two numbers formed from digits of an array.
 

@@ -18,8 +18,8 @@ void addNum(int num) {
 
     //Num is the first element in the stream
     if (lSize == 0) {
-        maxHeap.push(num);
-    } else if (lSize == rSize) { //Push one element in maxHeap for sure
+        maxHeap.push(num); //Push one element in maxHeap for sure
+    } else if (lSize == rSize) {
 
         //num can be pushed to maxHeap (1st half) to maintain order
         if (num < minHeap.top()) {
@@ -35,7 +35,7 @@ void addNum(int num) {
     }
         //we assume that maxHeap can be larger than minHeap by a max of 1 element only
     else {
-        if (minHeap.size() == 0) {
+        if (rSize== 0) {
 
             //Push num to second half
             if (num > maxHeap.top()) {

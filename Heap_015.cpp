@@ -8,57 +8,60 @@
 // way to build the Max heap.
 
 #include<stdc++.h>
+
 using namespace std;
 
 // to heapify a subtree with root at given index
-void MaxHeapify(int arr[], int i, int n)
-{
-    int l = 2*i + 1;
-    int r = 2*i + 2;
-    int largest = i;
-    if (l < n && arr[l] > arr[i])
-        largest = l;
-    if (r < n && arr[r] > arr[largest])
-        largest = r;
-    if (largest != i)
-    {
-        swap(arr[i], arr[largest]);
-        MaxHeapify(arr, largest, n);
+void bottomUpHeapify(vector<int> &heap, int idx) {
+    int heapSize = heap.size();
+    int leftChildIdx = 2 * idx + 1;
+    int rightChildIdx = 2 * idx + 2;
+    int largestIdx = idx;
+
+    if (leftChildIdx < heapSize && heap[leftChildIdx] > heap[largestIdx]) {
+        largestIdx = leftChildIdx;
+    }
+    if (rightChildIdx < heapSize && heap[rightChildIdx] > heap[largestIdx]) {
+        largestIdx = rightChildIdx;
+    }
+
+    if (largestIdx != idx) {
+        swap(heap[idx], heap[largestIdx]);
+        bottomUpHeapify(heap, largestIdx); // Recursively heapify downwards
     }
 }
 
 // This function basically builds max heap
-void convertMaxHeap(int arr[], int n)
-{
+void convertMaxHeap(vector<int> arr) {
+    int n = arr.size();
     // Start from bottommost and rightmost
     // internal mode and heapify all internal
     // modes in bottom up way
-    for (int i = (n-2)/2; i >= 0; --i)
-        MaxHeapify(arr, i, n);
+    for (int i = (n - 2) / 2; i >= 0; --i)
+        bottomUpHeapify(arr, i);
 }
 
 // A utility function to print a given array
 // of given size
-void printArray(int* arr, int size)
-{
+void printArray(vector<int> arr) {
+    int size = arr.size();
+
     for (int i = 0; i < size; ++i)
         printf("%d ", arr[i]);
 }
 
 // Driver program to test above functions
-int main()
-{
+int main() {
     // array representing Min Heap
-    int arr[] = {3, 5, 9, 6, 8, 20, 10, 12, 18, 9};
-    int n = sizeof(arr)/sizeof(arr[0]);
+    vector<int> arr = {3, 5, 9, 6, 8, 20, 10, 12, 18, 9};
 
     printf("Min Heap array : ");
-    printArray(arr, n);
+    printArray(arr);
 
-    convertMaxHeap(arr, n);
+    convertMaxHeap(arr);
 
     printf("\nMax Heap array : ");
-    printArray(arr, n);
+    printArray(arr);
 
     return 0;
 }
