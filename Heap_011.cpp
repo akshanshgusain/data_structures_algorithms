@@ -19,7 +19,8 @@ void addNum(int num) {
     //Num is the first element in the stream
     if (lSize == 0) {
         maxHeap.push(num); //Push one element in maxHeap for sure
-    } else if (lSize == rSize) {
+    }
+    else if (lSize == rSize) {
 
         //num can be pushed to maxHeap (1st half) to maintain order
         if (num < minHeap.top()) {
@@ -91,3 +92,16 @@ int main() {
     printMedian(stream);
     return 0;
 }
+
+//5 added to Stream       current median is : 5
+//15 added to Stream      current median is : 10
+//1 added to Stream       current median is : 5
+//3 added to Stream       current median is : 4
+//2 added to Stream       current median is : 3
+//8 added to Stream       current median is : 4
+//7 added to Stream       current median is : 5
+//9 added to Stream       current median is : 6
+//10 added to Stream      current median is : 7
+//6 added to Stream       current median is : 6.5
+//11 added to Stream      current median is : 7
+//4 added to Stream       current median is : 6.5

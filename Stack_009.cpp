@@ -11,21 +11,22 @@ using namespace std;
 bool areBracketsBalanced(string expr) {
     stack<char> stack;
     char X;
-    for (int i = 0; i < expr.length(); i++) {
-        if (expr[i] == '(' || expr[i] == '['
-            || expr[i] == '{') {
+    for (char i : expr) {
+        if (i == '(' || i == '['
+            || i == '{') {
             // Push the element in the stack
-            stack.push(expr[i]);
+            stack.push(i);
             continue;
         }
 
-        // IF current current character is not opening
+        // IF current character is not opening
         // bracket, then it must be closing. So stack
         // cannot be empty at this point.
-        if (stack.empty())
+        if (stack.empty()) {
             return false;
+        }
 
-        switch (expr[i]) {
+        switch (i) {
             case ')':
 
                 // Store the top element in a
@@ -53,6 +54,10 @@ bool areBracketsBalanced(string expr) {
                     return false;
                 break;
         }
+    }
+
+    if (stack.empty()) {
+        return true;
     }
 }
 

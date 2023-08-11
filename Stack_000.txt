@@ -7,21 +7,24 @@
 07- Implement a Stack with FindMiddleElement function. ---(Technique: sing DLL)
 08- Implement N Stacks in an array.
 09- Check the expression has valid parenthesis or not.
-10- Reverse a sting using string.
+10- Reverse a sting using stack.
 11- Design a Stack that supports getMin() in O(1) time and O(1) extra space.
 12- Find next greater element.
 13- Find next greater element II.
 14- Find next greater element III.
 15- The Celebrity Problem.
-16- Arithmetic Expression evaluation. <GQ>
+
 17- Evaluate Postfix Expression.
+
+24- Redundant brackets in expression.
+25. Implement Stack using Queue.
+26. Implement Stack using Dequeue.
+27. Stack Permutations (Check if an array is stack permutation of the other)
+
 18- Implement a method to insert an element at its bottom without using any other data structure. <T>
+16- Arithmetic Expression evaluation. <GQ>
 19- Reverse a stack using recursion.<T>
 20- Sort a Stack using recursion.<T>
 21- Merge overlapping intervals.<GQ>
 22- Largest rectangular area in a histogram.<T>
 23- Length of longest valid sub-string.<T>
-24- Redundant brackets in expression.
-25. Implement Stack using Queue.
-26. Implement Stack using Dequeue.
-27. Stack Permutations (Check if an array is stack permutation of the other)
