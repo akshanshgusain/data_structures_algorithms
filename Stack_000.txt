@@ -12,7 +12,7 @@
 12- Find next greater element.
 13- Find next greater element II.
 14- Find next greater element III.
-15- The Celebrity Problem.
+
 
 17- Evaluate Postfix Expression.
 

@@ -7,13 +7,14 @@
 
 using namespace std;
 
-int evaluatePostfix(char *exp) {
-    stack<char> stack;
-    int i;
+int evaluatePostfix(string exp) {
+    stack<int> stack;
 
-    for (i = 0; exp[i]; i++) {
+    for (int i = 0; i < exp.size(); i++) {
         //if the character is blank space then continue
-        if (exp[i] == ' ')continue;
+        if (exp[i] == ' '){
+            continue;
+        }
 
             // If the scanned character is an
             // operand (number here),extract the full number
@@ -28,7 +29,7 @@ int evaluatePostfix(char *exp) {
                 i++;
             }
             i--;
-
+            cout<<"number found: "<<num<<endl;
             //push the element in the stack
             stack.push(num);
 
@@ -40,6 +41,11 @@ int evaluatePostfix(char *exp) {
             stack.pop();
             int val2 = stack.top();
             stack.pop();
+
+            // we need to divide larger val from smaller value
+            if(val2 > val1){
+                swap(val1, val2);
+            }
 
             switch (exp[i]) {
                 case '+':
@@ -66,7 +72,7 @@ int evaluatePostfix(char *exp) {
 }
 
 int main() {
-    char exp[] = "100 200 + 2 / 5 * 7 +";
+    string exp = "100 200 + 2 / 5 * 7 +";
     cout << evaluatePostfix(exp);
     return 0;
 }
