@@ -14,3 +14,5 @@
     / Game with Strings.
 14. Queue based approach or first non-repeating character in a stream.
 15. Next Smaller Element.
+
+16. Stack Permutations (Check if an array is stack permutation of the other)

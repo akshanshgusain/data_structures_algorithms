@@ -19,7 +19,7 @@
 24- Redundant brackets in expression.
 25. Implement Stack using Queue.
 26. Implement Stack using Dequeue.
-27. Stack Permutations (Check if an array is stack permutation of the other)
+
 
 18- Implement a method to insert an element at its bottom without using any other data structure. <T>
 16- Arithmetic Expression evaluation. <GQ>

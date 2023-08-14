@@ -38,10 +38,12 @@ bool checkRedundancy(string str) {
 
 void findRedundant(string &str) {
     bool ans = checkRedundancy(str);
-    if (ans == true)
+    if (ans) {
         cout << "Yes\n";
-    else
+    }
+    else {
         cout << "No\n";
+    }
 }
 
 int main() {

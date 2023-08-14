@@ -7,7 +7,7 @@ using namespace std;
 
 
 // function to check if input queue is
-// permutable to output queue
+// permeable to output queue
 bool checkStackPermutation(int ip[], int op[], int n)
 {
     // Input queue

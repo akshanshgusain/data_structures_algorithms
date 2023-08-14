@@ -1,28 +1,80 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
 
-void nextGreater(vector<int> &input) {
-    stack<int> stack;
+struct Node {
+    int data;
+    Node *next;
+};
 
-    stack.push(input[0]);
-    for(int i=1; i < input.size(); i++){
-        while(!stack.empty() and stack.top() < input[i]){
-            cout<<stack.top()<<" --> "<<input[i]<<endl;
-            stack.pop();
+class Stack {
+private:
+    Node *top;
+    Node *bottom;
+public:
+    Stack() {
+        top = bottom = nullptr;
+    }
+
+    void push(int value) {
+        Node *temp = new Node();
+        temp->data = value;
+        temp->next = top;
+        if (top == nullptr) {
+            //first assignment
+            bottom = temp;
         }
-        stack.push(input[i]);
+        top = temp;
     }
 
-    while(!stack.empty()){
-        cout<<stack.top()<<" --> "<<INT_MIN<<endl;
-        stack.pop();
+    int pop() {
+        if (top != nullptr) {
+            Node *temp = top;
+            top = top->next;
+            int poppedValue = temp->data;
+            delete temp;
+            return poppedValue;
+        }else{
+            cout<<"stack underflow"<<endl;
+            return INT_MIN;
+        }
     }
-}
+
+    void insertAtBottom(int value){
+        if(bottom == nullptr){
+            // first node
+            push(value);
+            return;
+        }
+
+        Node *temp = new Node;
+        temp->data = value;
+        temp->next = nullptr;
+        bottom->next = temp;
+        bottom = bottom->next;
+    }
+
+    void display() {
+        Node *Temp = top;
+        while (Temp != nullptr) {
+            cout << Temp->data << endl;
+            Temp = Temp->next;
+        }
+    }
+};
 
 int main() {
-    string expr = "akshansh_gusain";
-    vector<int> input = {11, 13, 21, 3, 22, 7};
-    nextGreater(input);
+
+    Stack ST;
+
+    ST.push(4);
+    ST.push(3);
+    ST.push(2);
+    ST.insertAtBottom( 7);
+    ST.push(1);
+    ST.insertAtBottom( 6);
+    ST.display();
+
     return 0;
 }
