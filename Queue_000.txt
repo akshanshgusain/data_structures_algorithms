@@ -16,3 +16,6 @@
 15. Next Smaller Element.
 
 16. Stack Permutations (Check if an array is stack permutation of the other)
+
+17. Queue Implementations - Array
+18. Queue Implementation - Linked List
