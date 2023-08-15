@@ -7,7 +7,6 @@
 
 using namespace std;
 
-// https://www.geeksforgeeks.org/the-celebrity-problem/
 
 // Function to find precedence of
 // operators.
@@ -28,15 +27,16 @@ int applyOp(int a, int b, char op) {
             return a - b;
         case '*':
             return a * b;
-        case '/':
+        default:
             return a / b;
     }
 }
 
 // Function that returns value of
 // expression after evaluation.
+
+// Shunting Yard Algorithm
 int evaluate(string token) {
-    int i;
 
     // stack to store integer values.
     stack<int> values;
@@ -56,7 +56,7 @@ int evaluate(string token) {
             operators.push(token[i]);
         }
 
-            // If current char is a number push it to number stack
+            // If current char is a number push it to value stack
         else if (isdigit(token[i])) {
             int val = 0;
 
@@ -124,6 +124,8 @@ int evaluate(string token) {
     // Entire expression has been parsed at this
     // point, apply remaining ops to remaining
     // values.
+
+    // Simple postfix evaluation
     while (!operators.empty()) {
         int val2 = values.top();
         values.pop();

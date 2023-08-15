@@ -4,41 +4,42 @@
 
 
 #include<stdc++.h>
+
 using namespace std;
 
 
-void sortedInsert(stack<int> &st, int c){
+void sortedInsert(stack<int> &st, int c) {
     // Base case: Either stack is empty or newly inserted
     // item is greater than top (more than all existing)
-    if(st.empty() or c >st.top()){
+    if (st.empty() or c > st.top()) {
         st.push(c);
         return;
     }
 
     // If top is greater, remove the top item and recur
 
-        int temp = st.top();
-        st.pop();
-        sortedInsert(st, c);
-        st.push(temp);
+    int temp = st.top();
+    st.pop();
+    sortedInsert(st, c);
+    st.push(temp);
 
 }
 
-void sortStack( stack<int> &st){
+void sortStack(stack<int> &st) {
 
-   if(st.empty()){
-       return;
-   }
+    if (st.empty()) {
+        return;
+    }
 
 
-       int c = st.top();
-       st.pop();
+    int c = st.top();
+    st.pop();
 
-       // Sort remaining stack
-       sortStack(st);
+    // Sort remaining stack
+    sortStack(st);
 
-       // push the top item back in the sorted stack
-       sortedInsert(st, c);
+    // push the top item back in the sorted stack
+    sortedInsert(st, c);
 
 }
 
@@ -52,8 +53,8 @@ int main() {
 
     sortStack(stack);
 
-    while(!stack.empty()){
-        cout<< stack.top();
+    while (!stack.empty()) {
+        cout << stack.top();
         stack.pop();
     }
     return 0;
