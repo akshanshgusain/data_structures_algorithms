@@ -18,6 +18,7 @@ public:
 
 int printTour(vector<PetrolPump> &arr) {
     //consider first petrol pump as a starting point
+    int n = arr.size();
     int start = 0;
     int end = 1;
 

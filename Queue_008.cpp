@@ -4,8 +4,6 @@
 #include<stdc++.h>
 
 using namespace std;
-#define R 3
-#define C 5
 
 class Cell {
 public:
@@ -19,28 +17,34 @@ bool isdelim(Cell temp) {
     return (temp.x == -1 && temp.y == -1);
 }
 
-bool isValid(int i, int j) {
-    return (i >= 0 and j >= 0 and i < R and j < C);
+bool isValid(int i, int j, int rows, int cols) {
+    return (i >= 0 and j >= 0 and i < rows and j < cols);
 }
 
 // Function to check whether there is still a fresh
 // orange remaining
 bool checkall(vector<vector<int>> &arr) {
-    for (int i = 0; i < R; i++)
-        for (int j = 0; j < C; j++)
+    int rows = arr.size();
+    int cols = arr[0].size();
+
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
             if (arr[i][j] == 1)
                 return true;
     return false;
 }
 
 int rotOranges(vector<vector<int>> &arr) {
+    int rows = arr.size();
+    int cols = arr[0].size();
+
     queue<Cell> Q;
     Cell temp{};
     int ans = 0;
 
     // Store all the cells having rotten orange in first time frame
-    for (int i = 0; i < R; i++) {
-        for (int j = 0; j < C; j++) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
             if (arr[i][j] == 2) {
                 temp.x = i;
                 temp.y = j;
@@ -67,7 +71,7 @@ int rotOranges(vector<vector<int>> &arr) {
             temp = Q.front();
 
             //Check right adjacent cell that if it can be rotten
-            if (isValid(temp.x + 1, temp.y) and arr[temp.x + 1][temp.y] == 1) {
+            if (isValid(temp.x + 1, temp.y, rows, cols) and arr[temp.x + 1][temp.y] == 1) {
 
                 // if this is the first orange to get rotten, increase
                 // count and set the flag.
@@ -88,7 +92,7 @@ int rotOranges(vector<vector<int>> &arr) {
             }
 
             // Check left adjacent cell that if it can be rotten
-            if (isValid(temp.x - 1, temp.y) && arr[temp.x - 1][temp.y] == 1) {
+            if (isValid(temp.x - 1, temp.y, rows, cols) && arr[temp.x - 1][temp.y] == 1) {
                 if (!flag) ans++, flag = true;
                 arr[temp.x - 1][temp.y] = 2;
                 temp.x--;
@@ -97,7 +101,7 @@ int rotOranges(vector<vector<int>> &arr) {
             }
 
             // Check top adjacent cell that if it can be rotten
-            if (isValid(temp.x, temp.y + 1) && arr[temp.x][temp.y + 1] == 1) {
+            if (isValid(temp.x, temp.y + 1, rows, cols) && arr[temp.x][temp.y + 1] == 1) {
                 if (!flag) ans++, flag = true;
                 arr[temp.x][temp.y + 1] = 2;
                 temp.y++;
@@ -106,11 +110,12 @@ int rotOranges(vector<vector<int>> &arr) {
             }
 
             // Check bottom adjacent cell if it can be rotten
-            if (isValid(temp.x, temp.y - 1) && arr[temp.x][temp.y - 1] == 1) {
+            if (isValid(temp.x, temp.y - 1, rows, cols) && arr[temp.x][temp.y - 1] == 1) {
                 if (!flag) ans++, flag = true;
                 arr[temp.x][temp.y - 1] = 2;
                 temp.y--;
                 Q.push(temp); // push this cell to Queue
+                temp.y++;
             }
 
             Q.pop();
@@ -128,6 +133,7 @@ int rotOranges(vector<vector<int>> &arr) {
             Q.push(temp);
         }
     }
+
     return (checkall(arr)) ? -1 : ans;
 }
 
@@ -136,11 +142,14 @@ int main() {
     vector<vector<int>> arr{{2, 1, 0, 2, 1},
                             {1, 0, 1, 2, 1},
                             {1, 0, 0, 2, 1}};
+
     int ans = rotOranges(arr);
+
     if (ans == -1)
-        cout << "All oranges cannot rotn";
+        cout << "All oranges cannot rotten";
     else
         cout << "Time required for all oranges to rot => " << ans << endl;
 
     return 0;
 }
+// Time required for all oranges to rot => 2

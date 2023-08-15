@@ -11,8 +11,9 @@
 
 using namespace std;
 
-void printFirstNegativeInteger(int arr[], int n, int k) {
+void printFirstNegativeInteger(vector<int> &arr, int k) {
     deque<int> Di;
+    int n = arr.size();
 
     //Process first k elements
     int i;
@@ -55,9 +56,8 @@ void printFirstNegativeInteger(int arr[], int n, int k) {
 }
 
 int main() {
-    int arr[] = {12, -1, -7, 8, -15, 30, 16, 28};
-    int n = sizeof(arr) / sizeof(arr[0]);
+    vector<int> arr = {12, -1, -7, 8, -15, 30, 16, 28};
     int k = 3;
-    printFirstNegativeInteger(arr, n, k);
+    printFirstNegativeInteger(arr, k);
     return 0;
 }
