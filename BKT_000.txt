@@ -1,0 +1,16 @@
+01. Rat in a maze Problem
+02. Printing all solutions in N-Queen Proble
+
+03. Remove Invalid Parentheses. <T>
+04. m Coloring Problem.
+05. Print all palindromic partitions of a string.
+
+07. The Knight’s tour problem
+08. Tug of War.<T>
+09. Find the shortest safe route in a path with landmines	<T>
+
+10. Find Maximum number possible by doing at-most K swaps.
+11. Print all permutations of a string.
+12. Find if there is a path of more than k length from a source.
+13. Longest Possible Route in a Matrix with Hurdles.
+14. Print all possible paths from top left to bottom right of a mXn matrix.<T>
