@@ -12,7 +12,7 @@ void topDownHeapify(vector<int> &heap, int idx) {
         return;
     } // Reached the root of the heap, no need to heapify further
 
-    int parentIdx = (idx - 1) / 2;
+    int parentIdx =(idx - 1) / 2;
     if (heap[idx] > heap[parentIdx]) {
         swap(heap[idx], heap[parentIdx]);
         topDownHeapify(heap, parentIdx); // Recursively heapify upwards
