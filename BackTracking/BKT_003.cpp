@@ -1,5 +1,7 @@
 //
-// Created by Akshansh Gusain on 28/03/21.
+// Created by Akshansh Gusain on 20/08/23.
+//
+
 //Leetcode hard: https://leetcode.com/problems/remove-invalid-parentheses/
 
 
@@ -31,9 +33,10 @@ void removeInvalidParenthesis(string str) {
         return;
     }
     //visited set to ignore already visited string
-    set<string> visit;
+    unordered_set<string> visit;
     //queue to maintain BFS
     queue<string> q;
+
     string temp;
     bool level;
 
@@ -47,7 +50,9 @@ void removeInvalidParenthesis(string str) {
 
         if (isValidString(str)) {
             cout << str << endl;
-            //if ans is found make level true so that valid string of only that level are proceeded.
+            // If answer is found, make level true
+            // so that valid string of only that level
+            // are processed.
             level = true;
         }
         if (level) {

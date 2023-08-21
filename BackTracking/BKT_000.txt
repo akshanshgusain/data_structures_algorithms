@@ -1,5 +1,5 @@
 01. Rat in a maze Problem
-02. Printing all solutions in N-Queen Proble
+02. Printing all solutions in N-Queen Problem
 
 03. Remove Invalid Parentheses. <T>
 04. m Coloring Problem.
