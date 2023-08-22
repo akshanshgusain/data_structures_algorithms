@@ -13,7 +13,6 @@ using namespace std;
 
 #define N 8
 
-int solveKTUtil(int x, int y, int movei, int sol[N][N],int xMove[], int yMove[]);
 
 /* A utility function to check if i,j are
 valid indexes for N*N chessboard */
@@ -31,6 +30,36 @@ void printSolution(int sol[N][N]) {
         cout << endl;
     }
 }
+
+
+/* A recursive utility function to solve Knight Tour
+problem */
+int solveKTUtil(int x, int y, int movei, int sol[N][N],
+                int xMove[N], int yMove[N]) {
+    int k, next_x, next_y;
+    if (movei == N * N)
+        return 1;
+
+    /* Try all next moves from
+    the current coordinate x, y */
+    for (k = 0; k < 8; k++) {
+        next_x = x + xMove[k];
+        next_y = y + yMove[k];
+        if (isSafe(next_x, next_y, sol)) {
+            sol[next_x][next_y] = movei;
+            if (solveKTUtil(next_x, next_y, movei + 1, sol,
+                            xMove, yMove)
+                == 1)
+                return 1;
+            else
+
+                // backtracking
+                sol[next_x][next_y] = -1;
+        }
+    }
+    return 0;
+}
+
 
 /* This function solves the Knight Tour problem using
 Backtracking. This function mainly uses solveKTUtil()
@@ -67,33 +96,6 @@ int solveKT() {
     return 1;
 }
 
-/* A recursive utility function to solve Knight Tour
-problem */
-int solveKTUtil(int x, int y, int movei, int sol[N][N],
-                int xMove[N], int yMove[N]) {
-    int k, next_x, next_y;
-    if (movei == N * N)
-        return 1;
-
-    /* Try all next moves from
-    the current coordinate x, y */
-    for (k = 0; k < 8; k++) {
-        next_x = x + xMove[k];
-        next_y = y + yMove[k];
-        if (isSafe(next_x, next_y, sol)) {
-            sol[next_x][next_y] = movei;
-            if (solveKTUtil(next_x, next_y, movei + 1, sol,
-                            xMove, yMove)
-                == 1)
-                return 1;
-            else
-
-                // backtracking
-                sol[next_x][next_y] = -1;
-        }
-    }
-    return 0;
-}
 
 // Driver Code
 int main() {
@@ -103,3 +105,16 @@ int main() {
 }
 
 // This code is contributed by ShubhamCoder
+
+/*
+
+ 00  59  38  33  30  17  08  63
+ 37  34  31  60  09  62  29  16
+ 58  01  36  39  32  27  18  07
+ 35  48  41  26  61  10  15  28
+ 42  57  02  49  40  23  06  19
+ 47  50  45  54  25  20  11  14
+ 56  43  52  03  22  13  24  05
+ 51  46  55  44  53  04  21  12
+
+ */

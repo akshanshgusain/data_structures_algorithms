@@ -2,7 +2,6 @@
 02. Printing all solutions in N-Queen Problem
 
 03. Remove Invalid Parentheses. <T>
-04. m Coloring Problem.
 05. Print all palindromic partitions of a string.
 
 07. The Knight’s tour problem

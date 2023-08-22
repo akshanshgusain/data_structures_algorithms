@@ -58,3 +58,10 @@ int main(){
     allPalPartitions(str);
     return 0;
 }
+
+
+/*
+n i t i n
+n iti n
+nitin
+ */
