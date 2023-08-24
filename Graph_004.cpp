@@ -11,10 +11,11 @@ using namespace std;
 ///  DFS
 //Time: O(E + V), Space: O(V)
 
-//Note that a vertex is pushed to stack only when all of its adjacent vertices (and their adjacent vertices and so on) are already in the stack.
+//Note that a vertex is pushed to stack only when all of its adjacent vertices
+// (and their adjacent vertices and so on) are already in the stack.
 void findTopoSort(int i, vector<int> &used, stack<int> &st, Graph &g) {
     used[i] = 1;
-    for (auto it : g.adj[i]) {
+    for (auto it: g.adj[i]) {
         if (!used[it]) {
             findTopoSort(it, used, st, g);
         }
@@ -24,7 +25,7 @@ void findTopoSort(int i, vector<int> &used, stack<int> &st, Graph &g) {
 
 vector<int> topoSort(Graph g) {
     stack<int> st;
-    vector<int> used(g.V,0);
+    vector<int> used(g.V, 0);
     for (int i = 0; i < g.V; i++) {
         if (!used[i]) {
             findTopoSort(i, used, st, g);
@@ -42,30 +43,30 @@ vector<int> topoSort(Graph g) {
 
 /// BFS  -  Kahn's Algorithm
 // Time: O(), Space: O()
-vector<int> topoSortBFS(Graph &graph){
+vector<int> topoSortBFS(Graph &graph) {
     vector<int> topo;
-    vector<int> inDegree(graph.V,0);
+    vector<int> inDegree(graph.V, 0);
     queue<int> q;
 
-    for(int i = 0; i < graph.V; i++){
-        for(auto it: graph.adj[i]){
+    for (int i = 0; i < graph.V; i++) {
+        for (auto it: graph.adj[i]) {
             inDegree[it]++;
         }
     }
 
-    for(int i = 0; i < graph.V; i++){
-        if(inDegree[i] == 0){
+    for (int i = 0; i < graph.V; i++) {
+        if (inDegree[i] == 0) {
             q.push(i);
         }
     }
 
-    while(!q.empty()){
+    while (!q.empty()) {
         int currentVertex = q.front();
         q.pop();
         topo.push_back(currentVertex);
-        for(auto it: graph.adj[currentVertex]){
+        for (auto it: graph.adj[currentVertex]) {
             inDegree[it]--;
-            if(inDegree[it] == 0){
+            if (inDegree[it] == 0) {
                 q.push(it);
             }
         }
@@ -77,18 +78,18 @@ vector<int> topoSortBFS(Graph &graph){
 int findCenter(vector<vector<int>> edges) {
     vector<int> inDegree(edges.size(), 0);
 
-    for(int i = 0;i <= edges.size();i++){
-        for(auto it: edges[i]){
-            cout<<it<<" ";
+    for (int i = 0; i <= edges.size(); i++) {
+        for (auto it: edges[i]) {
+            cout << it << " ";
             inDegree[it]++;
         }
-        cout<<endl;
+        cout << endl;
     }
 
     int maxi = INT_MIN;
     int index = -1;
-    for(int it = 0; it< inDegree.size(); it++){
-        if(inDegree[it] > maxi){
+    for (int it = 0; it < inDegree.size(); it++) {
+        if (inDegree[it] > maxi) {
             maxi = inDegree[it];
             index = it;
         }
@@ -117,13 +118,13 @@ int main() {
 //    graph.addEdge(3, 3);
 
     vector<int> sorted = topoSort(graph);
-    cout<<"Topological Sort, DFS: "<<endl;
+    cout << "Topological Sort, DFS: " << endl;
     for (auto it: sorted) {
         cout << it << " ";
     }
-    cout<<endl;
+    cout << endl;
 
-    cout<<"Topological Sort, BFS: "<<endl;
+    cout << "Topological Sort, BFS: " << endl;
     vector<int> sorted2 = topoSortBFS(graph);
     for (auto it: sorted2) {
         cout << it << " ";
@@ -138,6 +139,11 @@ int main() {
 //    g1.addEdge(2,3);
 //    cout<<findCenter(g1.adj);
 
-
+    /*
+     *  Topological Sort, DFS:
+        5 4 2 3 1 0
+        Topological Sort, BFS:
+        4 5 2 0 3 1
+*/
     return 0;
 }

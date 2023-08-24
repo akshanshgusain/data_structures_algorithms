@@ -97,3 +97,11 @@ int main(){
         cout << "Graph doesn't contain cycle";
     return 0;
 }
+/*
+
+DFS Cycle Check:
+Graph contains cycle
+BFS/Kahn's Cycle Check:
+Graph contains cycle
+
+*/

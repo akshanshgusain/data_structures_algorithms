@@ -1,7 +1,7 @@
 1. Create a Graph, print it
 2. Implement BFS algorithm. (Queue)
 3. Implement DFS Algo. (Recursion Calls, Same as trees)
-4. Implement Topological Sort using DFS/Kahn's. ------(Technique: cal. use stack in DFS and indegree in BFS)
+4. Implement Topological Sort using DFS/Kahn's. ------(Technique: cal. use stack in DFS and in-degree in BFS)
 5. Detect Cycle in Directed Graph using BFS/DFS Algo
 6. Detect Cycle in UnDirected Graph using BFS/DFS Algo
 7. Search in a Maze. ------(Technique: Make DFS Calls in 4 dirs and backtrack)
