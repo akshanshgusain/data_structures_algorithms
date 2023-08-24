@@ -56,6 +56,7 @@ BFS -
 2. The input graph can be directed or undirected, it does not matter to the algorithm.
 3. The path found by breadth first search to any node is the shortest path to that node,
 i.e. the path that contains the smallest number of edges in unweighted graphs.
+
 Applications of BFS:
 4. Find the shortest path from a source to other vertices in an unweighted graph.
 5. Find all connected components in an undirected graph in O(n+m) time.
@@ -79,9 +80,9 @@ DFS -
     2.2. If v is visited before u:
         2.2.1. Back edges - If v is an ancestor of u, then the edge (u,v) is a back edge
         2.2.2. Forward Edges - If v is a descendant of u, then edge (u,v) is a forward edge
-        2.2.3. Forward Edges - If v is a descendant of u, then edge (u,v) is a forward edge
-        2.2.4. Cross Edges: if v is neither an ancestor or descendant of u, then edge (u,v) is a cross edge
+        2.2.3. Cross Edges: if v is neither an ancestor or descendant of u, then edge (u,v) is a cross edge
     Note: Forward edges and cross edges only exist in directed graphs.
+
 Applications of DFS:
 1. Find any path in the graph from source vertex u to all vertices.
 2. Find lexicographical first path in the graph from source u to all vertices.

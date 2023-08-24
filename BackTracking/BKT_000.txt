@@ -5,7 +5,7 @@
 05. Print all palindromic partitions of a string.
 
 07. The Knight’s tour problem
-08. Tug of War.<T>
+08. Tug of War. (Min Subset Sum Problem)(DP)
 09. Find the shortest safe route in a path with landmines	<T>
 
 10. Find Maximum number possible by doing at-most K swaps.
