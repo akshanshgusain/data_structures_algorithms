@@ -77,7 +77,7 @@ int solve(vector<int> &knightPos, vector<int> &targetPos, int N) {
 }
 
 int main() {
-    int N = 30;
+    int N = 30; // size of the chess board
     vector<int> knightPos = {1, 1};
     vector<int> targetPos = {30, 30};
     cout << "Min. Step to Reach Target: " << solve(knightPos, targetPos, N);

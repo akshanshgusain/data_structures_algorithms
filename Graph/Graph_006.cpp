@@ -96,6 +96,9 @@ bool detectCycleBFS(Graph &graph) {
                 visited[neighbour] = true;
                 queue.emplace(neighbour, currentVertex);
             } else if (neighbour != parent) {
+                // If an adjacent vertex is visited and
+                // is not parent of current vertex,
+                // then there exists a cycle in the graph
                 return true;
             }
         }

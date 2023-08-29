@@ -4,7 +4,7 @@
 4. Implement Topological Sort using DFS/Kahn's. ------(Technique: cal. use stack in DFS and in-degree in BFS)
 5. Detect Cycle in Directed Graph using BFS/DFS Algo
 6. Detect Cycle in UnDirected Graph using BFS/DFS Algo
-7. Search in a Maze. ------(Technique: Make DFS Calls in 4 dirs and backtrack)
+7. Rat in a maze ------(Technique: Make DFS Calls in 4 dirs and backtrack)
 8. Minimum Step by Knight. ------(Technique: BFS)
 9. flood fill algo. ------(Technique: BFS)
 10. Clone a graph. ------(Technique: BFS+MAP)
