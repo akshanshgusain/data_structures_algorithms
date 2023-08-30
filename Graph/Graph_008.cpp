@@ -6,10 +6,6 @@
 using namespace std;
 
 
-
-vector<int> xMoveVector = {2, 2, -2, -2, -1, -1, 1, 1};
-vector<int> yMoveVector = {1, -1, 1, -1, 2, -2, 2, -2};
-
 int isSafe(int x, int y, int n, vector<vector<int>> &chessBoard) {
     return (x >= 0 && x < n && y >= 0 && y < n && chessBoard[x][y] == 0);
 }
@@ -27,6 +23,9 @@ int solve(vector<int> &KnightPos, vector<int> &TargetPos, int N) {
     vector<vector<int>> chessBoard(N, vector<int>(N, 0));
     queue<pair<int, int>> queue;
     queue.emplace(x1 - 1, y1 - 1);
+
+    vector<int> xMoveVector = {2, 2, -2, -2, -1, -1, 1, 1};
+    vector<int> yMoveVector = {1, -1, 1, -1, 2, -2, 2, -2};
 
     while (!queue.empty()) {
         auto currentVertex = queue.front();

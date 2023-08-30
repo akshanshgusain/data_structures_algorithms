@@ -5,8 +5,7 @@
 
 using namespace std;
 
-vector<int> xMoveVector = {1, -1, 0, 0};
-vector<int> yMoveVector = {0, 0, -1, 1};
+
 
 bool isSafe(int x, int y, vector<vector<int>> &image, int n, int m, int color) {
     return ((x >= 0 and x < n) and (y >= 0 and y < m) and image[x][y] == color);
@@ -23,6 +22,9 @@ void floodFill(vector<vector<int>> &image, int sr, int sc, int newColor) {
 
     queue<pair<int, int>> queue;
     queue.emplace(sr, sc);
+
+    vector<int> xMoveVector = {1, -1, 0, 0};
+    vector<int> yMoveVector = {0, 0, -1, 1};
 
     int color = image[sr][sc];
     image[sr][sc] = newColor;

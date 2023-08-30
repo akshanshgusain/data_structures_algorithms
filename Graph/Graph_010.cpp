@@ -1,8 +1,8 @@
 //
-// Created by Akshansh Gusain on 26/08/21.
+// Created by Akshansh Gusain on 30/08/23.
 //
-#include<stdc++.h>
 
+#include<bits/stdc++.h>
 using namespace std;
 
 class Node {
@@ -24,10 +24,11 @@ public:
         this->val = val;
         this->neighbors = neighbors;
     }
+
+
 };
 
-// Leetcode Question
-
+// Helper function
 Node *buildGraph() {
     /*
     Note : All the edges are Undirected
@@ -90,41 +91,34 @@ void bfs(Node *source){
     cout<<endl;
 }
 
-Node *cloneGraph(Node *source) {
-    //A Map to keep track of all the nodes which have already been created
-    map<Node*, Node*> map;
-    queue<Node*> q;
+Node* cloneGraph(Node *source){
+    queue<Node*> queue;
+    unordered_map<Node*, Node*> map;
 
-    q.push(source);
+    Node *newSource = new Node(source->val);
 
-    Node* node = new Node(source->val);
+    map[source] = newSource;
+    queue.push(source);
 
-    // put clone node into tha map
-    map[source] = node;
+    while(!queue.empty()){
+        Node *currentNode = queue.front();
+        queue.pop();
 
-    while(!q.empty()){
-        Node* currentNode = q.front();
-        q.pop();
-
-        vector<Node*> neighbors = currentNode->neighbors;
-        for(auto neighbor : neighbors){
-            // Check if this node has already been created
-            if(map[neighbor] == nullptr){
-                node = new Node(neighbor->val);
-                map[neighbor] = node;
-                q.push(neighbor);
+        for(auto neighbour : currentNode->neighbors){
+            if(map[neighbour] == nullptr){
+                map[neighbour] = new Node(neighbour->val);
+                queue.push(neighbour);
             }
 
-            // add these neighbours to the cloned graph node
-            map[currentNode]->neighbors.push_back(map[neighbor]);
+            map[currentNode]->neighbors.push_back(map[neighbour]);
         }
     }
 
-    return map[source];
+    return newSource;
 }
 
 
-int main() {
+int main(){
     Node *source = buildGraph();
     cout << "BFS Traversal before cloning\n";
     bfs(source);
