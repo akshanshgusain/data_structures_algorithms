@@ -8,7 +8,6 @@
 8. Minimum Step by Knight. ------(Technique: BFS)
 9. flood fill algo. ------(Technique: BFS)
 10. Clone a graph. ------(Technique: BFS+MAP)
-11. Making wired Connections. ------(Technique: DFS, find Disconnected Components)
 12. word Ladder. ------(Technique: BFS)
 13. Dijkstra algo.
 14. Minimum time taken by each job to be completed given by a Directed Acyclic Graph. ------(Technique: BFS + InDegree)15.
@@ -18,6 +17,7 @@
 18. Implement Bellman Ford Algorithm
 19. Implement Floyd warshall Algorithm
 20. Disjoint Set Union DS | Union by Rank and Path Compression
+11. Making wired Connections. ------(Technique: DFS or Union Find, find Disconnected Components)
 21. Implement Kruksal’sAlgorithm
 22. Implement Prim’s Algorithm
 23. Total no. of Spanning tree in a graph (Kirchhoff's theorem) n^(n-2)

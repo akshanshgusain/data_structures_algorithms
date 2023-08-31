@@ -40,12 +40,20 @@ int ladderLength(string beginWord, string endWord, vector<string> &wordList){
                 // try all possible chars
                 for(char c = 'a'; c <= 'z' ; c++){
                     temp[i] = c;
+
+                    // it means the transformation hasn't really changed the word
                     if(currentWord == temp){
                         continue;
                     }
+
+                    // if the current transformation temp matches the endWord, indicating that we've successfully
+                    // transformed the beginWord into the desired endWord.
                     if(endWord == temp){
                         return depth+1;
                     }
+
+                    // it means it's a valid intermediate word
+                    // It's enqueued into the queue, and then removed from the set to avoid revisiting the same word
                     if(myset.find(temp) != myset.end()){
                         q.push(temp);
                         myset.erase(temp);
@@ -55,6 +63,8 @@ int ladderLength(string beginWord, string endWord, vector<string> &wordList){
         }
 
     }
+
+    return 0;
 }
 
 int main() {
@@ -62,6 +72,6 @@ int main() {
     string endWord = "cog";
     vector<string> wordList = {"hot","dot","dog","lot","log","cog"};
 
-    cout<<ladderLength(beginWord, endWord, wordList);
+    cout<<ladderLength(beginWord, endWord, wordList); // 5
     return 0;
 }
