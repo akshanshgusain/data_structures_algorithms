@@ -3,6 +3,8 @@
 3. Implement DFS Algo. (Recursion Calls, Same as trees)
 4. Implement Topological Sort using DFS/Kahn's. ------(Technique: cal. use stack in DFS and in-degree in BFS)
 14. Minimum time taken by each job to be completed given by a Directed Acyclic Graph. ------(Technique: Topo sort)
+15. Find whether it is possible to finish all tasks or not from given dependencies. ------(Technique: Topo Sort)
+17. Given a sorted Dictionary of an Alien Language, find order of characters. ------(Technique: Construct Graph and run topo sort)
 5. Detect Cycle in Directed Graph using BFS/DFS Algo
 6. Detect Cycle in UnDirected Graph using BFS/DFS Algo
 7. Rat in a maze ------(Technique: Make DFS Calls in 4 dirs and backtrack)
@@ -12,13 +14,15 @@
 12. word Ladder. ------(Technique: BFS)
 13. Dijkstra algo.
 
-15. Find whether it is possible to finish all tasks or not from given dependencies. ------(Technique: BFS + InDegree)
-16. Find the no. of Islands. ------(Technique: DFS, find Disconnected Components / DSU )
-17. Given a sorted Dictionary of an Alien Language, find order of characters. ------(Technique: Construct Graph and run topo sort)
+
+
+
 18. Implement Bellman Ford Algorithm
 19. Implement Floyd warshall Algorithm
 20. Disjoint Set Union DS | Union by Rank and Path Compression
 11. Making wired Connections. ------(Technique: DFS or Union Find, find Disconnected Components)
+16. Find the no. of Islands. ------(Technique: DFS, find Disconnected Components / DSU )
+
 21. Implement Kruksal’sAlgorithm
 22. Implement Prim’s Algorithm
 23. Total no. of Spanning tree in a graph (Kirchhoff's theorem) n^(n-2)
