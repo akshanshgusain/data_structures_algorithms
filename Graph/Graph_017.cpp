@@ -5,44 +5,9 @@
 
 using namespace std;
 
-class Graph {
-public:
-    int V, E;
-    vector<vector<int>> adj;
-
-    Graph(int V) {
-        this->V = V;
-        this->adj.assign(V, vector<int>());
-    }
-
-    // Undirected Graph
-    void addEdgeU(int u, int v) {
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-        E++;
-    }
-
-    // Directed Graph
-    void addEdge(int u, int v) {
-        adj[u].push_back(v);
-        E++;
-    }
-
-    void print() {
-        cout << endl;
-        int i = 0;
-        for (const auto &vertexList: this->adj) {
-            cout << i << "th - ";
-            for (auto it: vertexList) {
-                cout << it << " ";
-            }
-            cout << endl;
-            i++;
-        }
-    }
-};
 
 
+// GFG
 vector<char> findOrder(vector<string> &dict, int K) {
     // We need to build a graph of this dictionary
     Graph graph(K);
@@ -101,9 +66,9 @@ vector<char> findOrder(vector<string> &dict, int K) {
 }
 
 
-
+// Leetcode
 string alienOrderMap(vector<string> &words) {
-    if (words.size() == 0) {
+    if (words.empty()) {
         return "";
     }
 
@@ -111,9 +76,8 @@ string alienOrderMap(vector<string> &words) {
     unordered_map<char, int> inDegree;
 
     // init inDegree Map
-    for (int i = 0; i < words.size(); i++) {
-        for (int j = 0; j < words[i].size(); j++) {
-            char c = words[i][j];
+    for (auto & word : words) {
+        for (char c : word) {
             inDegree[c] = 0;
         }
     }
@@ -140,7 +104,8 @@ string alienOrderMap(vector<string> &words) {
             }
         }
     }
-    // run Topo sort
+
+    // run Topological sort
 
     // find source
     for (auto it: inDegree) {
@@ -178,9 +143,5 @@ int main() {
         cout << it << " ";
     }
 
-
-//    vector<string> dict = {"wrt", "wrf", "er", "ett", "rftt"};
-//    string topoi = alienOrder(dict);
-//    cout << topoi << endl;
     return 0;
 }

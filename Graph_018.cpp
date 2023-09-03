@@ -38,7 +38,7 @@ int main(){
     vector<int> distance(N, INT16_MAX);
     distance[source] = 0;
 
-    // Relaxing the edges
+    // Relaxing the edges N-1 times
     for(int i= 1; i <=N-1; i++){
         for(auto it: edges){
             if(distance[it.u] + it.wt < distance[it.v]){
@@ -48,6 +48,7 @@ int main(){
     }
 
     int fl = 0;
+    // Nth relaxation, if we can still reduce the distance, that would mean there is a negative cycle
     for(auto it: edges) {
         if(distance[it.u] + it.wt < distance[it.v]) {
             cout << "Negative Cycle";

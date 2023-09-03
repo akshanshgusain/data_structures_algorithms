@@ -19,6 +19,7 @@
 
 18. Implement Bellman Ford Algorithm
 19. Implement Floyd warshall Algorithm
+
 20. Disjoint Set Union DS | Union by Rank and Path Compression
 11. Making wired Connections. ------(Technique: DFS or Union Find, find Disconnected Components)
 16. Find the no. of Islands. ------(Technique: DFS, find Disconnected Components / DSU )
@@ -141,19 +142,22 @@ Dijkstra Algorithm -
 
 Bellman-Ford Algorithm -
 
-1. Single source shortest path with NEGATIVE weight edges.
-2. Suppose that we are given a weighted DIRECTED(no negative cycle) graph G with n vertices and m edges, and some
-specified vertex v.You want to find the length of shortest paths from vertex v to every other vertex.
-3. Why not undirected graphs?
-Any undirected graph is also a directed graph.
-But don't forget, that this also means any edge with a negative weight will count as a loop. As the Bellman-Ford
-algorithm ONLY works on graphs that don't contain any cycles with negative weights this actually means your
-un-directed graph mustn't contain any edges with negative weight.
-3. Unlike the Dijkstra algorithm, this algorithm can also be applied to graphs containing negative weight edges.
-However, if the graph contains a negative cycle, then, clearly, the shortest path to some vertices may not exist
-(due to the fact that the weight of the shortest path must be equal to minus infinity); however, this algorithm can
-be modified to signal the presence of a cycle of negative weight, or even deduce this cycle.
-4. Detects NEGATIVE CYCLE in a graph.
+1.  Single source shortest path with NEGATIVE weight edges.
+2.  Suppose that we are given a weighted DIRECTED(no negative cycle) graph G with n vertices and m edges, and some
+    specified vertex v.You want to find the length of shortest paths from vertex v to every other vertex.
+
+3.  Why not undirected graphs?
+
+    Any undirected graph is also a directed graph.
+    But don't forget, that this also means any edge with a negative weight will count as a loop. As the Bellman-Ford
+    algorithm ONLY works on graphs that don't contain any cycles with negative weights this actually means your
+    un-directed graph mustn't contain any edges with negative weight.
+
+4.  Unlike the Dijkstra algorithm, this algorithm can also be applied to graphs containing negative weight edges.
+    However, if the graph contains a negative cycle, then, clearly, the shortest path to some vertices may not exist
+    (due to the fact that the weight of the shortest path must be equal to minus infinity); however, this algorithm can
+    be modified to signal the presence of a cycle of negative weight, or even deduce this cycle.
+5.  Detects NEGATIVE CYCLE in a graph.
 
 
 

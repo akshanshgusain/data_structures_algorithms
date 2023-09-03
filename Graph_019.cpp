@@ -15,9 +15,9 @@ void floyd_warshall(int graph[V][V]) {
     vector<vector<int>> dist{V, vector<int>(V)};
 
     for (i = 0; i < V; i++) {
-        for (j = 0; j < V; j++)
+        for (j = 0; j < V; j++) {
             dis[i][j] = graph[i][j];
-            dist[i][j] = graph[i][j];
+        }
     }
 
 
@@ -38,6 +38,7 @@ void floyd_warshall(int graph[V][V]) {
     }
 
     //Check for negative cycle
+    // dis[i][i] represents distance of ith node from itself, that can't ever be less than 0
     for (i = 0; i < V; i++) {
         if (dis[i][i] < 0) {
             cout << "Negative Edge Cycle is present...." << endl;
