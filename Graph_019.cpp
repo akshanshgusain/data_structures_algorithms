@@ -5,11 +5,13 @@
 #include<stdc++.h>
 
 using namespace std;
-#define V 6
+
 
 // Time: O(V^3), Space: O(V^2)
 
-void floyd_warshall(int graph[V][V]) {
+void floyd_warshall(vector<vector<int>> &graph) {
+    int V = graph.size();
+
     int dis[V][V];
     int i, j, k;
     vector<vector<int>> dist{V, vector<int>(V)};
@@ -55,7 +57,7 @@ void floyd_warshall(int graph[V][V]) {
 }
 
 int main() {
-    int graph[V][V] = {{0,       1,       4,       INT_MAX, INT_MAX, INT_MAX},
+    vector<vector<int>> graph = {{0,       1,       4,       INT_MAX, INT_MAX, INT_MAX},
                        {INT_MAX, 0,       4,       2,       7,       INT_MAX},
                        {INT_MAX, INT_MAX, 0,       3,       4,       INT_MAX},
                        {INT_MAX, INT_MAX, INT_MAX, 0,       INT_MAX, 4},
