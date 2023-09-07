@@ -143,7 +143,7 @@ Dijkstra Algorithm -
 Bellman-Ford Algorithm -
 
 1.  Single source shortest path with NEGATIVE weight edges.
-2.  Suppose that we are given a weighted DIRECTED(no negative cycle) graph G with n vertices and m edges, and some
+2.  Suppose that we are given a weighted DIRECTED(no negative  cycle) graph G with n vertices and m edges, and some
     specified vertex v.You want to find the length of shortest paths from vertex v to every other vertex.
 
 3.  Why not undirected graphs?
@@ -166,7 +166,7 @@ Bellman-Ford Algorithm -
 Floyd-Warshall Algorithm -
 
 1. All source shortest path with NEGATIVE weight edges.
-2. No Negative cycles.If there is such a negative cycle, you can just traverse this cycle over and over,
+2. No Negative cycles. If there is such a negative cycle, you can just traverse this cycle over and over,
 in each iteration making the cost of the path smaller. So you can make certain paths arbitrarily small,
 or in other words that shortest path is undefined.
 3. Works on both directed and undirected graphs.(obviously, Negative edge on Undirected graph wont work)

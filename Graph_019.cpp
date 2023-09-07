@@ -12,12 +12,11 @@ using namespace std;
 void floyd_warshall(vector<vector<int>> &graph) {
     int V = graph.size();
 
-    int dis[V][V];
-    int i, j, k;
-    vector<vector<int>> dist{V, vector<int>(V)};
+    vector<vector<int>> dis(V, vector<int>(V, 0));
 
-    for (i = 0; i < V; i++) {
-        for (j = 0; j < V; j++) {
+
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
             dis[i][j] = graph[i][j];
         }
     }
@@ -26,9 +25,9 @@ void floyd_warshall(vector<vector<int>> &graph) {
 
     // Find the min distance between i and j via k.
 
-    for (k = 0; k < V; k++) {
-        for (i = 0; i < V; i++) {
-            for (j = 0; j < V; j++) {
+    for (int k = 0; k < V; k++) {
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
                 if (dis[i][k] == INT_MAX or dis[k][j] == INT_MAX) {
                     continue;
                 }
@@ -41,7 +40,7 @@ void floyd_warshall(vector<vector<int>> &graph) {
 
     //Check for negative cycle
     // dis[i][i] represents distance of ith node from itself, that can't ever be less than 0
-    for (i = 0; i < V; i++) {
+    for (int i = 0; i < V; i++) {
         if (dis[i][i] < 0) {
             cout << "Negative Edge Cycle is present...." << endl;
             break;
@@ -49,20 +48,24 @@ void floyd_warshall(vector<vector<int>> &graph) {
     }
 
     //Print the all-pair shortest distance
-    for (i = 0; i < V; i++) {
-        for (j = 0; j < V; j++) {
-            cout<<"Min. Distance between i="<<i<<", j="<<j<<" is "<<dis[i][j]<<endl;
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            if (dis[i][j] == INT_MAX) {
+                cout << "Min. Distance between i=" << i << ", j=" << j << " is Not Reachable " << endl;
+            } else {
+                cout << "Min. Distance between i=" << i << ", j=" << j << " is " << dis[i][j] << endl;
+            }
         }
     }
 }
 
 int main() {
     vector<vector<int>> graph = {{0,       1,       4,       INT_MAX, INT_MAX, INT_MAX},
-                       {INT_MAX, 0,       4,       2,       7,       INT_MAX},
-                       {INT_MAX, INT_MAX, 0,       3,       4,       INT_MAX},
-                       {INT_MAX, INT_MAX, INT_MAX, 0,       INT_MAX, 4},
-                       {INT_MAX, INT_MAX, INT_MAX, 3,       0,       INT_MAX},
-                       {INT_MAX, INT_MAX, INT_MAX, INT_MAX, 5,       0}};
+                                 {INT_MAX, 0,       4,       2,       7,       INT_MAX},
+                                 {INT_MAX, INT_MAX, 0,       3,       4,       INT_MAX},
+                                 {INT_MAX, INT_MAX, INT_MAX, 0,       INT_MAX, 4},
+                                 {INT_MAX, INT_MAX, INT_MAX, 3,       0,       INT_MAX},
+                                 {INT_MAX, INT_MAX, INT_MAX, INT_MAX, 5,       0}};
 
     floyd_warshall(graph);
 
