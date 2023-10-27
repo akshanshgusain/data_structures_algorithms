@@ -19,8 +19,8 @@
 19. Implement Floyd warshall Algorithm
 
 20. Disjoint Set Union DS | Union by Rank and Path Compression
-11. Making wired Connections. ------(Technique: DFS or Union Find, find Disconnected Components)
-16. Find the no. of Islands. ------(Technique: DFS, find Disconnected Components / DSU )
+11. Number of Operations to Make Network Connected. ------(Technique: DFS or Union Find, find Disconnected Components)
+16. Find the no. of Islands. ------(Technique: DFS, 2D-DSU )
 
 21. Implement Kruksal’sAlgorithm
 22. Implement Prim’s Algorithm

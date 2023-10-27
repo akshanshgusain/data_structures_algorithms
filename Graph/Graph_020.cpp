@@ -13,6 +13,10 @@ class DisjointSet {
         node1 = findParent(node1);
         node2 = findParent(node2);
 
+        if (node1 == node2) {
+            return;
+        }
+
         if (rank[node1] > rank[node2]) {
             parent[node2] = node1;
         } else if (rank[node2] > rank[node1]) {
@@ -57,24 +61,24 @@ public:
 
 int main() {
     DisjointSet ds(7);
-    ds.makeUnion(1,2);
-    ds.makeUnion(2,3);
-    ds.makeUnion(4,5);
-    ds.makeUnion(6,7);
-    ds.makeUnion(5,6);
+    ds.makeUnion(1, 2);
+    ds.makeUnion(2, 3);
+    ds.makeUnion(4, 5);
+    ds.makeUnion(6, 7);
+    ds.makeUnion(5, 6);
 
-    if (ds.findParent(3) == ds.findParent(7)){
-        cout<<"Same"<<endl;
-    }else{
-        cout<<"Not Same"<<endl;
+    if (ds.findParent(3) == ds.findParent(7)) {
+        cout << "Same" << endl;
+    } else {
+        cout << "Not Same" << endl;
     }
 
-    ds.makeUnion(3,7);
+    ds.makeUnion(3, 7);
 
-    if (ds.findParent(3) == ds.findParent(7)){
-        cout<<"Same"<<endl;
-    }else{
-        cout<<"Not Same"<<endl;
+    if (ds.findParent(3) == ds.findParent(7)) {
+        cout << "Same" << endl;
+    } else {
+        cout << "Not Same" << endl;
     }
 
     return 0;
