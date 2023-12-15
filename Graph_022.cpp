@@ -28,7 +28,8 @@ void primsMST(Graph &graph) {
     vector<int> edgeWeight(graph.V, INT_MAX);
     vector<bool> mst(graph.V, false);
     vector<int> parent(graph.V, -1);
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;// {edgeWeight[i], i}
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+    // {edgeWeight[i], i}
 
     edgeWeight[0] = 0;
     pq.push({0, 0});
@@ -52,7 +53,6 @@ void primsMST(Graph &graph) {
 
     for (int i = 1; i < graph.V; i++)
         cout << parent[i] << " - " << i << " \n";
-
 }
 
 int main() {

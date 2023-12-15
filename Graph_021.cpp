@@ -6,7 +6,8 @@
 using namespace std;
 
 // Time: O(MLogM) + O(M x O(4alpha)) = O(MLogM), Space: O(M) + (O(N)+O(N) Disjoint Set) = O(N)
-// Store the graph in a Linear DS rather than an Adjacency List, because we want to sort node according to weight.
+// Store the graph in a Linear DS rather than an Adjacency List, because we want to sort node
+// according to weight.
 
 struct Node{
     int u;
