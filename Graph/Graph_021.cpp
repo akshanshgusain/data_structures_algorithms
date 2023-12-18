@@ -132,8 +132,8 @@ void kruskalMST(Graph &g) {
 
     cout << mstW << endl;
     for(auto it : mst) cout << it.first << " - " << it.second << endl;
-
 }
+
 
 int main() {
     Graph graph(6);
