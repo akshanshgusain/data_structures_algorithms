@@ -30,6 +30,9 @@ void findChromaticNumber(Graph &graph) {
     result[0] = 0;
     int chromaticNumber = 0;
 
+    // For each vertex i, iterate through its adjacent vertices (x in graph.adj[i]).
+    // If the adjacent vertex x has already been assigned a color (result[x] != -1),
+    // mark that color as unavailable (colorAvailable[result[x]] = false)
     for (int i = 1; i < graph.V; i++) {
         for (auto x: graph.adj[i]) {
             if (result[x] != -1) {
@@ -37,9 +40,10 @@ void findChromaticNumber(Graph &graph) {
             }
         }
 
+        // Find the first available color for the current vertex by searching through the colorAvailable array.
         int firstAvailableColor;
         for (firstAvailableColor = 0; firstAvailableColor < graph.V; firstAvailableColor++) {
-            if (colorAvailable[firstAvailableColor] == true) {
+            if (colorAvailable[firstAvailableColor]) {
                 break;
             }
         }
@@ -70,6 +74,7 @@ int main() {
     graph.addEdgeU(0, 2);
     graph.addEdgeU(2, 4);
     graph.addEdgeU(1, 4);
+    graph.addEdgeU(2, 5);
 
     findChromaticNumber(graph);
     return 0;

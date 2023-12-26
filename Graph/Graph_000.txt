@@ -24,10 +24,10 @@
 
 21. Implement Kruksal’sAlgorithm (using DSU)
 22. Implement Prim’s Algorithm
-23. Total no. of Spanning tree in a graph (Kirchhoff's theorem) n^(n-2)
-24. Travelling Salesman Problem.  ------(Technique: DP: Min weight permutation.)
+
 25. Graph Colouring Problem (No Adjacent Nodes should not be of same colors).
 26. Snake and Ladders Problem.
+
 27. Find bridge in a graph.(Tarjan's Algorithm)  ------(Technique: DFS: Check for minimumTime and InsertionTime (BackEdges))<T>
 28. Find Articulation point/Cut-Vertex in a graph.(Tarjan's Algorithm)  ------(Technique: DFS: Check for back Edges)
 29. Count Strongly connected Components(Kosaraju Algo)
