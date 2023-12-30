@@ -28,9 +28,15 @@
 25. Graph Colouring Problem (No Adjacent Nodes should not be of same colors).
 26. Snake and Ladders Problem.
 
+
+29. Count Strongly connected Components(Kosaraju Algo)
+
+
 27. Find bridge in a graph.(Tarjan's Algorithm)  ------(Technique: DFS: Check for minimumTime and InsertionTime (BackEdges))<T>
 28. Find Articulation point/Cut-Vertex in a graph.(Tarjan's Algorithm)  ------(Technique: DFS: Check for back Edges)
-29. Count Strongly connected Components(Kosaraju Algo)
+
+
+
 30. Check whether a graph is Bipartite or Not.  ------(Technique: NO odd length cycle | BFS with COLOR vector.)
 31. Detect Negative cycle in a graph.  ------(Technique: BellmanFord)
 32. The Longest path in a Directed Acyclic Graph.  ------(Technique: Topological sort)

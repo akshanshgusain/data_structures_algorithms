@@ -3,4 +3,5 @@ project(Final500DSA)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Final500DS Graph/Graph_025.cpp)
+add_executable(Final500DS
+        Graph/Graph_029.cpp)
