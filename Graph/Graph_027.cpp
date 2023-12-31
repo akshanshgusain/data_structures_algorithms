@@ -97,6 +97,22 @@ void findBridges(Graph &g) {
     }
 }
 
+bool makeEqual(vector<string> &words) {
+    vector<int> count(26, 0);
+    for (auto word: words) {
+        for (auto chari: word) {
+            count[chari - 'a']++;
+        }
+    }
+    for (auto cnt: count) {
+//        cout<<cnt<<" ";
+        if (cnt % words.size() != 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main() {
     Graph graph(5);
     graph.addEdgeU(0, 1);
@@ -105,7 +121,9 @@ int main() {
     graph.addEdgeU(1, 3);
     graph.addEdgeU(3, 4);
 
-    findBridges(graph);
-
+//    findBridges(graph);
+    vector<string> words = {"abc", "aabc", "bc"};
+//    vector<string> words = {"ab", "a"};
+    cout << makeEqual(words);
     return 0;
 }
