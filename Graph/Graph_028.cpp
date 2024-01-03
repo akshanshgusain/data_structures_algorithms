@@ -1,6 +1,7 @@
 //
-// Created by Akshansh Gusain on 29/12/23.
+// Created by Akshansh Gusain on 03/01/24.
 //
+
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -49,12 +50,13 @@ void dfs(
         vector<int> &discoveryTime,
         vector<int> &minTime,
         int timer,
-        Graph &g,
-        vector<vector<int>> &bridges) {
-
+        vector<int> &articulationPoints,
+        Graph &g) {
     visited[node] = true;
     discoveryTime[node] = minTime[node] = timer;
     timer++;
+
+    int child = 0;
 
     for (auto it: g.adj[node]) {
         if (it == parent) {
@@ -62,41 +64,41 @@ void dfs(
         }
         if (!visited[it]) {
             // simple case of DFS
-            dfs(it, node, visited, discoveryTime, minTime, timer, g, bridges);
+            dfs(it, node, visited, discoveryTime, minTime, timer, articulationPoints, g);
             minTime[node] = min(minTime[node], minTime[it]);
-            // check for bridge: node -- it
-            if (minTime[it] > discoveryTime[node]) {
-                // If Adj.Node's min time is greater than discovery time of current node
-                // i.e., adj Node won't be able to reach current node
-                bridges.push_back({node, it});
+            // check for articulation point : node -- it
+            if (minTime[it] >= discoveryTime[node] and parent != -1) {
+                articulationPoints[node] = 1;
             }
+            child++;
         } else {
-            // bridge is not possible,
-            // simply update the lowest time
-            minTime[node] = min(minTime[node], minTime[it]);
+            minTime[node] = min(minTime[node], discoveryTime[it]);
         }
+    }
+    if (child > 1 and parent == -1) {
+        articulationPoints[node] = 1;
     }
 }
 
-void findBridges(Graph &g) {
-    vector<int> discoveryTime(g.V, -1);
-    vector<int> minTime(g.V, -1);
-    vector<bool> visited(g.V, false);
-    vector<vector<int>> bridges;
-
+void findArticulationPoint(Graph &graph) {
+    vector<int> discoveryTime(graph.V, -1);
+    vector<int> minTime(graph.V, -1);
+    vector<bool> visited(graph.V, false);
+    vector<int> articulationPoints(graph.V, 0);
     int timer = 0;
 
-    for (int i = 0; i < g.V; i++) {
+    for (int i = 0; i < graph.V; i++) {
         if (!visited[i]) {
-            dfs(i, -1, visited, discoveryTime, minTime, timer, g, bridges);
+            dfs(i, -1, visited, discoveryTime, minTime, timer, articulationPoints, graph);
         }
     }
 
-    for (auto &bridge: bridges) {
-        cout << bridge[0] << " - " << bridge[1] << endl;
+    for (int i = 0; i < graph.V; i++) {
+        if (articulationPoints[i] == 1) {
+            cout << i << " ";
+        }
     }
 }
-
 
 int main() {
     Graph graph(5);
@@ -104,8 +106,8 @@ int main() {
     graph.addEdgeU(0, 2);
     graph.addEdgeU(1, 2);
     graph.addEdgeU(1, 3);
-    graph.addEdgeU(3, 4);
+    graph.addEdgeU(4, 3);
 
-    findBridges(graph);
+    findArticulationPoint(graph);
     return 0;
 }
