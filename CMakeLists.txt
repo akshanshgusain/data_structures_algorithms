@@ -4,4 +4,4 @@ project(Final500DSA)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Final500DS
-        Graph/Graph_028.cpp)
+        Solve.cpp)

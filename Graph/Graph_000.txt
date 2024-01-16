@@ -9,18 +9,23 @@
 6. Detect Cycle in UnDirected Graph using BFS/DFS Algo
 7. Rat in a maze ------(Technique: Make DFS Calls in 4 dirs and backtrack)
 8. Minimum Step by Knight. ------(Technique: BFS)
+
 9. flood fill algo. ------(Technique: BFS)
 10. Clone a graph. ------(Technique: BFS+MAP)
 12. word Ladder. ------(Technique: BFS)
+51.Distance of nearest cell having 1 ------(Technique: BFS)
+52. Surrounded Regions ------(Technique: DFS)
+53. Find eventual safe state.  ------(Technique: Cycle detection)
+
 13. Dijkstra algo.
-
-
 18. Implement Bellman Ford Algorithm
+
 19. Implement Floyd warshall Algorithm
 
 20. Disjoint Set Union DS | Union by Rank and Path Compression
 11. Number of Operations to Make Network Connected. ------(Technique: DFS or Union Find, find Disconnected Components)
 16. Find the no. of Islands. ------(Technique: DFS, 2D-DSU )
+50. Number of Provinces. ------(Technique: DFS+DSU)
 
 21. Implement Kruksal’sAlgorithm (using DSU)
 22. Implement Prim’s Algorithm
