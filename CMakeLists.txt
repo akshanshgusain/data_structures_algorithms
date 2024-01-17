@@ -4,4 +4,5 @@ project(Final500DSA)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Final500DS
-        Solve.cpp)
+        LinkedList/new/LL_006.cpp
+       )

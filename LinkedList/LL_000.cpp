@@ -17,10 +17,8 @@ public:
 };
 
 void addAtEnd(Node **head, int data) {
-
     // Both ways of creating a Node object are fine.
     Node *myNode = new Node(data);
-
     Node *last = *head;
 
     if (*head == nullptr) {

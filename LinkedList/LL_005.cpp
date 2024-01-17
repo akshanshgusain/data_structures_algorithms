@@ -79,7 +79,7 @@ int main(){
     if (res == nullptr)
         cout << "Loop does not exist";
     else
-        cout << "Loop starting node is " << res->data;
+        cout << "Loop starting node is " << res->data; //Loop starting node is 15
 
     return 0;
 }

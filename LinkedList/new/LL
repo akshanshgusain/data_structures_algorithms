@@ -1,8 +1,9 @@
-Insertion in Linked List.
-Write a Program to reverse the Linked List. (Both Iterative and recursive)
-Reverse a Linked List in group of Given Size. [Very Imp]. ---- Technique(Recursively call reverse on k+1 th node)
-Write a program to Detect loop in a linked list. ---- Technique(Slow and Fast pointer)
-Find the starting point of the loop. ---- Technique(Slow and Fast pointer)
+01. Insertion in Linked List.
+02. Delete a ListNode from a Linked List.
+03. Write a Program to reverse the Linked List. (Both Iterative and recursive)
+04. Reverse a Linked List in group of Given Size. [Very Imp]. ---- Technique(Recursively call reverse on k+1 th node)
+05. Write a program to Detect loop in a linked list. ---- Technique(Slow and Fast pointer)
+06. Find the starting point of the loop. ---- Technique(Slow and Fast pointer)
 Remove Duplicates in a sorted Linked List. ---- Technique(check if node->data == node->next->data)
 Remove Duplicates in a Un-sorted Linked List. ---- Technique(HashMap)
 Write a Program to Move the last element to Front in a Linked List.

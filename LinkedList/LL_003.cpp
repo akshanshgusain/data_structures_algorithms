@@ -39,7 +39,7 @@ Node* reverse(Node *head, int k){
     Recursively call for the list starting from current.
     And make rest of the list as next of first node */
     if(next!= nullptr){
-        head->next = reverse(next , k);
+        head->next = reverse(next , k); // reverse will return prev
     }
 
     /* prev is new head of the input list */
