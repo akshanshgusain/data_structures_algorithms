@@ -131,3 +131,19 @@ int main() {
     }
     return 0;
 }
+//a
+//Palindrome
+//b->a
+//Not a Palindrome
+//a->b->a
+//Palindrome
+//c->a->b->a
+//Not a Palindrome
+//a->c->a->b->a
+//Not a Palindrome
+//b->a->c->a->b->a
+//Not a Palindrome
+//a->b->a->c->a->b->a
+//Palindrome
+//d->a->b->a->c->a->b->a
+//Not a Palindrome

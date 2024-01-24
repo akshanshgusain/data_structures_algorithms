@@ -14,12 +14,13 @@
 14. Merge Sort For Linked lists.[Very Important]
 15. Quicksort for Linked Lists.[Very Important]
 16. Find the middle Element of a linked list. ---- Technique(Slow and Fast pointer)
+19. Write a Program to check whether the Singly Linked list is a palindrome or not. ---- Technique(reverse the second half and compare)
 
 Circular LL
 17. Check if a linked list is a circular linked list. ---- Technique(Check if we reach the head node, while traversing).
 18. Split a Circular linked list into two halves. ---- Technique(Check if we reach the head node, while traversing).
 
-Write a Program to check whether the Singly Linked list is a palindrome or not. ---- Technique(reverse the second half and compare)
+
 Deletion from a Circular Linked List.
 Reverse a Doubly Linked list.
 Find pairs with a given sum in a sorted DLL. ---- Technique( Two pointer Technique)

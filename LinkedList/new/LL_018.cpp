@@ -45,8 +45,7 @@ int main(){
     makeCircular(head);
 
     printCircularList(head);
-//    Node* middle = findMiddleElement(head);
-//
+
     splitList(head, head1, head2);
     cout<<"First list: "<<endl;
     printCircularList(head1);
