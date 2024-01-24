@@ -23,7 +23,7 @@ void push(Node *&head, int val) {
     head = temp;
 }
 
-void reverseLL(Node* &head) {
+void revreseLL(Node* &head) {
     Node *previous, *next, *current;
     current = head;
     previous = next = nullptr;

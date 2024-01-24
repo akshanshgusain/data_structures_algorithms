@@ -39,3 +39,26 @@ void printList(ListNode *head) {
         head = head->next;
     }
 }
+
+void makeCircular(ListNode* &head){
+    // Make the list circular (connect the last node to the second node)
+    ListNode *temp = head;
+    while (temp->next != nullptr) {
+        temp = temp->next;
+    }
+    temp->next = head;
+}
+
+void printCircularList(ListNode *head) {
+    ListNode *temp = head;
+
+    // If linked list is not empty
+    if (head != nullptr) {
+
+        // Print nodes till we reach first node again
+        do {
+            cout << temp->val << " ";
+            temp = temp->next;
+        } while (temp != head);
+    }
+}

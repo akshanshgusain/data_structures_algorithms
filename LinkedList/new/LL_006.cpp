@@ -6,7 +6,7 @@
 
 ListNode *detectStartOfLoop(ListNode *&head) {
     // detect loop
-    if (head == nullptr) {
+    if (head == nullptr or head->next == nullptr) {
         return nullptr;
     }
     ListNode *slow = head, *fast = head;
@@ -18,6 +18,10 @@ ListNode *detectStartOfLoop(ListNode *&head) {
         if (fast == slow) {
             break;
         }
+    }
+    // if there is no loop
+    if(fast->next == nullptr or fast->next->next == nullptr){
+        return nullptr;
     }
 
     // 2. If loop exist,

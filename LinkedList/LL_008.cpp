@@ -43,11 +43,13 @@ void moveToFront(Node* &head){
 
     Node *secLast = nullptr;
     Node *last = head;
+
     while (last->next != nullptr)
     {
         secLast = last;
         last = last->next;
     }
+
     secLast->next = nullptr;
     last->next = head;
     head = last;

@@ -4,7 +4,7 @@
 #include "LL_000.cpp"
 
 bool detectLoop(ListNode *&head) {
-    if (head == nullptr) {
+    if (head == nullptr or head->next == nullptr) {
         return false;
     }
 

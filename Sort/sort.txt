@@ -1,0 +1,20 @@
+
+1. Count Sort
+
+Complexity Analysis of Counting Sort:
+Time Complexity: O(N+M), where N and M are the size of inputArray[] and countArray[] respectively.
+Worst-case: O(N+M).
+Average-case: O(N+M).
+Best-case: O(N+M).
+Auxiliary Space: O(N+M), where N and M are the space taken by outputArray[] and countArray[] respectively.
+
+Advantage of Counting Sort:
+1. Counting sort generally performs faster than all comparison-based sorting algorithms, such as merge sort and quicksort,
+if the range of input is of the order of the number of input.
+2. Counting sort is easy to code
+3. Counting sort is a stable algorithm.
+
+Disadvantage of Counting Sort:
+1. Counting sort doesn’t work on decimal values.
+2. Counting sort is inefficient if the range of values to be sorted is very large.
+3. Counting sort is not an In-place sorting algorithm, It uses extra space for sorting the array elements.

@@ -6,7 +6,7 @@ The main focus in this question is on the digit 9 which creates all the changes 
  to just increment their value by 1 but if we change the node’s value with the value 9 it makes a carry which then
  has to be passed through the linked list.
 
-/// Find the last node in the linked list which is not equal to 9. Now there are three cases:
+// Find the last node in the linked list which is not equal to 9. Now there are three cases:
 
 1. If there is no such node i.e. the value of every node is 9 then the new linked list will contain all 0s and a single
 1 inserted at the head of the linked list.

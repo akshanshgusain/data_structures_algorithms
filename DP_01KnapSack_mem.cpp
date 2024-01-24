@@ -33,6 +33,6 @@ int main() {
     int wt[] = {10, 20, 30};
     int W = 50;
     int n = sizeof(val) / sizeof(val[0]);
-    cout << knapSack(val, wt, W, n);
+    cout << knapSack(val, wt, W, n); //220
     return 0;
 }
