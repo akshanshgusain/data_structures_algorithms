@@ -21,7 +21,7 @@
 26. Implement Stack using Dequeue.
 
 
-18- Implement a method to insert an element at its bottom without using any other data structure. <T>
+18- Implement a method to insert an element at its bottom without using any other val structure. <T>
 16- Arithmetic Expression evaluation. <GQ>
 19- Reverse a stack using recursion.<T>
 20- Sort a Stack using recursion.<T>

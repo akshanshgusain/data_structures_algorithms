@@ -10,7 +10,7 @@
 
 
 
--- Trie is an efficient information retrieval data structure. Using Trie, search complexities can be brought to optimal
+-- Trie is an efficient information retrieval val structure. Using Trie, search complexities can be brought to optimal
    limit (key length). If we store keys in a binary search tree, a well-balanced BST will need time proportional to
    M * log N, where M is the maximum string length and N is the number of keys in the tree.
 

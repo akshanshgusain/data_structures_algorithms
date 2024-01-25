@@ -4,7 +4,7 @@
 04. Reverse a Linked List in group of Given Size. [Very Imp]. ---- Technique(Recursively call reverse on k+1 th node)
 05. Write a program to Detect loop in a linked list. ---- Technique(Slow and Fast pointer)
 06. Find the starting point of the loop. ---- Technique(Slow and Fast pointer)
-07. Remove Duplicates in a sorted Linked List. ---- Technique(check if node->data == node->next->data)
+07. Remove Duplicates in a sorted Linked List. ---- Technique(check if node->val == node->next->val)
 08. Remove Duplicates in a Un-sorted Linked List. ---- Technique(HashMap)
 09. Write a Program to Move the last element to Front in a Linked List.
 10. Add “1” to a number represented as a Linked List.
@@ -15,25 +15,26 @@
 15. Quicksort for Linked Lists.[Very Important]
 16. Find the middle Element of a linked list. ---- Technique(Slow and Fast pointer)
 19. Write a Program to check whether the Singly Linked list is a palindrome or not. ---- Technique(reverse the second half and compare)
+27. Merge K sorted Linked list. ---- Technique(Min Heap)
 
 Circular LL
 17. Check if a linked list is a circular linked list. ---- Technique(Check if we reach the head node, while traversing).
 18. Split a Circular linked list into two halves. ---- Technique(Check if we reach the head node, while traversing).
+20. Deletion from a Circular Linked List.
+
+Doubly LL
+21. Reverse a Doubly Linked list.
+22. Find pairs with a given sum in a sorted DLL(Two Sum). ---- Technique( Two pointer Technique)
+23. Count triplets in a sorted DLL whose sum is equal to given value “X”. ---- Technique( Find Pair wrt every node).
+24. Sort a “k” sorted Doubly Linked list.[Very IMP]. ---- Technique(Min Heap).
+ Rotate DoublyLinked list by N nodes.
+ Rotate a Doubly Linked list in group of Given Size.[Very IMP]. ---- Technique(Recursively call reverse on k+1 th node)
 
 
-Deletion from a Circular Linked List.
-Reverse a Doubly Linked list.
-Find pairs with a given sum in a sorted DLL. ---- Technique( Two pointer Technique)
-Count triplets in a sorted DLL whose sum is equal to given value “X”. ---- Technique( Find Pair wrt every node).
-Merge a “k”sorted Doubly Linked list.[Very IMP]. ---- Technique(Min Heap).
-Rotate DoublyLinked list by N nodes.
-Rotate a Doubly Linked list in group of Given Size.[Very IMP]. ---- Technique(Recursively call reverse on k+1 th node)
-Can we reverse a linked list in less than O(n) ?----- NO
-Why Quicksort is preferred for. Arrays and Merge Sort for LinkedLists ?
 Flatten a Linked List. ---- Technique(Merge function from merge sort)
 Sort a LL of 0's, 1's and 2's. ---- Technique(Simply count and populate)
 Clone a linked list with next and random pointer[IMP].
-Merge K sorted Linked list. ---- Technique(Min Heap)
+
 Multiply 2 no. represented by LL.
 Delete nodes which have a greater value on right side. ---- Technique(Reverse List and track MaxSoFar)
 Segregate even and odd nodes in a Linked List.

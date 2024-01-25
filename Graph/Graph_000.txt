@@ -222,20 +222,20 @@ The spanning tree with the least weight is called a minimum spanning tree.
 
 Disjoint Set Union | DSU | Union Find -
 
-This data structure provides the following capabilities:
+This val structure provides the following capabilities:
 1. We are given several elements, each of which is a separate set.
 2. A DSU will have an operation to combine any two sets, and it will be able to tell in which set a specific element is.
 3. The classical version also introduces a third operation, it can create a set from a new element.
-4. Thus the basic interface of this data structure consists of only three operations:
+4. Thus the basic interface of this val structure consists of only three operations:
     4.1. make_set(v) - creates a new set consisting of the new element v
     4.2. union_sets(a, b) - merges the two specified sets (the set in which the element a is located, and the set in
     which the element b is located).
     4.3. find_parent(v) - returns the representative (also called leader) of the set that contains the element v.
-    This representative is an element of its corresponding set. It is selected in each set by the data structure
+    This representative is an element of its corresponding set. It is selected in each set by the val structure
     itself (and can change over time, namely after union_sets calls). This representative can be used to check if
     two elements are part of the same set or not. a and b are exactly in the same set, if find_set(a) == find_set(b).
     Otherwise they are in different sets.
-5. The data structure allows you to do each of these operations in almost O(1) time on average.
+5. The val structure allows you to do each of these operations in almost O(1) time on average.
 6. 2 Optimizations over DSU:
     1. Path Compression
     2. Union by Rank.
@@ -243,7 +243,7 @@ This data structure provides the following capabilities:
     1. Connected components in a graph: Formally the problem is defined in the following way:
     Initially we have an empty graph. We have to add vertices and undirected edges, and answer queries of the
     form (a,b) - "are the vertices a and b in the same connected component of the graph?"
-    Here we can directly apply the data structure, and get a solution that handles an addition of a vertex or an
+    Here we can directly apply the val structure, and get a solution that handles an addition of a vertex or an
     edge and a query in nearly constant time on average.
     Using DSU we can improve the O(mlogn+n2) of Kruskal's Algorithm to O(mlogn).
     2. Search for connected components in an image.

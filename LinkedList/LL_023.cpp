@@ -105,14 +105,14 @@ int main() {
 
     int k = 2;
 
-    cout << "Original Doubly linked list:n";
+    cout << "Original Doubly linked list:\n";
     printList(head);
 
     head = sortKSortedDLL(head, k);
 
-    cout << "\nDoubly linked list after sorting:n";
+    cout << "\nDoubly linked list after sorting:\n";
     printList(head);
-
+    // 2<->3<->6<->8<->12<->56
     return 0;
 }
 
