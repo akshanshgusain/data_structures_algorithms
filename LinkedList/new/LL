@@ -2,6 +2,7 @@
 02. Delete a ListNode from a Linked List.
 03. Write a Program to reverse the Linked List. (Both Iterative and recursive)
 04. Reverse a Linked List in group of Given Size. [Very Imp]. ---- Technique(Recursively call reverse on k+1 th node)
+31. Program for n’th node from the end of a Linked List.
 05. Write a program to Detect loop in a linked list. ---- Technique(Slow and Fast pointer)
 06. Find the starting point of the loop. ---- Technique(Slow and Fast pointer)
 07. Remove Duplicates in a sorted Linked List. ---- Technique(check if node->val == node->next->val)
@@ -9,6 +10,7 @@
 09. Write a Program to Move the last element to Front in a Linked List.
 10. Add “1” to a number represented as a Linked List.
 11. Add two numbers represented by linked lists.
+28. Multiply 2 no. represented by LL.
 12. Intersection of two Sorted Linked List. ---- Technique(Two Pointer)
 13. Intersection Point of two Linked Lists. ---- Technique(Two Pointer)
 14. Merge Sort For Linked lists.[Very Important]
@@ -16,6 +18,10 @@
 16. Find the middle Element of a linked list. ---- Technique(Slow and Fast pointer)
 19. Write a Program to check whether the Singly Linked list is a palindrome or not. ---- Technique(reverse the second half and compare)
 27. Merge K sorted Linked list. ---- Technique(Min Heap)
+26. Sort a LL of 0's, 1's and 2's. ---- Technique(Simply count and populate)
+29. Delete nodes which have a greater value on right side. ---- Technique(Reverse List and track MaxSoFar)
+30. Segregate even and odd nodes in a Linked List.
+32. Clone a linked list with next and random pointer[IMP].
 
 Circular LL
 17. Check if a linked list is a circular linked list. ---- Technique(Check if we reach the head node, while traversing).
@@ -27,16 +33,13 @@ Doubly LL
 22. Find pairs with a given sum in a sorted DLL(Two Sum). ---- Technique( Two pointer Technique)
 23. Count triplets in a sorted DLL whose sum is equal to given value “X”. ---- Technique( Find Pair wrt every node).
 24. Sort a “k” sorted Doubly Linked list.[Very IMP]. ---- Technique(Min Heap).
- Rotate DoublyLinked list by N nodes.
- Rotate a Doubly Linked list in group of Given Size.[Very IMP]. ---- Technique(Recursively call reverse on k+1 th node)
+25. Rotate DoublyLinked list by N nodes.
 
 
-Flatten a Linked List. ---- Technique(Merge function from merge sort)
-Sort a LL of 0's, 1's and 2's. ---- Technique(Simply count and populate)
-Clone a linked list with next and random pointer[IMP].
 
-Multiply 2 no. represented by LL.
-Delete nodes which have a greater value on right side. ---- Technique(Reverse List and track MaxSoFar)
-Segregate even and odd nodes in a Linked List.
-Program for n’th node from the end of a Linked List
-Find the first non-repeating character from a stream of characters
+
+
+
+
+
+

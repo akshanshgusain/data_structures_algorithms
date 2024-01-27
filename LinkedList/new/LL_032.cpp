@@ -1,29 +1,29 @@
 //
-// Created by Akshansh Gusain on 21/10/21.
+// Created by Akshansh Gusain on 26/01/24.
 //
 #include<stdc++.h>
 
 using namespace std;
 
-class Node {
+class ListNode {
 public:
     int data;
-    Node *next, *random;
+    ListNode *next, *random;
 
-    explicit Node(int key) {
+    explicit ListNode(int key) {
         data = key;
         next = nullptr;
         random = nullptr;
     }
 };
 
-void push(Node *&head, int value) {
-    Node *temp = new Node(value);
+void push(ListNode *&head, int value) {
+    auto *temp = new ListNode(value);
     temp->next = head;
     head = temp;
 }
 
-void print(Node *node) {
+void print(ListNode *node) {
     while (node != nullptr) {
         if (node->next != nullptr) {
             cout << node->data << "->";
@@ -36,9 +36,9 @@ void print(Node *node) {
     cout << endl;
 }
 
-void printWRandom(Node *node) {
+void printWRandom(ListNode *node) {
     while (node != nullptr) {
-        Node *random = node->random;
+        ListNode *random = node->random;
         int randomData = (random != nullptr) ? random->data : -1;
         cout << "N: " << node->data << ", ";
         cout << "Random: " << randomData << "\n";
@@ -47,15 +47,15 @@ void printWRandom(Node *node) {
     cout << endl;
 }
 
-Node *clone(Node *head) {
-    Node *curr = head;
-    Node *temp = nullptr;
+ListNode* clone(ListNode* &head){
+    ListNode *curr = head;
+    ListNode *temp = nullptr;
 
     //Insert additional node after every node of original list
     while (curr != nullptr) {
         temp = curr->next;
 
-        curr->next = new Node(curr->data);
+        curr->next = new ListNode(curr->data);
         curr->next->next = temp;
         curr = temp;
     }
@@ -70,7 +70,7 @@ Node *clone(Node *head) {
         }
     }
 
-    Node *original = head, *copy = head->next;
+    ListNode *original = head, *copy = head->next;
     temp = copy;
 
     // sever the links
@@ -85,9 +85,8 @@ Node *clone(Node *head) {
     return temp;
 }
 
-
-int main() {
-    Node *head = nullptr;
+int main(){
+    ListNode *head = nullptr;
     push(head, 5);
     push(head, 4);
     push(head, 3);
@@ -99,35 +98,14 @@ int main() {
     head->next->next->random = head->next->next->next->next;
     head->next->next->next->random = head->next->next->next->next->next;
     head->next->next->next->next->random = head->next;
+
     cout << "Original linked list\n";
     print(head);
     printWRandom(head);
 
-    Node *clonedList = clone(head);
+    ListNode *clonedList = clone(head);
     cout << "Cloned linked list\n";
     print(clonedList);
     printWRandom(clonedList);
-
-
     return 0;
 }
-
-/*
-Original linked list
-1->2->3->4->5
-N: 1, Random: 3
-N: 2, Random: 4
-N: 3, Random: 5
-N: 4, Random: -1
-N: 5, Random: 2
-
-Cloned linked list
-1->2->3->4->5
-N: 1, Random: 3
-N: 2, Random: 4
-N: 3, Random: 5
-N: 4, Random: -1
-N: 5, Random: 2
-
-
- */
