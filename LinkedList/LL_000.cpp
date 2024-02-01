@@ -1,98 +1,64 @@
 //
-// Created by Akshansh Gusain on 23/04/23.
+// Created by Akshansh Gusain on 17/01/24.
 //
+
 #include<bits/stdc++.h>
 
 using namespace std;
 
-class Node {
-public:
-    int data;
-    Node *next;
+struct ListNode {
+    int val;
+    ListNode *next;
 
-    explicit Node(int data) {
-        this->data = data;
-        this->next = nullptr;
+    ListNode() {
+        val = 0;
+        next = nullptr;
+    }
+
+    explicit ListNode(int x) {
+        val = x;
+        next = nullptr;
+    }
+
+    ListNode(int x, ListNode *next) {
+        val = x;
+        this->next = next;
     }
 };
 
-void addAtEnd(Node **head, int data) {
-    // Both ways of creating a Node object are fine.
-    Node *myNode = new Node(data);
-    Node *last = *head;
-
-    if (*head == nullptr) {
-        *head = myNode;
-        return;
-    }
-
-    while (last->next != nullptr) {
-        last = last->next;
-    }
-
-    last->next = myNode;
+void push(ListNode *&head, int data) {
+    auto *newNode = new ListNode();
+    newNode->val = data;
+    newNode->next = head;
+    head = newNode;
 }
 
-void printLL(Node *head) {
-
+void printList(ListNode *head) {
     while (head != nullptr) {
-        cout << head->data << " ";
+        cout << head->val << " ";
         head = head->next;
     }
-    cout << endl;
 }
 
-
-void reverseLL(Node **head) {
-    Node *prev, *curr, *next;
-    curr = *head;
-    prev = next = nullptr;
-
-    while (curr != nullptr) {
-        next = curr->next;
-        curr->next = prev; // reverse the pointer
-        prev = curr; // forward prev ptr
-        curr = next; // forward curr ptr
-
+void makeCircular(ListNode* &head){
+    // Make the list circular (connect the last node to the second node)
+    ListNode *temp = head;
+    while (temp->next != nullptr) {
+        temp = temp->next;
     }
-
-    *head = prev;
+    temp->next = head;
 }
 
-Node* reverseR(Node* &head){
-    // base case
-    if(head->next == nullptr and head == nullptr){
-        return head;
+void printCircularList(ListNode *head) {
+    ListNode *temp = head;
+
+    // If linked list is not empty
+    if (head != nullptr) {
+
+        // Print nodes till we reach first node again
+        do {
+            cout << temp->val << " ";
+            temp = temp->next;
+        } while (temp != head);
     }
-    // Recursive leap of faith
-    Node *rest = reverseR(head->next);
-    head->next->next = head;
-    head->next = nullptr;
-    return rest;
-}
-
-int main() {
-    Node *head = nullptr;
-    addAtEnd(&head, 20);
-    addAtEnd(&head, 30);
-    addAtEnd(&head, 40);
-    addAtEnd(&head, 50);
-    addAtEnd(&head, 60);
-    printLL(head);
-    reverseLL(&head);
-    printLL(head);
-
-//    int k = 8;
-//    int *kPtr = &k;
-//    cout<<"Pointer: "<<kPtr <<endl;
-//    cout<<"Pointer's Address: "<< &kPtr<<endl;
-//
-//    addAtEnd2(kPtr);
-
-//    cout<<k<<endl;
-//    cout<<&k<<endl;
-//    cout<<kPtr<<endl;
-//    cout<<*kPtr<<endl;
-
-    return 0;
 }

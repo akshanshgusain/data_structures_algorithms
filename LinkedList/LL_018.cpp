@@ -1,149 +1,57 @@
 //
-// Created by Akshansh Gusain on 16/10/21.
+// Created by Akshansh Gusain on 24/01/24.
 //
+#include "LL_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-class Node {
-public:
-    char data;
-    Node *next;
-
-    explicit Node(char data) {
-        this->data = data;
-        next = nullptr;
+void splitList(ListNode* &head, ListNode* &head1, ListNode* &head2){
+    if (!head || !head->next) {
+        return; // An empty list or a list with only one node is not circular
     }
-};
 
-void push(Node *&head, char value) {
-    Node *temp = new Node(value);
-    temp->next = head;
-    head = temp;
+    ListNode *slow = head;
+    ListNode *fast = head->next;
+
+    while(fast->next != head and fast->next->next != head){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    // if there are even number of elements, move the fast pointer 1 step forward
+    // fast pointer need to be pointed to the head
+    if(fast->next->next == head){
+        fast = fast->next;
+    }
+
+    // set head1 as head of first half of the list
+    head1 = head;
+
+    // set head2 as the head of second half of the list
+    head2 = slow->next;
+
+    // break the circular link
+    fast->next = slow->next;
+    slow->next = head;
 }
 
-void print(Node *node) {
-    while (node != nullptr) {
-        if (node->next != nullptr) {
-            cout << node->data << "->";
-        } else {
-            cout << node->data;
-        }
+int main(){
+    ListNode *head = nullptr, *head1 = nullptr, *head2 = nullptr;
+    push(head, 1);
+    push(head, 2);
+    push(head, 3);
+    push(head, 5);
+    push(head, 4);
+    push(head, 6);
 
-        node = node->next;
-    }
-    cout << endl;
-}
+    makeCircular(head);
 
-void reverse(struct Node* &head_ref) {
-    struct Node *prev = NULL;
-    struct Node *current = head_ref;
-    struct Node *next;
-    while (current != NULL) {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
-    head_ref = prev;
-}
+    printCircularList(head);
 
-bool compareLists(struct Node *head1, struct Node *head2) {
-    struct Node *temp1 = head1;
-    struct Node *temp2 = head2;
+    splitList(head, head1, head2);
+    cout<<"First list: "<<endl;
+    printCircularList(head1);
+    cout<<endl;
+    cout<<"Second list: "<<endl;
+    printCircularList(head2);
 
-    while (temp1 && temp2) {
-        if (temp1->data == temp2->data) {
-            temp1 = temp1->next;
-            temp2 = temp2->next;
-        } else
-            return 0;
-    }
-
-    /* Both are empty reurn 1*/
-    if (temp1 == NULL && temp2 == NULL)
-        return 1;
-
-    /* Will reach here when one is NULL
-    and other is not */
     return 0;
 }
-
-
-bool isPalindrome(Node *&head) {
-     Node *slow_ptr = head, *fast_ptr = head;
-     Node *second_half, *prev_of_slow_ptr = head;
-     Node *midnode = nullptr; // To handle odd size list
-    bool res = true; // initialize result
-
-    if (head != nullptr && head->next != nullptr) {
-        /* Get the middle of the list. Move slow_ptr by 1
-        and fast_ptrr by 2, slow_ptr will have the middle
-        node */
-        while (fast_ptr != nullptr && fast_ptr->next != nullptr) {
-            fast_ptr = fast_ptr->next->next;
-
-            /*We need previous of the slow_ptr for
-            linked lists with odd elements */
-            prev_of_slow_ptr = slow_ptr;
-            slow_ptr = slow_ptr->next;
-        }
-
-        /* fast_ptr would become NULL when there are even elements in list.
-        And not NULL for odd elements. We need to skip the middle node
-        for odd case and store it somewhere so that we can restore the
-        original list*/
-        if (fast_ptr != nullptr) {
-            midnode = slow_ptr;
-            slow_ptr = slow_ptr->next;
-        }
-
-        // Now reverse the second half and compare it with first half
-        second_half = slow_ptr;
-        prev_of_slow_ptr->next = NULL; // NULL terminate first half
-        reverse(second_half); // Reverse the second half
-        res = compareLists(head, second_half); // compare
-
-        /* Construct the original list back */
-        reverse(second_half); // Reverse the second half again
-
-        // If there was a mid node (odd size case) which
-        // was not part of either first half or second half.
-        if (midnode != nullptr) {
-            prev_of_slow_ptr->next = midnode;
-            midnode->next = second_half;
-        } else
-            prev_of_slow_ptr->next = second_half;
-    }
-    return res;
-}
-
-int main() {
-    string inputString = "abacabad";
-    Node *head = nullptr;
-
-    for (char i: inputString) {
-        push(head, i);
-        print(head);
-        isPalindrome(head)? cout<<"Palindrome" : cout<<"Not a Palindrome";
-        cout<<endl;
-    }
-    return 0;
-}
-//a
-//Palindrome
-//b->a
-//Not a Palindrome
-//a->b->a
-//Palindrome
-//c->a->b->a
-//Not a Palindrome
-//a->c->a->b->a
-//Not a Palindrome
-//b->a->c->a->b->a
-//Not a Palindrome
-//a->b->a->c->a->b->a
-//Palindrome
-//d->a->b->a->c->a->b->a
-//Not a Palindrome

@@ -1,79 +1,46 @@
 //
-// Created by Akshansh Gusain on 14/10/21.
+// Created by Akshansh Gusain on 17/01/24.
 //
+#include "LL_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-class Node {
-public:
-    int data;
-    Node *next;
-
-    explicit Node(int data) {
-        this->data = data;
-        this->next = nullptr;
+ListNode* deleteDuplicates(ListNode* &head){
+    if (head == nullptr || head->next == nullptr) {
+        return head;
     }
-};
 
-void push(Node *&head, int value) {
-    Node *newNode = new Node(value);
-    newNode->next = head;
-    head = newNode;
+    // store seen vales
+    unordered_set<int> seen;
+    seen.insert(head->val);
+
+    ListNode *curr = head;
+
+    while(curr->next != nullptr){
+       if(seen.find(curr->next->val) != seen.end()){
+           ListNode *duplicate = curr->next;
+           curr->next = curr->next->next;
+           delete duplicate;
+       }else{
+           seen.insert(curr->next->val);
+           curr = curr->next;
+       }
+    }
+
+    return head;
 }
 
-void print(Node *node) {
-    while (node != nullptr) {
-        if(node->next != nullptr){
-            cout << node->data << "->";
-        }else{
-            cout << node->data;
-        }
+int main(){
+    ListNode *head = nullptr;
+    push(head, 10);
+    push(head, 11);
+    push(head, 12);
+    push(head, 11);
+    push(head, 11);
+    push(head, 12);
+    push(head, 10);
 
-        node = node->next;
-    }
-    cout << endl;
-}
-
-void moveToFront(Node* &head){
-    if (head == nullptr || (head->next == nullptr)){
-        return;
-    }
-
-    Node *secLast = nullptr;
-    Node *last = head;
-
-    while (last->next != nullptr)
-    {
-        secLast = last;
-        last = last->next;
-    }
-
-    secLast->next = nullptr;
-    last->next = head;
-    head = last;
-}
-
-int main() {
-
-    Node *start = nullptr;
-
-    /* The constructed linked list is:
-    1->2->3->4->5 */
-    push(start, 5);
-    push(start, 4);
-    push(start, 3);
-    push(start, 2);
-    push(start, 1);
-
-    cout<<"Linked list before moving last to front\n";
-    print(start);
-
-    moveToFront(start);
-
-    cout<<"\nLinked list after removing last to front\n";
-    print(start);
-
+    printList(head);
+    ListNode* newNode = deleteDuplicates(head);
+    cout<<endl;
+    printList(newNode);
     return 0;
 }

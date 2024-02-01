@@ -1,66 +1,51 @@
 //
-// Created by Akshansh Gusain on 14/10/21.
+// Created by Akshansh Gusain on 17/01/24.
 //
+#include "LL_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-class Node {
-public:
-    int data;
-    Node *next;
-
-    explicit Node(int data) {
-        this->data = data;
-        this->next = nullptr;
+ListNode* reverseInGroup(ListNode* &head, int groupSize){
+    if(head == nullptr){
+        return nullptr;
     }
-};
 
-void push(Node *&head, int value) {
-    Node *newNode = new Node(value);
-    newNode->next = head;
-    head = newNode;
-}
-
-void print(Node *node) {
-    while (node != nullptr) {
-        cout << node->data << "->";
-        node = node->next;
+    // 1. reverse first k nodes
+    ListNode* prev = nullptr;
+    ListNode* curr = head;
+    ListNode* next = nullptr;
+    int count = 0;
+    while(curr != nullptr and count < groupSize){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+        count++;
     }
-    cout << endl;
-}
 
-
-bool detectLoop(Node *head) {
-    Node *slow = head, *fast = head;
-
-    // Either fast pointer catches up to slow pointer OR the fast pointer reaches the end of the list
-    while (slow and fast and fast->next) {
-        fast = fast->next->next;
-        slow = slow->next;
-        if(fast == slow){
-            return true;
-        }
+    // 2. recursively call for rest of the list
+    if(next != nullptr){ // remaining list is not null
+        head->next = reverseInGroup(next, groupSize);
     }
-    return false;
+
+    // prev is the new head of the list
+    return prev;
 }
 
 int main() {
-    Node *head = nullptr;
-
-    push(head, 20);
+    ListNode* head = nullptr;
+    push(head, 9);
+    push(head, 8);
+    push(head, 7);
+    push(head, 6);
+    push(head, 5);
     push(head, 4);
-    push(head, 15);
-    push(head, 10);
+    push(head, 3);
+    push(head, 2);
+    push(head, 1);
+    printList(head);
 
-    /* Create a loop for testing */
-   // head->next->next->next->next = head;
-    if (detectLoop(head))
-        cout << "Loop found";
-    else
-        cout << "No Loop";
+    auto* node2 = reverseInGroup(head, 3);
+    cout<<endl;
 
-    //print(head);
+    printList(node2);
     return 0;
 }

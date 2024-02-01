@@ -1,85 +1,42 @@
 //
-// Created by Akshansh Gusain on 14/10/21.
+// Created by Akshansh Gusain on 17/01/24.
 //
-//https://www.geeksforgeeks.org/find-first-node-of-loop-in-a-linked-list/
-#include<stdc++.h>
-using namespace std;
+#include "LL_000.cpp"
 
-class Node{
-public:
-    int data;
-    Node* next;
-    explicit Node(int data){
-        this->data = data;
-        this->next = nullptr;
-    }
-};
-
-void push(Node* &head, int key)
-{
-    Node* temp = new Node(key);
-    temp->next = head;
-    head = temp;
-}
-
-// A utility function to print a linked list
-void printList(Node* head)
-{
-    while (head != nullptr) {
-        cout << head->data << " ";
-        head = head->next;
-    }
-    cout << endl;
-}
-
-Node* detectStartOfLoop(Node* head){
-    if(head == nullptr or head->next == nullptr){
-        return nullptr;
+bool detectLoop(ListNode *&head) {
+    if (head == nullptr or head->next == nullptr) {
+        return false;
     }
 
-    Node *slow= head, *fast = head;
+    ListNode *slow = head;
+    ListNode *fast = head;
 
-    while( slow and fast and fast->next){
-       slow = slow->next;
-       fast = fast->next->next;
-       if(slow == fast){
-           break;
-       }
-    }
-
-    if (slow != fast)
-        return nullptr;
-
-    // If loop exists. Start slow from
-    // head and fast from meeting point.
-    slow = head;
-
-    while (slow != fast) {
+    while(fast->next != nullptr and fast->next->next != nullptr){
         slow = slow->next;
-        fast = fast->next;
+        fast = fast->next->next;
+
+        if(fast == slow){
+            return true;
+        }
     }
 
-    return slow;
+    return false;
 }
 
+int main() {
+    ListNode *head = nullptr;
 
-int main(){
-
-    Node* head = nullptr;
-    push(head,50);
-    push(head,20);
-    push(head,15);
-    push(head,04);
-    push(head,10);
+    push(head, 20);
+    push(head, 4);
+    push(head, 15);
+    push(head, 10);
 
     /* Create a loop for testing */
-    head->next->next->next->next->next = head->next->next;
+    head->next->next->next->next = head;
 
-    Node* res = detectStartOfLoop(head);
-    if (res == nullptr)
-        cout << "Loop does not exist";
+    if (detectLoop(head))
+        cout << "Loop found";
     else
-        cout << "Loop starting node is " << res->data; //Loop starting node is 15
-
+        cout << "No Loop";
     return 0;
 }

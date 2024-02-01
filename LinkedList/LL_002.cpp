@@ -1,83 +1,48 @@
 //
-// Created by Akshansh Gusain on 28/09/21.
+// Created by Akshansh Gusain on 16/01/24.
 //
-#include<stdc++.h>
+#include "LL_000.cpp"
 
-using namespace std;
-
-class Node {
-public:
-    int data;
-    Node *next;
-
-    Node(int data) {
-        this->data = data;
-        this->next = nullptr;
-    }
-};
-
-void addAtEnd(Node** head, int data) {
-    Node *node = new Node(data);
-    Node *last = *head;
-
-    if (*head == nullptr) {
-        *head = node;
+// delete from a particular position
+void deleteFromPosition(ListNode *&head, int position) {
+    if (head == nullptr) {
         return;
     }
-    while (last->next != nullptr) {
-        last = last->next;
-    }
-    last->next = node;
-}
-
-void printLL(Node *start) {
-    while (start != nullptr) {
-        cout << start->data << " ";
-        start = start->next;
-    }
-    cout << endl;
-}
-
-// Iterative
-void reverseLL(Node** head) {
-    Node *previous, *next, *current;
-    current = *head;
-    previous = next = nullptr;
-
-    while (current != nullptr) {
-        next = current->next;
-        current->next = previous; // reverse the ptr
-        previous = current; // forward prev ptr
-        current = next; // forward curr ptr
+    ListNode *temp = head;
+    if (position == 0) {
+        // head needs to be removed
+        head = head->next;
+        free(temp);
+        return;
     }
 
-    *head = previous;
-}
-
-Node* reverseR(Node* &head){
-
-    if(head == nullptr or head->next == nullptr){
-        return head;
+    // Find previous node of the node to be deleted
+    for (int i = 0; temp != nullptr and i < position - 1; i++) {
+        temp = temp->next;
+    }
+    // If position is more than number of nodes
+    if (temp == nullptr or temp->next == nullptr) {
+        return;
     }
 
-    Node *rest = reverseR(head->next);
-    head->next->next = head;
-    head->next = nullptr;
-    return rest;
+    ListNode *next = temp->next->next;
+    free(temp->next);
+    temp->next = next;
 }
 
 int main() {
-    Node* head = nullptr;
-    addAtEnd(&head, 20);
-    addAtEnd(&head, 30);
-    addAtEnd(&head, 40);
-    addAtEnd(&head, 50);
+    ListNode *head = nullptr;
 
-    printLL(head);
-//    Node *newHead = reverseR(head);
-//    printLL(newHead);
-    reverseLL(&head);
-    printLL(head);
+    push(head, 7);
+    push(head, 1);
+    push(head, 3);
+    push(head, 2);
+    push(head, 8);
 
+    cout << "Created Linked List: ";
+    printList(head);
+    deleteFromPosition(head, 2);
+    cout << "\nLinked List after Deletion at position 2: \n";
+    printList(head);
     return 0;
 }

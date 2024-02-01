@@ -1,98 +1,98 @@
 //
-// Created by Akshansh Gusain on 21/10/21.
+// Created by Akshansh Gusain on 26/01/24.
 //
+#include "LL_000.cpp"
 
-#include<stdc++.h>
+void segregateEvenOdd(ListNode *&head) {
+    ListNode *curr = head, *prev = nullptr, *end = head;
 
-using namespace std;
-
-class Node {
-public:
-    int data;
-    Node *next, *random;
-
-    explicit Node(int key) {
-        data = key;
-        next = nullptr;
-        random = nullptr;
+    // get pointer to the last node
+    while (end->next != nullptr) {
+        end = end->next;
     }
-};
 
-void push(Node *&head, int value) {
-    Node *temp = new Node(value);
-    temp->next = head;
-    head = temp;
-}
+    ListNode *newEnd = end;
 
-void print(Node *node) {
-    while (node != nullptr) {
-        if (node->next != nullptr) {
-            cout << node->data << "->";
-        } else {
-            cout << node->data;
+    // consider all the odd nodes before the first even node
+    // push them at the end of list
+    while (curr->val % 2 != 0 and curr != end) {
+        newEnd->next = curr;
+        curr = curr->next;
+        newEnd->next->next = nullptr;
+        newEnd = newEnd->next;
+    }
+
+    // found an even node
+    if (curr->val % 2 == 0) {
+        /* Change the head pointer to
+       point to first even node */
+        head = curr;
+
+        /* now current points to
+        the first even node */
+        while (curr != end) {
+            if ((curr->val) % 2 == 0) {
+                prev = curr;
+                curr = curr->next;
+            } else {
+                /* break the link between
+                prev and current */
+                prev->next = curr->next;
+
+                /* Make next of curr as NULL */
+                curr->next = nullptr;
+
+                /* Move curr to end */
+                newEnd->next = curr;
+
+                /* make curr as new end of list */
+                newEnd = curr;
+
+                /* Update current pointer to
+                next of the moved node */
+                curr = prev->next;
+            }
         }
-
-        node = node->next;
-    }
-    cout << endl;
-}
-
-void printWRandom(Node *node) {
-    while (node != nullptr) {
-        Node *random = node->random;
-        int randomData = (random != nullptr) ? random->data : -1;
-        cout << "N: " << node->data << ", ";
-        cout << "Random: " << randomData << "\n";
-        node = node->next;
-    }
-    cout << endl;
-}
-
-Node *clone(Node *&head) {
-    Node *originalCurrent = head;
-    Node *cloneCurrent = nullptr;
-
-    unordered_map<Node *, Node *> map;
-
-    while (originalCurrent != nullptr) {
-        cloneCurrent = new Node(originalCurrent->data);
-        map[originalCurrent] = cloneCurrent;
-        originalCurrent = originalCurrent->next;
-    }
-    originalCurrent = head;
-
-    while (originalCurrent != nullptr) {
-        cloneCurrent = map[originalCurrent];
-        cloneCurrent->next = map[originalCurrent->next];
-        cloneCurrent->random = map[originalCurrent->random];
-        originalCurrent = originalCurrent->next;
     }
 
-    return map[head];
+        /* We must have prev set before executing
+       lines following this statement */
+    else prev = curr;
+
+    /* If there are more than 1 odd nodes
+    and end of original list is odd then
+    move this node to end to maintain
+    same order of odd numbers in modified list */
+    if (newEnd != end && (end->val) % 2 != 0) {
+        prev->next = end->next;
+        end->next = nullptr;
+        newEnd->next = end;
+    }
+
+
 }
 
 int main() {
-    Node *head = nullptr;
-    push(head, 5);
-    push(head, 4);
-    push(head, 3);
+    ListNode *head = nullptr;
+
+    /* Let us create a sample linked list as following
+    0->2->4->6->8->10->11 */
+
+    push(head, 11);
     push(head, 2);
-    push(head, 1);
+    push(head, 10);
+    push(head, 6);
+    push(head, 8);
+    push(head, 3);
+    push(head, 0);
 
-    head->random = head->next->next;
-    head->next->random = head->next->next->next;
-    head->next->next->random = head->next->next->next->next;
-    head->next->next->next->random = head->next->next->next->next->next;
-    head->next->next->next->next->random = head->next;
-    cout << "Original linked list\n";
-    print(head);
-    printWRandom(head);
+    cout << "Original Linked list ";
+    printList(head);
 
-    Node *clonedList = clone(head);
-    cout << "Cloned linked list\n";
-    print(clonedList);
-    printWRandom(clonedList);
+    segregateEvenOdd(head);
 
+    cout << "\nModified Linked list ";
+    printList(head);
 
     return 0;
 }

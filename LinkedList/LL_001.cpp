@@ -1,51 +1,57 @@
 //
-// Created by Akshansh Gusain on 23/09/21.
+// Created by Akshansh Gusain on 16/01/24.
 //
-#include<stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-class Node {
-public:
-    int data;
-    Node *next;
+struct ListNode{
+    int val;
+    ListNode *next;
 
-    explicit Node(int data) {
-        this->data = data;
-        this->next = nullptr;
+    ListNode(){
+        val = 0;
+        next = nullptr;
+    }
+    explicit ListNode(int x){
+        val = x;
+        next = nullptr;
+    }
+    ListNode(int x, ListNode* next){
+        val = x;
+        this->next = next;
     }
 };
 
-void addAtEnd(Node* &head, int data) {
-    // Both ways of creating a Node object are fine.
-    Node *myNode = new Node(data);
-    Node *last = head;
+void addAtEnd(ListNode* &head, int data){
+    auto* myNode = new ListNode(data);
+    ListNode* last = head;
 
-    if (head == nullptr) {
+    if(head == nullptr){
         head = myNode;
         return;
     }
-    while (last->next != nullptr) {
+    while(last->next != nullptr){
         last = last->next;
     }
     last->next = myNode;
 }
 
-void addAtStart(Node* &head, int data){
-    Node *myNode = new Node(data);
+void addAtStart(ListNode* &head, int data){
+    auto* myNode = new ListNode(data);
     myNode->next = head;
     head = myNode;
 }
 
-void printLL(Node* head){
+void printLL(ListNode* head){
     while(head != nullptr){
-        cout<<head->data<<" ";
+        cout<<head->val<<" ";
         head = head->next;
     }
     cout<<endl;
 }
 
 int main() {
-    Node *head = nullptr;
+    ListNode* head = nullptr;
     addAtEnd(head, 20);
     addAtEnd(head, 30);
     addAtEnd(head, 50);

@@ -1,67 +1,39 @@
 //
-// Created by Akshansh Gusain on 29/09/21.
+// Created by Akshansh Gusain on 16/01/24.
 //
-#include<stdc++.h>
+#include "LL_000.cpp"
 
-using namespace std;
+ListNode* reverseIter(ListNode* &head){
+    ListNode* prev = nullptr;
+    ListNode* curr = head;
+    ListNode* next = nullptr;
 
-class Node {
-public:
-    int data;
-    Node *next;
-
-    explicit Node(int val) {
-        this->data = val;
-        this->next = nullptr;
+    while(curr != nullptr){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
     }
-};
-
-Node* reverse(Node *head, int k){
-    if(!head){
-        return nullptr;
-    }
-
-    Node* current = head;
-    Node* next = nullptr;
-    Node* prev = nullptr;
-    int count = 0;
-
-    /*reverse first k nodes of the linked list */
-    while(count < k and current != nullptr){
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-        count ++;
-    }
-
-    /* next is now a pointer to (k+1)th node
-    Recursively call for the list starting from current.
-    And make rest of the list as next of first node */
-    if(next!= nullptr){
-        head->next = reverse(next , k); // reverse will return prev
-    }
-
-    /* prev is new head of the input list */
     return prev;
 }
 
-void push(Node* &head_ref, int new_data) {
-    Node *new_node = new Node(new_data);
-    new_node->next = (head_ref);
-    head_ref = new_node;
-}
-
-
-void printList(Node *node) {
-    while (node != nullptr) {
-        cout << node->data << " ";
-        node = node->next;
+ListNode* reverseRecur(ListNode* &head){
+    if(head == nullptr or head->next == nullptr){
+        return head;
     }
+
+    // reverse the remaining list
+    ListNode* restReversed = reverseRecur(head->next);
+
+    // adjust the pointers to reverse the current node
+    head->next->next = head;
+    head->next = nullptr;
+
+    return restReversed;
 }
 
 int main() {
-    Node *head = nullptr;
+    ListNode *head = nullptr;
     push(head, 9);
     push(head, 8);
     push(head, 7);
@@ -74,10 +46,9 @@ int main() {
 
     printList(head);
 
-    Node *node2 = reverse(head, 3);
+    auto *node2 = reverseRecur(head);
     cout<<endl;
 
     printList(node2);
-
     return 0;
 }

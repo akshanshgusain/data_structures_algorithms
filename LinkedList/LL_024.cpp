@@ -1,90 +1,73 @@
 //
-// Created by Akshansh Gusain on 18/10/21.
+// Created by Akshansh Gusain on 25/01/24.
 //
+#include "DLL_000.cpp"
 
-#include<stdc++.h>
+// Given a doubly linked list containing n nodes, where each node is at most k away from its target position in the list.
 
-using namespace std;
-
-struct Node {
-public:
-    char data;
-    struct Node *prev;
-    struct Node *next;
+struct compare {
+    bool operator()(ListNode *a, ListNode *b) {
+        return a->val > b->val;
+    }
 };
 
-void push(Node *&head, int new_data) {
-    Node *newNode = new Node;
-    newNode->data = new_data;
-    newNode->prev = nullptr;
-    newNode->next = head;
-    if (head != nullptr) {
-        head->prev = newNode;
+ListNode* sortKSortedDLL(ListNode* head, int k){
+    if(head == nullptr or head->next == nullptr or k <= 0){
+        return head;
+    }
+    priority_queue<ListNode*, vector<ListNode*>, compare> minHeap;
+    ListNode *sorted = nullptr, *last = nullptr;
+
+    //create min heap of the first k+1 elements
+    for(int i= 0; head != nullptr && i<= k; i++){
+        minHeap.push(head);
+        head = head->next;
     }
 
-    head = newNode;
+    while(!minHeap.empty()){
+        if(sorted == nullptr){
+            sorted = minHeap.top();
+            sorted->prev = nullptr;
+            last = sorted;
+        }else{
+            last->next = minHeap.top();
+            minHeap.top()->prev = last;
+            last = minHeap.top();
+        }
+        minHeap.pop();
+
+        // if there are more nodes left in the input list
+        if(head != nullptr){
+            minHeap.push(head);
+            head = head->next;
+        }
+    }
+
+    last->next = nullptr;
+    return sorted;
 }
 
-/* Function to print linked list */
-void printList(Node *node) {
-    while (node->next != nullptr) {
-        cout << node->data << " "
-             << "<=>"
-             << " ";
-        node = node->next;
-    }
-    cout << node->data;
-}
+int main(){
+    ListNode *head = nullptr;
 
-void rotate(Node *&head, int n) {
-    if (n == 0) {
-        return;
-    }
-    Node *current = head;
+    // Create the doubly linked list:
+    // 3<->6<->2<->12<->56<->8
+    push(head, 8);
+    push(head, 56);
+    push(head, 12);
+    push(head, 2);
+    push(head, 6);
+    push(head, 3);
 
-    int count = 1;
-    while (count < n && current != nullptr) {
-        current = current->next;
-        count++;
-    }
-    if (current == nullptr) {
-        return;
-    }
-    struct Node *nthNode = current;
-    while (current->next != nullptr) {
-        current = current->next;
-    }
+    int k = 2;
 
-    current->next = head;
-    head->prev = current;
-    head = nthNode->next;
-    head->prev = nullptr;
-    nthNode->next = nullptr;
-
-}
-
-int main() {
-    /* Start with the empty list */
-    struct Node *head = nullptr;
-
-    /* Let us create the doubly
-      linked list a<->b<->c<->d<->e */
-    push(head, 'e');
-    push(head, 'd');
-    push(head, 'c');
-    push(head, 'b');
-    push(head, 'a');
-
-    int N = 2;
-
-    cout << "Given linked list \n";
-    printList(head);
-    rotate(head, N);
-
-    cout << "\nRotated Linked list \n";
+    cout << "Original Doubly linked list:\n";
     printList(head);
 
+    head = sortKSortedDLL(head, k);
+
+    cout << "\nDoubly linked list after sorting:\n";
+    printList(head);
+    // 2<->3<->6<->8<->12<->56
     return 0;
 }
-
-

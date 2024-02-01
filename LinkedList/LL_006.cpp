@@ -1,65 +1,58 @@
 //
-// Created by Akshansh Gusain on 14/10/21.
+// Created by Akshansh Gusain on 17/01/24.
 //
-#include<stdc++.h>
-using namespace std;
+#include "LL_000.cpp"
 
 
-class Node{
-public:
-    int data;
-    Node* next;
-    explicit Node(int data){
-        this->data = data;
-        next = nullptr;
+ListNode *detectStartOfLoop(ListNode *&head) {
+    // detect loop
+    if (head == nullptr or head->next == nullptr) {
+        return nullptr;
     }
-};
+    ListNode *slow = head, *fast = head;
 
+    while (fast->next != nullptr and fast->next->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
 
-void push(Node* &head, int val){
-    Node* temp = new Node(val);
-    temp->next = head;
-    head = temp;
-}
-
-void print(Node* node){
-    while(node != nullptr){
-        cout<<node->data<<" ->";
-        node = node->next;
-    }
-    cout<<endl;
-}
-
-Node* deleteDuplicates(Node* head){
-    if (head == nullptr || head->next == nullptr){
-        return head;
-    }
-    Node *currentHead = head;
-
-    while(currentHead->next != nullptr){
-        if(currentHead->data == currentHead->next->data){
-            currentHead->next = currentHead->next->next;
-        }else{
-            currentHead = currentHead->next;
+        if (fast == slow) {
+            break;
         }
     }
-    return head;
+    // if there is no loop
+    if(fast->next == nullptr or fast->next->next == nullptr){
+        return nullptr;
+    }
+
+    // 2. If loop exist,
+    // start slow from head and fast from meeting point
+    slow = head;
+
+    while (slow != fast) {
+        slow = slow->next;
+        fast = fast->next;
+    }
+
+    return slow;
 }
 
-int main(){
-    Node *head = nullptr;
-    push(head, 5);
-    push(head, 5);
-    push(head, 4);
-    push(head, 3);
-    push(head, 3);
-    push(head, 2);
-    push(head, 1);
 
-    print(head);
+int main() {
+    ListNode *head = nullptr;
+    push(head, 50);
+    push(head, 20);
+    push(head, 15);
+    push(head, 04);
+    push(head, 10);
 
-    Node* newNode = deleteDuplicates(head);
-    print(newNode);
+    /* Create a loop for testing */
+    head->next->next->next->next->next = head->next->next;
 
+    ListNode *res = detectStartOfLoop(head);
+    if (res == nullptr)
+        cout << "Loop does not exist";
+    else
+        cout << "Loop starting node is " << res->val;
     return 0;
 }
+

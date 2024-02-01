@@ -1,113 +1,106 @@
 //
-// Created by Akshansh Gusain on 18/10/21.
+// Created by Akshansh Gusain on 24/01/24.
 //
 
-#include<stdc++.h>
+#include<bits/stdc++.h>
+
 using namespace std;
 
-class Node {
-public:
-    int data;
-    Node *next;
+struct ListNode {
+    char val;
+    ListNode *next;
+
+    ListNode() {
+        val = 0;
+        next = nullptr;
+    }
+
+    explicit ListNode(char x) {
+        val = x;
+        next = nullptr;
+    }
+
+    ListNode(char x, ListNode *next) {
+        val = x;
+        this->next = next;
+    }
 };
 
-void push(Node *&head_ref, int data) {
-    // Create a new node and make head as next
-    // of it.
-    Node *ptr1 = new Node();
-    ptr1->data = data;
-    ptr1->next = head_ref;
-
-    /* If linked list is not NULL then set the
-    next of last node */
-    if (head_ref != nullptr) {
-        // Find the node before head and update
-        // next of it.
-        Node *temp = head_ref;
-        while (temp->next != head_ref)
-            temp = temp->next;
-        temp->next = ptr1;
-    } else
-        ptr1->next = ptr1; /*For the first node */
-
-    head_ref = ptr1;
+void push(ListNode *&head, char data) {
+    auto *newNode = new ListNode();
+    newNode->val = data;
+    newNode->next = head;
+    head = newNode;
 }
 
-/* Function to print nodes in a given
-circular linked list */
-void printList(Node *head) {
-    Node *temp = head;
-    if (head != nullptr) {
-        do {
-            cout << temp->data << " ";
-            temp = temp->next;
-        } while (temp != head);
+void printList(ListNode *head) {
+    while (head != nullptr) {
+        cout << head->val << " ";
+        head = head->next;
     }
-
-    cout << endl;
 }
 
-void deleteNode(Node* &head, int key) {
-
-    // If linked list is empty
-    if (head == nullptr)
-        return;
-
-    // If the list contains only a single node
-    if (head->data == key && head->next == head) {
-        head = nullptr;
-        return;
+ListNode *reverseList(ListNode* &head){
+    if(head == nullptr or head->next == nullptr){
+        return head;
     }
 
-    Node *last = head, *d;
+    ListNode *prev = nullptr, *curr = head, *next = nullptr;
 
-    // If head is to be deleted
-    if (head->data == key) {
+    while(curr != nullptr){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}
 
-        // Find the last node of the list
-        while (last->next != head)
-            last = last->next;
-
-        // Point last node to the next of head i.e.
-        // the second node of the list
-        last->next = head->next;
-        head = last->next;
+// 1. Find the middle of the linked list using Floyd's Tortoise and Hare algorithm.
+// 2. Reverse the second half of the linked list.
+// 3. Compare the first half and the reversed second half to check for symmetry.
+bool isPalindrome(ListNode *&head) {
+    if (head == nullptr or head->next == nullptr) {
+        return true;
     }
 
-    // Either the node to be deleted is not found
-    // or the end of list is not reached
-    while (last->next != head && last->next->data != key) {
-        last = last->next;
+    // find the middle of the list
+    ListNode *slow = head, *fast = head->next;
+    while (fast != nullptr and fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
     }
 
-    // If node to be deleted was found
-    if (last->next->data == key) {
-        d = last->next;
-        last->next = d->next;
-        free(d);
-    } else
-        cout << "no such keyfound";
+    // reverse the second half
+    ListNode *secondHalf = reverseList(slow);
+
+
+    // compare the first and the reversed second half
+    ListNode *firstHalf = head;
+
+    while(secondHalf != nullptr){
+        if(firstHalf->val != secondHalf->val){
+            return false;
+        }
+        firstHalf = firstHalf->next;
+        secondHalf = secondHalf->next;
+    }
+    return true;
 }
 
 
 int main() {
+    string ip = "abacaba";
 
-    Node *head = nullptr;
+    ListNode *head = nullptr;
 
-    /* Created linked list will be 2->5->7->8->10 */
-    push(head, 2);
-    push(head, 5);
-    push(head, 7);
-    push(head, 8);
-    push(head, 10);
+    for (char i: ip) {
+        push(head, i);
+    }
 
-    cout << "List Before Deletion: ";
     printList(head);
-
-    deleteNode(head, 7);
-
-    cout << "List After Deletion: ";
-    printList(head);
+    isPalindrome(head) ? cout << "Palindrome" : cout << "Not a Palindrome";
+    cout << endl;
 
 
     return 0;

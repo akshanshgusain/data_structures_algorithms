@@ -1,110 +1,66 @@
 //
-// Created by Akshansh Gusain on 15/10/21.
+// Created by Akshansh Gusain on 17/01/24.
 //
+#include "LL_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-class Node {
-public:
-    int data;
-    Node *next;
-
-    explicit Node(int data) {
-        this->data = data;
-        next = nullptr;
+ListNode *reverse(ListNode *&head) {
+    if (head == nullptr or head->next == nullptr) {
+        return head;
     }
-};
-
-void push(Node *&head, int val) {
-    Node *temp = new Node(val);
-    temp->next = head;
-    head = temp;
-}
-
-void revreseLL(Node* &head) {
-    Node *previous, *next, *current;
-    current = head;
-    previous = next = nullptr;
-
-    while (current != nullptr) {
-        next = current->next;
-        current->next = previous;
-        previous = current;
-        current = next;
+    ListNode *prev = nullptr, *curr = head, *next = nullptr;
+    while (curr != nullptr) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
     }
 
-    head = previous;
+    return prev;
 }
 
-void print(Node *node) {
-    while (node != nullptr) {
-        cout << node->data;
-        if (node->next != nullptr) {
-            cout << "->";
-        }
-        node = node->next;
-    }
-    cout << endl;
-}
+ListNode *addOne(ListNode *&head) {
+    // 1. reverse the number
+    head = reverse(head);
 
-Node *addTwoNumbers(Node* &num1, Node* &num2) {
-    Node *result = nullptr;
-    Node *temp = nullptr, *prev = nullptr;
-    int carry = 0, sum = 0;
-    while (num1 != nullptr or num2 != nullptr) {
-        sum = carry + (num1?num1->data : 0) + (num2 ? num2->data : 0);
-        carry = (sum >= 10) ? 1 : 0;
+    // 2. Add one to the list
+    ListNode *curr = head;
+    ListNode *prev;
+    int carry = 1, sum = 0;
+
+    while (curr != nullptr) {
+        sum = carry + curr->val;
+        carry = sum >= 10 ? 1 : 0;
         sum = sum % 10;
-
-        temp = new Node(sum);
-
-        if(result == nullptr){
-            result = temp;
-        }else{
-            prev->next = temp;
-        }
-
-        prev = temp;
-
-        if(num1){
-            num1 = num1->next;
-        }
-        if(num2){
-            num2 = num2->next;
-        }
+        curr->val = sum;
+        // Move head and second pointers to next nodes
+        prev = curr;
+        curr = curr->next;
     }
-    if(carry>0){
-        temp->next = new Node(carry);
+
+    // if some carry is still there, add a new node to
+    // result list.
+    if (carry > 0){
+        prev->next = new ListNode(carry);
     }
-    return result;
+
+    // 3. reverse the resultant
+    return reverse(head);
 }
 
 int main() {
-    Node *first = nullptr, *second = nullptr;
+    ListNode *head = nullptr;
 
-    // create first list 7->5->9->4->6
-    // first number 64957
-    push(first, 6);
-    push(first, 4);
-    push(first, 9);
-    push(first, 5);
-    push(first, 7);
+    push(head, 9);
+    push(head, 9);
+    push(head, 9);
+    push(head, 9);
 
-    printf("First List is ");
-    print(first);
+    cout << "Original list is : ";
+    printList(head);
 
-    // create second list 8->4
-    // second number 48
-    push(second, 8);
-    push(second, 4);
-    cout << "Second List is ";
-    print(second);
+    head = addOne(head);
 
-    Node *resultant = addTwoNumbers(first, second);
-    cout << "Resultant List: " << endl;
-    print(resultant);
-
+    cout << "Resultant list is : ";
+    printList(head);
     return 0;
 }
