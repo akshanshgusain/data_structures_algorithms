@@ -1,7 +1,6 @@
 0-1 KNAPSACK - 09Q
 
-03. 0-1 Knapsack.(Memoization)
-04. 0-1 Knapsack.(Top-Down)
+03. 0-1 Knapsack.(Memoization, Top Down)
 05. Subset sum.
 06. Equal sum partition.
 07. Count of subset sum with a given sum.(Memoization)
