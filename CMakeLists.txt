@@ -4,5 +4,5 @@ project(Final500DSA)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Final500DS
-        DynamicProgramming/DP_003.cpp
+        BinaryTree/new/BT_010.cpp
 )
