@@ -8,14 +8,17 @@
 08. Vertical Traversal.
 09. Zig-Zag Traversal of a BTree.   ---(Technique: Alternate BFS)<T>
 10. Moris Traversal(InOrder). Space:  O(1)
-11. Mirror of a BTree.
-12. Left View of a BTree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
-13. Right View of a BTree.
-14. Top View of a BTree.<T>
-15. Bottom View of a BTree.
-16. Check if the binary tree is balanced or not (height-balancing).<T>
-17. Boundary traversal of a BTree.
-18. Diagonal Traversal of a BTree.  ---(Technique: Calculate Diagonal Distance(DD); DD remains the same when going right but, increments by one when going left)
+11. Boundary traversal of a BTree.
+12. Diagonal Traversal of a BTree.  ---(Technique: Calculate Diagonal Distance(DD); DD remains the same when going right but, increments by one when going left)
+
+13. Mirror of a BTree.
+14. Left View of a BTree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
+15. Right View of a BTree.
+16. Top View of a BTree.<T>
+17. Bottom View of a BTree.
+
+18. Check if the binary tree is balanced or not (height-balancing).<T>
+
 
 Re - Construction
 
