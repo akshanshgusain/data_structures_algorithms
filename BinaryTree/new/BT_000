@@ -6,9 +6,12 @@
 06. Pre-Order Traversal - Recursive.
 07. Post-Order Traversal - Recursive.
 08. Vertical Traversal.
+https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
 09. Zig-Zag Traversal of a BTree.   ---(Technique: Alternate BFS)<T>
+https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
 10. Moris Traversal(InOrder). Space:  O(1)
 11. Boundary traversal of a BTree.
+https://leetcode.com/problems/boundary-of-binary-tree/
 12. Diagonal Traversal of a BTree.  ---(Technique: Calculate Diagonal Distance(DD); DD remains the same when going right but, increments by one when going left)
 
 13. Mirror of a BTree.
