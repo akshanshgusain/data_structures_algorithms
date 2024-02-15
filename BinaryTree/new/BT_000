@@ -16,31 +16,31 @@ https://leetcode.com/problems/boundary-of-binary-tree/
 
 13. Mirror of a Binary Tree/ Invert a Binary Tree
 https://leetcode.com/problems/invert-binary-tree/
-14. Left View of a BTree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
-15. Right View of a BTree.
-16. Top View of a BTree.<T>
-17. Bottom View of a BTree.
+14. Left and Right View of a Binary Tree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
+https://leetcode.com/problems/binary-tree-right-side-view/
+15. Top View of a BTree.<T>
+16. Bottom View of a BTree.
 
-18. Check if the binary tree is balanced or not (height-balancing).<T>
+17. Check if the binary tree is balanced or not (height-balancing).<T>
 
 
 Re - Construction
 
-19. Construct Binary Tree from String with bracket representation.
-20. Convert a Tree to sum tree.
-21. Flatten the B Tree. (Convert BT to DLL).<T>
-22. Construct a Binary Tree from InOrder and PreOrder Traversal. <T>
+18. Construct Binary Tree from String with bracket representation.
+19. Convert a Tree to sum tree.
+20. Flatten the B Tree. (Convert BT to DLL).<T>
+21. Construct a Binary Tree from InOrder and PreOrder Traversal. <T>
 
 Re-Configuration
 
-23. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
-24. Check if Binary tree is Sum tree or not.
-25. Check if all leaf nodes are at the same level.
-26. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
-27. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
-28. Check if two BTrees are mirror of each other. ---(Technique: Their root node’s key must be same, Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror,
+22. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
+23. Check if Binary tree is Sum tree or not.
+24. Check if all leaf nodes are at the same level.
+25. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
+26. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
+27. Check if two BTrees are mirror of each other. ---(Technique: Their root node’s key must be same, Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror,
 Right subtree of ‘a’ and left subtree of ‘b’ are mirror.).
-29. Sum of nodes on the longest path from root to leaf node.
+28. Sum of nodes on the longest path from root to leaf node.
 
 Implementation
 
