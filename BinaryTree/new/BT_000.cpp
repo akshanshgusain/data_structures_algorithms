@@ -27,3 +27,17 @@ struct TreeNode {
         this->right = right;
     }
 };
+
+void printInorder(TreeNode *node) {
+    if (node == nullptr) {
+        return;
+    }
+
+    if (node->left != nullptr) {
+        printInorder(node->left);
+    }
+    cout << node->val << " ";
+    if (node->right != nullptr) {
+        printInorder(node->right);
+    }
+}
