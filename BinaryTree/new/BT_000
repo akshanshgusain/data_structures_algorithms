@@ -14,13 +14,13 @@ https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
 https://leetcode.com/problems/boundary-of-binary-tree/
 12. Diagonal Traversal of a BTree.  ---(Technique: Calculate Diagonal Distance(DD); DD remains the same when going right but, increments by one when going left)
 
+Views of a Binary Tree
 13. Mirror of a Binary Tree/ Invert a Binary Tree
 https://leetcode.com/problems/invert-binary-tree/
 14. Left and Right View of a Binary Tree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
 https://leetcode.com/problems/binary-tree-right-side-view/
 15. Bottom View of a Binary Tree.
 16. Top View of a Binary Tree.
-
 17. Check if the binary tree is balanced or not (height-balancing).<T>
 
 

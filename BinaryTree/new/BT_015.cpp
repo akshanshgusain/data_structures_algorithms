@@ -3,7 +3,7 @@
 //
 #include "BT_000.cpp"
 
-vector<int> topView(TreeNode *root) {
+vector<int> bottomView(TreeNode *root) {
     vector<int> result;
     if (root == nullptr) {
         return result;
@@ -17,9 +17,8 @@ vector<int> topView(TreeNode *root) {
         auto currentNode = nodeQueue.front().first;
         int currentHD = nodeQueue.front().second;
         nodeQueue.pop();
-        if(map.find(currentHD) == map.end()){
-            map[currentHD] = currentNode->val;
-        }
+        map[currentHD] = currentNode->val;
+
         if (currentNode->left != nullptr) {
             nodeQueue.emplace(currentNode->left, currentHD - 1);
         }
@@ -53,7 +52,7 @@ int main() {
     root->right->right = new TreeNode(7);
     root->right->left = new TreeNode(6);
 
-    vector<int> traversal = topView(root);
+    vector<int> traversal = bottomView(root);
 
     for (auto it: traversal) {
         cout << it << " ";
