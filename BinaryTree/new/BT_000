@@ -31,6 +31,7 @@ https://leetcode.com/problems/construct-binary-tree-from-string
 19. Check if Binary tree is Sum tree or not.
 20. Convert a Tree to sum tree.
 21. Flatten the B Tree. (Convert BT to DLL).<T>
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 22. Construct a Binary Tree from InOrder and PreOrder Traversal. <T>
 
 Re-Configuration
