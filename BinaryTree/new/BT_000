@@ -22,19 +22,20 @@ https://leetcode.com/problems/binary-tree-right-side-view/
 15. Bottom View of a Binary Tree.
 16. Top View of a Binary Tree.
 17. Check if the binary tree is balanced or not (height-balancing).<T>
-
+https://leetcode.com/problems/balanced-binary-tree/
 
 Re - Construction
 
 18. Construct Binary Tree from String with bracket representation.
-19. Convert a Tree to sum tree.
-20. Flatten the B Tree. (Convert BT to DLL).<T>
-21. Construct a Binary Tree from InOrder and PreOrder Traversal. <T>
+https://leetcode.com/problems/construct-binary-tree-from-string
+19. Check if Binary tree is Sum tree or not.
+20. Convert a Tree to sum tree.
+21. Flatten the B Tree. (Convert BT to DLL).<T>
+22. Construct a Binary Tree from InOrder and PreOrder Traversal. <T>
 
 Re-Configuration
 
-22. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
-23. Check if Binary tree is Sum tree or not.
+23. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
 24. Check if all leaf nodes are at the same level.
 25. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
 26. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).

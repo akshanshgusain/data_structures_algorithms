@@ -41,3 +41,17 @@ void printInorder(TreeNode *node) {
         printInorder(node->right);
     }
 }
+
+void printPreorder(TreeNode *root) {
+    if (root == nullptr) {
+        return;
+    }
+    cout << root->val << " ";
+    if (root->left != nullptr) {
+        printPreorder(root->left);
+    }
+
+    if (root->right != nullptr) {
+        printPreorder(root->right);
+    }
+}
