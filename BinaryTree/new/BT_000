@@ -33,36 +33,37 @@ https://leetcode.com/problems/construct-binary-tree-from-string
 21. Flatten the B Tree. (Convert BT to DLL).<T>
 https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 22. Construct a Binary Tree from InOrder and PreOrder Traversal. <T>
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
-Re-Configuration
+Common Ancestors:
 
-23. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
-24. Check if all leaf nodes are at the same level.
-25. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
-26. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
-27. Check if two BTrees are mirror of each other. ---(Technique: Their root node’s key must be same, Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror,
-Right subtree of ‘a’ and left subtree of ‘b’ are mirror.).
-28. Sum of nodes on the longest path from root to leaf node.
+23. Find the Lowest Common Ancestor in a BTree.
+24. Find distance between two nodes of a Binary Tree.<T> ---(Technique: Find the LCA and distance).
+25. Kth ancestor of a node in binary tree.
+26. Find all duplicates in a binary tree. ---(Technique: do InOrder Traversal and store visited trees in hashMap)
+27. Check if the two trees are Isomorphic.
+
 
 Implementation
 
-30. Check if the a given graph(undirected) is a tree or not. ---(Technique: 1) There is no cycle. 2) The graph is connected.)
-31. Find Largest subtree sum in a binary tree.
-32. Maximum sum of nodes in Binary tree such that no two are adjacent.  ---(Technique: (Memoization) We can solve this
+28. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
+29. Check if all leaf nodes are at the same level.
+30. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
+31. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
+32. Check if two BTrees are mirror of each other. ---(Technique: Their root node’s key must be same, Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror,
+Right subtree of ‘a’ and left subtree of ‘b’ are mirror.).
+33. Sum of nodes on the longest path from root to leaf node.
+34. Check if the a given graph(undirected) is a tree or not. ---(Technique: 1) There is no cycle. 2) The graph is connected.)
+35. Find Largest subtree sum in a binary tree.
+36. Maximum sum of nodes in Binary tree such that no two are adjacent.  ---(Technique: (Memoization) We can solve this
     problem by considering the fact that both node and its children can’t be in sum at the same time, so when we take a
     node into our sum we will call recursively for its grandchildren or if we don’t take this node then we will call for
     all its children nodes and finally we will choose maximum from both of the results. )
 
-33. Print all k-sum paths in a binary tree. ---(Technique: preorder traversal and keep track of path)
-34. Print all the paths from root, with a specified sum in Binary tree.  ---(Technique: preorder traversal and keep track of path)
+35. Print all k-sum paths in a binary tree. ---(Technique: preorder traversal and keep track of path)
+36. Print all the paths from root, with a specified sum in Binary tree.  ---(Technique: preorder traversal and keep track of path)
 
-Common Ancestors:
 
-35. Find the Lowest Common Ancestor in a BTree.
-36. Find distance between two nodes of a Binary Tree.<T> ---(Technique: Find the LCA and distance).
-37. Kth ancestor of a node in binary tree.
-38. Find all duplicates in a binary tree. ---(Technique: do InOrder Traversal and store visited trees in hashMap)
-39. Check if the two trees are Isomorphic.
 
 
 

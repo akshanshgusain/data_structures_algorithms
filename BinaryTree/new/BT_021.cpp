@@ -10,6 +10,7 @@ void printList(TreeNode *node) {
     }
 }
 
+// Morris traversal
 void flatten(TreeNode *root) {
     auto current = root;
     while(current != nullptr){
