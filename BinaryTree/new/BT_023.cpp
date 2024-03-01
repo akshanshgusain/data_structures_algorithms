@@ -3,6 +3,7 @@
 //
 #include "BT_000.cpp"
 
+// time: O(N) and space: O(N)
 TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
     //base case
     if (root == nullptr or root == p or root == q) {

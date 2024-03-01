@@ -41,9 +41,11 @@ Common Ancestors:
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 24. Find distance between two nodes of a Binary Tree.---(Technique: Find the LCA and distance).
 https://leetcode.com/problems/find-distance-in-a-binary-tree/
-25. Kth ancestor of a node in binary tree.
-26. Find all duplicates in a binary tree. ---(Technique: do InOrder Traversal and store visited trees in hashMap)
-27. Check if the two trees are Isomorphic.
+25. LCA with Binary Lifting.
+26. Kth ancestor of a node in binary tree.
+https://leetcode.com/problems/kth-ancestor-of-a-tree-node/
+27. Find all duplicates in a binary tree. ---(Technique: do InOrder Traversal and store visited trees in hashMap)
+28. Check if the two trees are Isomorphic.
 
 
 Implementation
