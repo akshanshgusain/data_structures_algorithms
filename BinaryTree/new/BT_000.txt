@@ -9,56 +9,64 @@
 https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
 09. Zig-Zag Traversal of a BTree.   ---(Technique: Alternate BFS)<T>
 https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
-10. Moris Traversal(InOrder). O(1)
-11. Mirror of a BTree.
-12. Left View of a BTree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
-13. Right View of a BTree.
-14. Top View of a BTree.<T>
-15. Bottom View of a BTree.
-16. Check if the binary tree is balanced or not (height-balancing).<T>
-17. Boundary traversal of a BTree.
+10. Moris Traversal(InOrder). Space:  O(1)
+11. Boundary traversal of a BTree.
 https://leetcode.com/problems/boundary-of-binary-tree/
-18. Diagonal Traversal of a BTree.  ---(Technique: Calculate Diagonal Distance(DD); DD remains the same when going right but, increments by one when going left)
+12. Diagonal Traversal of a BTree.  ---(Technique: Calculate Diagonal Distance(DD); DD remains the same when going right but, increments by one when going left)
+
+Views of a Binary Tree
+
+13. Mirror of a Binary Tree/ Invert a Binary Tree
+https://leetcode.com/problems/invert-binary-tree/
+14. Left and Right View of a Binary Tree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
+https://leetcode.com/problems/binary-tree-right-side-view/
+15. Bottom View of a Binary Tree.
+16. Top View of a Binary Tree.
+17. Check if the binary tree is balanced or not (height-balancing).<T>
+https://leetcode.com/problems/balanced-binary-tree/
 
 Re - Construction
 
-19. Construct Binary Tree from String with bracket representation.
+18. Construct Binary Tree from String with bracket representation.
+https://leetcode.com/problems/construct-binary-tree-from-string
+19. Check if Binary tree is Sum tree or not.
 20. Convert a Tree to sum tree.
 21. Flatten the B Tree. (Convert BT to DLL).<T>
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 22. Construct a Binary Tree from InOrder and PreOrder Traversal. <T>
-
-Re-Configuration
-
-23. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
-24. Check if Binary tree is Sum tree or not.
-25. Check if all leaf nodes are at the same level.
-26. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
-27. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
-28. Check if two BTrees are mirror of each other. ---(Technique: Their root node’s key must be same, Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror,
-Right subtree of ‘a’ and left subtree of ‘b’ are mirror.).
-29. Sum of nodes on the longest path from root to leaf node.
-
-Implementation
-
-30. Check if the a given graph(undirected) is a tree or not. ---(Technique: 1) There is no cycle. 2) The graph is connected.)
-31. Find Largest subtree sum in a binary tree.
-32. Maximum sum of nodes in Binary tree such that no two are adjacent.  ---(Technique: (Memoization) We can solve this
-    problem by considering the fact that both node and its children can’t be in sum at the same time, so when we take a
-    node into our sum we will call recursively for its grandchildren or if we don’t take this node then we will call for
-    all its children nodes and finally we will choose maximum from both of the results. )
-
-33. Print all k-sum paths in a binary tree. ---(Technique: preorder traversal and keep track of path)
-34. Print all the paths from root, with a specified sum in Binary tree.  ---(Technique: preorder traversal and keep track of path)
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
 Common Ancestors:
 
-35. Find the Lowest Common Ancestor in a BTree.
-36. Find distance between two nodes of a Binary Tree.<T> ---(Technique: Find the LCA and distance).
-37. Kth ancestor of a node in binary tree.
-38. Find all duplicates in a binary tree. ---(Technique: do InOrder Traversal and store visited trees in hashMap)
-39. Check if the two trees are Isomorphic.
+23. Find the Lowest Common Ancestor in a BTree.
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+24. Find distance between two nodes of a Binary Tree.---(Technique: Find the LCA and distance).
+https://leetcode.com/problems/find-distance-in-a-binary-tree/
+25. LCA with Binary Lifting.
+26. Kth ancestor of a node in binary tree.
+https://leetcode.com/problems/kth-ancestor-of-a-tree-node/
 
+Implementation
 
+27. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
+28. Check if all leaf nodes are at the same level.
+29. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
+30. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
+31. Check if two BTrees are mirror of each other. ---(Technique: Their root node’s key must be same, Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror,
+Right subtree of ‘a’ and left subtree of ‘b’ are mirror.).
+32. Sum of nodes on the longest path from root to leaf node.
+33. Check if the a given graph(undirected) is a tree or not. ---(Technique: 1) There is no cycle. 2) The graph is connected.)
+34. Find Largest subtree sum in a binary tree.
+35. Maximum sum of nodes in Binary tree such that no two are adjacent.  ---(Technique: (Memoization) We can solve this
+    problem by considering the fact that both node and its children can’t be in sum at the same time, so when we take a
+    node into our sum we will call recursively for its grandchildren or if we don’t take this node then we will call for
+    all its children nodes and finally we will choose maximum from both of the results. )
+36. Print all k-sum paths in a binary tree. ---(Technique: preorder traversal and keep track of path)
+37. Print all the paths from root, with a specified sum in Binary tree.  ---(Technique: preorder traversal and keep track of path)
+38. Find bottom left tree value. (By doing this level-order traversal, the last node visited will be the leftmost node at the bottom level of the tree.)
+https://leetcode.com/problems/find-bottom-left-tree-value/
+39. Find all duplicates in a binary tree. ---(Technique: do InOrder Traversal and store visited trees in hashMap)
+40. Check if the two trees are Isomorphic.
 
 
 
