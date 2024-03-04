@@ -50,7 +50,8 @@ Implementation
 
 27. Find the minimum # of swaps required to convert a BTree to BST.   ---(Technique: inorder traversal of Binary Search Tree is in increasing order of their value.)
 28. Check if all leaf nodes are at the same level.
-29. Check if a binary tree is subtree of another binary tree. ---(Technique: The idea is based on the fact that inorder and preorder/postorder uniquely identify a binary tree).
+29. Check if a binary tree is subtree of another binary tree
+https://leetcode.com/problems/subtree-of-another-tree/
 30. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
 31. Check if two BTrees are mirror of each other. ---(Technique: Their root node’s key must be same, Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror,
 Right subtree of ‘a’ and left subtree of ‘b’ are mirror.).

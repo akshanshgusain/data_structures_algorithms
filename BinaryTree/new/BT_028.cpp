@@ -52,5 +52,10 @@ int main() {
         cout << "Leaves are not at same level\n";
     }
 
+    if(){
+        checkLeafNodes(root){
+
+        }
+    }
     return 0;
 }
