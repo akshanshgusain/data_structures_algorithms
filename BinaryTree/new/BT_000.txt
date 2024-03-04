@@ -18,6 +18,7 @@ Views of a Binary Tree
 
 13. Mirror of a Binary Tree/ Invert a Binary Tree
 https://leetcode.com/problems/invert-binary-tree/
+31. Check if two BTrees are mirror of each other.
 14. Left and Right View of a Binary Tree.  ---(technique: Track MAX_LEVEL and CURR_LEVEL)
 https://leetcode.com/problems/binary-tree-right-side-view/
 15. Bottom View of a Binary Tree.
@@ -54,7 +55,6 @@ Implementation
 https://leetcode.com/problems/subtree-of-another-tree/
 30. Check if a Binary Tree contains duplicate subtrees of size 2 or more.
 https://leetcode.com/problems/find-duplicate-subtrees/
-31. Check if two BTrees are mirror of each other.
 32. Sum of nodes on the longest path from root to leaf node.
 33. Check if the a given graph(undirected) is a tree or not. ---(Technique: 1) There is no cycle. 2) The graph is connected.)
 34. Find Largest subtree sum in a binary tree.
