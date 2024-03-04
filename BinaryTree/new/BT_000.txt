@@ -52,9 +52,9 @@ Implementation
 28. Check if all leaf nodes are at the same level.
 29. Check if a binary tree is subtree of another binary tree
 https://leetcode.com/problems/subtree-of-another-tree/
-30. Check if a Binary Tree contains duplicate subtrees of size 2 or more. ---(Technique: Serialization and hashing).
-31. Check if two BTrees are mirror of each other. ---(Technique: Their root node’s key must be same, Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror,
-Right subtree of ‘a’ and left subtree of ‘b’ are mirror.).
+30. Check if a Binary Tree contains duplicate subtrees of size 2 or more.
+https://leetcode.com/problems/find-duplicate-subtrees/
+31. Check if two BTrees are mirror of each other.
 32. Sum of nodes on the longest path from root to leaf node.
 33. Check if the a given graph(undirected) is a tree or not. ---(Technique: 1) There is no cycle. 2) The graph is connected.)
 34. Find Largest subtree sum in a binary tree.

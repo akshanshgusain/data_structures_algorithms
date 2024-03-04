@@ -3,7 +3,7 @@
 //
 #include "BT_000.cpp"
 
-int dfs(TreeNode *root) {
+int findDuplicates(TreeNode *root) {
     if (root == nullptr) {
         return 0;
     }
