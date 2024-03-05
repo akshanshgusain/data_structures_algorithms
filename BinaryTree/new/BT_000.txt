@@ -68,8 +68,7 @@ https://leetcode.com/problems/path-sum-iii/
 
 38. Find bottom left tree value. (By doing this level-order traversal, the last node visited will be the leftmost node at the bottom level of the tree.)
 https://leetcode.com/problems/find-bottom-left-tree-value/
-39. Find all duplicates in a binary tree. ---(Technique: do InOrder Traversal and store visited trees in hashMap)
-40. Check if the two trees are Isomorphic.
+39. Check if the two trees are Isomorphic.
 
 
 
