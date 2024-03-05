@@ -56,14 +56,16 @@ https://leetcode.com/problems/subtree-of-another-tree/
 30. Check if a Binary Tree contains duplicate subtrees of size 2 or more.
 https://leetcode.com/problems/find-duplicate-subtrees/
 32. Sum of nodes on the longest path from root to leaf node.
-33. Check if the a given graph(undirected) is a tree or not. ---(Technique: 1) There is no cycle. 2) The graph is connected.)
+33. Check if the a given graph(undirected) is a tree or not.
 34. Find Largest subtree sum in a binary tree.
-35. Maximum sum of nodes in Binary tree such that no two are adjacent.  ---(Technique: (Memoization) We can solve this
-    problem by considering the fact that both node and its children can’t be in sum at the same time, so when we take a
-    node into our sum we will call recursively for its grandchildren or if we don’t take this node then we will call for
-    all its children nodes and finally we will choose maximum from both of the results. )
-36. Print all k-sum paths in a binary tree. ---(Technique: preorder traversal and keep track of path)
-37. Print all the paths from root, with a specified sum in Binary tree.  ---(Technique: preorder traversal and keep track of path)
+35. Maximum sum of nodes in Binary tree such that no two are adjacent.
+
+36. Print all k-sum paths in a binary tree from root to leaf.
+https://leetcode.com/problems/path-sum-ii/
+37. Print all k-sum paths in a binary tree.
+https://leetcode.com/problems/path-sum-iii/
+
+
 38. Find bottom left tree value. (By doing this level-order traversal, the last node visited will be the leftmost node at the bottom level of the tree.)
 https://leetcode.com/problems/find-bottom-left-tree-value/
 39. Find all duplicates in a binary tree. ---(Technique: do InOrder Traversal and store visited trees in hashMap)
