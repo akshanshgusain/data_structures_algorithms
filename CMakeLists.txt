@@ -7,4 +7,5 @@ add_executable(Final500DS
         BinaryTree/new/BT_036.cpp
         BinaryTree/new/BT_037.cpp
         BinaryTree/new/BT_038.cpp
+        BinaryTree/new/BT_039.cpp
 )
