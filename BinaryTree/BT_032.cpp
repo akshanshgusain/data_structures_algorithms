@@ -1,81 +1,49 @@
 //
-// Created by Akshansh Gusain on 05/02/22.
+// Created by Akshansh Gusain on 04/03/24.
 //
-#include<stdc++.h>
+#include "BT_000.cpp"
 
-using namespace std;
-
-struct Node {
-    char data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void printVector(const vector<int>& v, int i)
-{
-    for (int j = i; j < v.size(); j++)
-        cout << v[j] << " ";
-    cout << endl;
-}
-
-void printPath(Node *root, vector<int> &path, int k){
-
-    if(root== nullptr){
+void sumNodesLongestPathUtil(TreeNode *root, int currentPathLength,
+                             int &maxPathLength, int currentSum, int &maxSum) {
+    if (root == nullptr) {
+        if (currentPathLength > maxPathLength){
+            maxPathLength = currentPathLength;
+            maxSum = currentSum;
+        }else if(currentPathLength == maxPathLength){
+            maxSum = max(currentSum, maxSum);
+        }
         return;
     }
 
-    path.push_back(root->data);
+    sumNodesLongestPathUtil(root->left, currentPathLength + 1,
+                            maxPathLength, currentSum + root->val, maxSum);
+    sumNodesLongestPathUtil(root->right, currentPathLength + 1,
+                            maxPathLength, currentSum + root->val, maxSum);
+}
 
-    // call for left Sub tree
-    printPath(root->left, path, k);
-
-    //call for right Sub tree
-    printPath(root->right, path, k);
-
-    int sum = 0;
-    for(int i = path.size() -1; i >= 0; i--){
-        sum += path[i];
-        if(sum == k){
-            printVector(path, i);
-        }
+int sumNodesLongestPath(TreeNode *root) {
+    if (root == nullptr) {
+        return 0;
     }
+    int maxPathLength = 0;
+    int maxSum = INT_MIN;
+    int currentSum = 0;
+    int currentLength = 0;
 
-    path.pop_back(); //backtrack
+    sumNodesLongestPathUtil(root, currentLength, maxPathLength, currentSum, maxSum);
+    return maxSum;
 }
 
 int main() {
-    Node *root = new Node(1);
-    root->left = new Node(3);
-    root->left->left = new Node(2);
-    root->left->right = new Node(1);
-    root->left->right->left = new Node(1);
-    root->right = new Node(-1);
-    root->right->left = new Node(4);
-    root->right->left->left = new Node(1);
-    root->right->left->right = new Node(2);
-    root->right->right = new Node(5);
-    root->right->right->right = new Node(2);
+    auto root = new TreeNode(4);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(5);
+    root->left->left = new TreeNode(10);
+    root->left->right = new TreeNode(1);
+    root->right->left = new TreeNode(2);
+    root->right->right = new TreeNode(3);
+    root->left->right->left = new TreeNode(6);
 
-    int k = 5;
-    vector<int> path;
-    printPath(root, path, k);
-
+    cout << "sum : " << sumNodesLongestPath(root);
     return 0;
 }

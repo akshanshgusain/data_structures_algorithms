@@ -1,58 +1,29 @@
 //
-// Created by Akshansh Gusain on 19/01/22.
+// Created by Akshansh Gusain on 30/01/24.
 //
+#include "BT_000.cpp"
 
-// Time: O(N)
-#include<stdc++.h>
-
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+int heightOfBinaryTree(TreeNode *&head) {
+    if (head == nullptr) {
+        return 0;
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
+    int leftHeight = heightOfBinaryTree(head->left);
+    int rightHeight = heightOfBinaryTree(head->right);
 
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-int maxDFS(Node *root) {
-    if (root == nullptr) {
-        return -1;
-    } else {
-        int lHeight = maxDFS(root->left);
-        int rHeight = maxDFS(root->right);
-        if (lHeight > rHeight) {
-            return (lHeight + 1);
-        } else {
-            return (rHeight + 1);
-        }
-    }
+    return 1 + max(leftHeight , rightHeight);
 }
 
 int main() {
-//    Node *root = newNode(1);
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
+    auto *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
 
-    cout << "Maximum Height of the give tree: " << endl;
-    cout<<maxDFS(root);
+    // Print the result
+    cout << "Height of the Binary Tree: " << heightOfBinaryTree(root) << endl;
     return 0;
 }

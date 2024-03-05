@@ -1,75 +1,35 @@
 //
-// Created by Akshansh Gusain on 04/02/22.
+// Created by Akshansh Gusain on 04/03/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-using namespace std;
-
-struct Node {
-    char data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+bool areMirror(TreeNode *a, TreeNode *b) {
+    if(a == nullptr and b == nullptr){
+        return true;
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
+    if(a == nullptr or b == nullptr){
+        return false;
     }
 
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-int getSumGrandChildren(Node *root, map<Node *, int> &map) {
-    int sum = 0;
-
-    if(root == nullptr){
-        return sum;
-    }
-
-    if(root->left != nullptr){
-        sum += getSumGrandChildren(root->left->left, map) + getSumGrandChildren(root->left->right, map);
-    }
-
-    if(root->right != nullptr){
-        sum += getSumGrandChildren(root->right->left, map) + getSumGrandChildren(root->right->right, map);
-    }
-
-    return sum;
-}
-
-int getMaxSum(Node *root, map<Node *, int> &map) {
-    if (root == nullptr) {
-        return 0;
-    }
-    if(map.find(root) != map.end()){
-        return map[root];
-    }
-    // Take the current node:
-    int includingCurrentNode = root->data + getSumGrandChildren(root, map);
-
-    // Not Take the current node:
-    int excludingCurrentNode = getMaxSum(root->left, map) + getMaxSum(root->right, map);
-
-    return map[root] = max(includingCurrentNode, excludingCurrentNode);
+    return (a->val == b->val) and
+            areMirror(a->left, b->right) and
+            areMirror(a->right, b->left);
 }
 
 int main() {
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->right->left = new Node(4);
-    root->right->right = new Node(5);
-    root->left->left = new Node(1);
+    auto a = new TreeNode(1);
+    auto b = new TreeNode(1);
+    a->left = new TreeNode(2);
+    a->right = new TreeNode(3);
+    a->left->left = new TreeNode(4);
+    a->left->right = new TreeNode(5);
 
-    map<Node *, int> map; // Memoization
-    cout << getMaxSum(root, map) << endl;
+    b->left = new TreeNode(3);
+    b->right = new TreeNode(2);
+    b->right->left = new TreeNode(5);
+    b->right->right = new TreeNode(4);
+
+    areMirror(a, b) ? cout << "Yes" : cout << "No";
+    return 0;
 }

@@ -1,106 +1,61 @@
 //
-// Created by Akshansh Gusain on 22/01/22.
+// Created by Akshansh Gusain on 15/02/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-
-// // Time: O(N^2)
-
-int heightOfBTree(Node *root) {
+vector<int> bottomView(TreeNode *root) {
+    vector<int> result;
     if (root == nullptr) {
-        return 0;
+        return result;
     }
-    int heightLeftSubTree = heightOfBTree(root->left);
-    int heightRightSubTree = heightOfBTree(root->right);
+    // pari<TreeNode, Horizontal-Distance>
+    queue<pair<TreeNode *, int>> nodeQueue;
+    // <Horizontal-Distance, TreeNode->val>
+    map<int, int> map;
+    nodeQueue.emplace(root, 0);
+    while (!nodeQueue.empty()) {
+        auto currentNode = nodeQueue.front().first;
+        int currentHD = nodeQueue.front().second;
+        nodeQueue.pop();
+        map[currentHD] = currentNode->val;
 
-    return 1 + max(heightLeftSubTree, heightRightSubTree);
+        if (currentNode->left != nullptr) {
+            nodeQueue.emplace(currentNode->left, currentHD - 1);
+        }
+        if (currentNode->right != nullptr) {
+            nodeQueue.emplace(currentNode->right, currentHD + 1);
+        }
+    }
+
+    for(auto it: map){
+        result.push_back(it.second);
+    }
+    return result;
 }
-
-bool isBTreeBalanced(Node *root) {
-    if (root == nullptr) {
-        return true;
-    }
-    int heightOfLeftSubTree = heightOfBTree(root->left);
-    int heightOfRightSubTree = heightOfBTree(root->right);
-
-    if (abs(heightOfLeftSubTree - heightOfRightSubTree) <= 1
-        and isBTreeBalanced(root->left)
-        and isBTreeBalanced(root->right)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-// Optimisation
-// Time: O(N)
-bool isBalanced(Node *root, int *height) {
-    int heightOfLeftSubTree = 0, heightOfRightSubTree = 0;
-
-    bool isLSubTreeBalanced = false, isRSubTreeBalanced = false;
-
-    if (root == nullptr) {
-        *height = 0;
-        return true;
-    }
-
-    isLSubTreeBalanced = isBalanced(root->left, &heightOfLeftSubTree);
-    isRSubTreeBalanced = isBalanced(root->right, &heightOfRightSubTree);
-
-    *height = (heightOfLeftSubTree > heightOfRightSubTree ? heightOfLeftSubTree : heightOfRightSubTree) + 1;
-
-    /* If difference between heights of left and right
-    subtrees is more than 2 then this node is not balanced
-    so return 0 */
-
-    if (abs(heightOfLeftSubTree - heightOfRightSubTree) >= 2) {
-        return false;
-    } else {
-        /* If this node is balanced and left and right subtrees
-        are balanced then return true */
-
-        return isLSubTreeBalanced && isRSubTreeBalanced;
-    }
-}
-
 
 int main() {
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->left->left->left = new Node(8);
+    //                 1
+    //             /      \
+    //            2        3
+    //         /   \      /   \
+    //      4       5    6     7
+    //            /   \
+    //          8      9
 
-    if (isBTreeBalanced(root))
-        cout << "Tree is balanced";
-    else
-        cout << "Tree is not balanced";
+    auto root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->left->right->left = new TreeNode(8);
+    root->left->right->right = new TreeNode(9);
+    root->right->right = new TreeNode(7);
+    root->right->left = new TreeNode(6);
+
+    vector<int> traversal = bottomView(root);
+
+    for (auto it: traversal) {
+        cout << it << " ";
+    }
     return 0;
 }

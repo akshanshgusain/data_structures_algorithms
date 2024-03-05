@@ -1,54 +1,40 @@
 //
-// Created by Akshansh Gusain on 03/02/22.
+// Created by Akshansh Gusain on 04/03/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-using namespace std;
+unordered_map<string, vector<TreeNode *>> hashmap;
+vector<TreeNode *> ans;
 
-struct Node {
-    char data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+string findDuplicates(TreeNode *root) {
+    if (root == nullptr) {
+        return "";
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
+    string subtree = to_string(root->val) + ",";
+    subtree += findDuplicates(root->left) + ",";
+    subtree += findDuplicates(root->right);
+
+    if(hashmap[subtree].size() == 1){
+        ans.push_back(root);
     }
 
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-int findLargestSubtreeSum(Node *root, int sum){
-    if(root == nullptr){
-        return 0;
-    }
-
-    int leftSubTreeSum = findLargestSubtreeSum(root->left,sum);
-    int rightSubTreeSum = findLargestSubtreeSum(root->right, sum);
-
-    return max(leftSubTreeSum + rightSubTreeSum + root->data, sum);
+    hashmap[subtree].push_back(root);
+    return subtree;
 }
 
 int main() {
-    Node* root = new Node(1);
-    root->left = new Node(-2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->left = new Node(-6);
-    root->right->right = new Node(2);
+    auto root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->left->left = new TreeNode(4);
+    root->right = new TreeNode(3);
+    root->right->right = new TreeNode(4);
+    root->right->left = new TreeNode(2);
+    root->right->left->left = new TreeNode(4);
 
-    int sum = INT_MIN;
-    cout << findLargestSubtreeSum(root, sum);
+    findDuplicates(root);
+    for(auto it : ans){
+        cout<<it->val<<" ";
+    }
     return 0;
 }

@@ -1,74 +1,66 @@
 //
-// Created by Akshansh Gusain on 18/01/22.
+// Created by Akshansh Gusain on 28/01/24.
 //
-#include<stdc++.h>
+#include "BT_000.cpp"
 
-using namespace std;
+vector<vector<int>> reverseLevelOrder(TreeNode *&root) {
+    vector<vector<int>> result;
 
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void reverseBFS(Node *root) {
     if(root == nullptr){
-        cout<<"Empty Tree";
-        return;
+        return result;
     }
+    queue<TreeNode*> q;
+    q.push(root);
 
-    stack<Node *> stack;
-    queue<Node *> queue;
+    while (!q.empty()) {
+        int levelSize = q.size();
+        stack<int> currentLevel;  // Use a stack for reverse order
 
-    queue.push(root);
+        for (int i = 0; i < levelSize; ++i) {
+            TreeNode* node = q.front();
+            q.pop();
 
-    while(!queue.empty()){
-        Node* top = queue.front();
-        stack.push(top);
-        queue.pop();
+            currentLevel.push(node->val);
 
-        if(top->left != nullptr){
-            queue.push(top->left);
+            if (node->left) {
+                q.push(node->left);
+            }
+            if (node->right) {
+                q.push(node->right);
+            }
         }
 
-        if(top->right != nullptr){
-            queue.push(top->right);
+        // Pop elements from the stack to get reverse order
+        vector<int> reverseOrder;
+        while (!currentLevel.empty()) {
+            reverseOrder.push_back(currentLevel.top());
+            currentLevel.pop();
         }
+
+        result.push_back(reverseOrder);
     }
 
-    while(!stack.empty()){
-        cout<<stack.top()->data<<" ";
-        stack.pop();
-    }
+    return result;
 }
 
 int main() {
-//    Node *root = newNode(1); // Stack Storage
-    Node *root = new Node(1); // Heap Storage
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
+    auto *root = new TreeNode(3);
+    root->left = new TreeNode(9);
+    root->right = new TreeNode(20);
+    root->right->left = new TreeNode(15);
+    root->right->right = new TreeNode(7);
 
-    cout<<"Reverse Breadth First Traversal"<<endl;
-    reverseBFS(root);
+    // Get the reverse level-order traversal
+    std::vector<std::vector<int>> result = reverseLevelOrder(root);
+
+    // Print the result
+    std::cout << "Reverse Level Order Traversal:\n";
+    for (const auto &level: result) {
+        for (int value: level) {
+            std::cout << value << " ";
+        }
+        std::cout << "\n";
+    }
+
     return 0;
 }
-

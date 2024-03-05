@@ -1,81 +1,60 @@
 //
-// Created by Akshansh Gusain on 20/01/22.
+// Created by Akshansh Gusain on 11/02/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void inorder(Node *node) {
-    if (node == nullptr) {
-        return;
-    }
-
-    if (node->left != nullptr) {
-        inorder(node->left);
-    }
-    cout << node->data << " ";
-    if (node->right != nullptr) {
-        inorder(node->right);
-    }
-}
-
-void mirrorTree(Node *root) {
+vector<vector<int>> zigZagTraversal(TreeNode *&root) {
+    vector<vector<int >> result;
     if (root == nullptr) {
-        return;
+        return result;
     }
 
-    // Simply Swap the left and right subtrees
-    Node *temp = root->left;
-    root->left = root->right;
-    root->right = temp;
+    queue<TreeNode *> nodesQueue;
+    nodesQueue.push(root);
+    bool leftToRight = true;
 
-    if (root->left) {
-        mirrorTree(root->left);
-    }
+    while (!nodesQueue.empty()) {
+        int size = nodesQueue.size();
+        vector<int> row(size);
 
-    if (root->right) {
-        mirrorTree(root->right);
+        for (int i = 0; i < size; i++) {
+            TreeNode *node = nodesQueue.front();
+            nodesQueue.pop();
+
+            // find position to fill node's value
+            // either insert from the front(i) or the back (size-1-i)
+            int index = (leftToRight) ? i : (size - 1 - i);
+
+            row[index] = node->val;
+
+            if (node->left) {
+                nodesQueue.push(node->left);
+            }
+            if (node->right) {
+                nodesQueue.push(node->right);
+            }
+        }
+        // after this level
+        leftToRight = !leftToRight;
+        result.push_back(row);
     }
+    return result;
 }
 
 int main() {
-    Node *tree = new Node(5);
-    tree->left = new Node(3);
-    tree->right = new Node(6);
-    tree->left->left = new Node(2);
-    tree->left->right = new Node(4);
+    auto *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(7);
+    root->left->right = new TreeNode(6);
+    root->right->left = new TreeNode(5);
+    root->right->right = new TreeNode(4);
 
-    // Print inorder traversal of the input tree
-    printf("Inorder of original tree: ");
-    inorder(tree);
-    mirrorTree(tree);
-
-    // Print inorder traversal of the mirror tree
-    printf("\nInorder of mirror tree: ");
-    inorder(tree);
+    vector<vector<int>> traversal = zigZagTraversal(root); // 1 3 2 7 6 5 4
+    for (auto it: traversal) {
+        for (auto i: it) {
+            cout << i << " ";
+        }
+    }
     return 0;
 }

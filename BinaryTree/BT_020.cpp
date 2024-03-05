@@ -1,72 +1,33 @@
 //
-// Created by Akshansh Gusain on 26/01/22.
+// Created by Akshansh Gusain on 26/02/24.
 //
-#include<stdc++.h>
-using namespace std;
+#include "BT_000.cpp"
 
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-//https://www.geeksforgeeks.org/convert-a-given-tree-to-sum-tree/
-// Time: O(N)
-
-int toSumTree(Node *root){
-    if(root == nullptr){
+int toSumTree(TreeNode *root) {
+    if (root == nullptr) {
         return 0;
     }
-    int previousValue = root->data;
-    root->data = toSumTree(root->left) + toSumTree(root->right);
-    return root->data + previousValue;
+
+    int sumOfLeftChild = toSumTree(root->left);
+    int sumOfRightChild = toSumTree(root->right);
+
+    int prevNodeVal = root->val;
+    root->val = sumOfLeftChild + sumOfRightChild;
+
+    return prevNodeVal + sumOfLeftChild + sumOfRightChild;
 }
-
-void printInOrder(Node *root){
-    if(root == nullptr){
-        return;
-    }
-
-    if(root->left != nullptr){
-        printInOrder(root->left);
-    }
-    cout<<root->data<<" ";
-
-    if(root->right != nullptr){
-        printInOrder(root->right);
-    }
-}
-
 
 int main() {
-    Node *root = new Node(10);
-    root->left = new Node(-2);
-    root->right = new Node(6);
-    root->left->left = new Node(8);
-    root->left->right = new Node(-4);
-    root->right->left = new Node(7);
-    root->right->right = new Node(5);
+    auto *root = new TreeNode(10);
+    root->left = new TreeNode(-2);
+    root->right = new TreeNode(6);
+    root->left->left = new TreeNode(8);
+    root->left->right = new TreeNode(-4);
+    root->right->left = new TreeNode(7);
+    root->right->right = new TreeNode(5);
 
     toSumTree(root);
-    cout<<"Inorder Traversal of the resultant tree is: \n";
-    printInOrder(root); //0 4 0 20 0 12 0
-
+    cout << "Inorder Traversal of the resultant tree is: \n";
+    printInorder(root); //0 4 0 20 0 12 0
     return 0;
 }

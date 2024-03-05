@@ -1,83 +1,50 @@
 //
-// Created by Akshansh Gusain on 25/01/22.
+// Created by Akshansh Gusain on 21/02/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void diagonalTraversal_(Node *root, int diagonal, map<int, vector<int>> &diagonalMap) {
+int findDuplicates(TreeNode *root) {
     if (root == nullptr) {
-        return;
+        return 0;
     }
 
-    diagonalMap[diagonal].push_back(root->data);
-
-    if (root->left != nullptr) {
-        diagonalTraversal_(root->left, diagonal + 1 ,diagonalMap);
-    }
-    if (root->right != nullptr) {
-        diagonalTraversal_(root->right, diagonal  ,diagonalMap);
+    int leftHeight = dfs(root->left);
+    if (leftHeight == -1) {
+        //not balanced
+        return -1;
     }
 
+    int rightHeight = dfs(root->right);
+    if (rightHeight == -1) {
+        //not balanced
+        return -1;
+    }
+
+    if (abs(leftHeight - rightHeight) > 1) {
+        return -1;
+    }
+
+    return max(leftHeight, rightHeight) + 1;
 }
 
-void diagonalTraversal(Node *root) {
-    // <DiagonalDistance, vector<Node at tha diagonal>>
-    map<int, vector<int>> diagonalMap;
-
-    int diagonal = 0;
-    diagonalTraversal_(root, diagonal, diagonalMap);
-
-    cout<<"Diagonal Traversal of the binary tree: "<<endl;
-
-    for(auto diagonal_ : diagonalMap){
-        for(auto node: diagonal_.second){
-            cout<<node<<" ";
-        }
-        cout<<endl;
-    }
+bool isBalanced(TreeNode *root) {
+    return dfs(root) != -1;
 }
 
 int main() {
-    Node *root = new Node(8);
-    root->left = new Node(3);
-    root->right = new Node(10);
-    root->left->left = new Node(1);
-    root->left->right = new Node(6);
-    root->right->right = new Node(14);
-    root->right->right->left = new Node(13);
-    root->left->right->left = new Node(4);
-    root->left->right->right = new Node(7);
+    auto root = new TreeNode(4);
+    root->left = new TreeNode(7);
+    root->right = new TreeNode(8);
+    root->left->left = new TreeNode(2);
+    root->left->right = new TreeNode(11);
+    root->left->left->left = new TreeNode(0);
 
+    root->right->left = new TreeNode(1);
+    root->right->right = new TreeNode(0);
+    root->right->left->left = new TreeNode(3);
+    root->right->left->left->left = new TreeNode(5);
 
-    diagonalTraversal(root);
-    //Diagonal Traversal of binary tree :
-    //8 10 14
-    //3 6 7 13
-    //1 4
+    cout << isBalanced(root);
+
     return 0;
 }

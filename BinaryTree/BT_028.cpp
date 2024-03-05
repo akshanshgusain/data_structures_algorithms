@@ -1,71 +1,61 @@
 //
-// Created by Akshansh Gusain on 02/02/22.
+// Created by Akshansh Gusain on 02/03/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-using namespace std;
-
-struct Node {
-    char data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void sumOfLongRootToLeafPath(Node *root, int currentSum, int currentLength, int &maxSum, int &maxLength) {
+bool checkLeafNodes(TreeNode *root) {
     if (root == nullptr) {
-        if (currentLength > maxLength) {
-            maxLength = currentLength;
-            maxSum = currentSum;
-        } else if (currentLength == maxLength) {
-            maxSum = max(maxSum, currentSum);
+        return true;
+    }
+
+    queue<TreeNode *> queue;
+    queue.push(root);
+    bool flag = false;
+    while (!queue.empty()) {
+        int levelSize = queue.size();
+
+        for (int i = 0; i < levelSize; i++) {
+            auto front = queue.front();
+            queue.pop();
+
+            if (front->left != nullptr) {
+                queue.push(front->left);
+            }
+            if (front->right != nullptr) {
+                queue.push(front->right);
+            }
+
+            if (front->left == nullptr and front->right == nullptr) {
+                flag = true;
+            }
         }
-        return;
+        if (flag and !queue.empty()) {
+            flag = false;
+            break;
+        }
     }
-    sumOfLongRootToLeafPath(root->left, currentSum + root->data, currentLength + 1, maxSum, maxLength);
-    sumOfLongRootToLeafPath(root->right, currentSum + root->data, currentLength + 1, maxSum, maxLength);
-}
-
-int sumOfLongRootToLeafPathUtil(Node *root) {
-    if (root == nullptr) {
-        return 0;
-    }
-
-    int maxSum = INT_MIN, maxLength = 0, currentSum = 0, currentLength = 0;
-
-    sumOfLongRootToLeafPath(root, currentSum, currentLength, maxSum, maxLength);
-
-    return maxSum;
+    return flag;
 }
 
 int main() {
-    Node *root = new Node(4);
-    root->left = new Node(2);
-    root->right = new Node(5);
-    root->left->left = new Node(7);
-    root->left->right = new Node(1);
-    root->right->left = new Node(2);
-    root->right->right = new Node(3);
-    root->left->right->left = new Node(6);
+    auto root = new TreeNode(12);
+    root->left = new TreeNode(5);
+    root->left->left = new TreeNode(3);
+    root->left->right = new TreeNode(9);
+    root->left->left->left = new TreeNode(1);
+    root->left->right->left = new TreeNode(1);
+    root->left->right->left->right = new TreeNode(1);
 
-    cout << "Sum = " << sumOfLongRootToLeafPathUtil(root);
+    if (checkLeafNodes(root)){
+        cout << "Leaves are at same level\n";
+    }else{
+        cout << "Leaves are not at same level\n";
+    }
 
+    if(){
+        checkLeafNodes(root){
+
+        }
+    }
     return 0;
-
 }

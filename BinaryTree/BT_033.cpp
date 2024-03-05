@@ -1,94 +1,63 @@
 //
-// Created by Akshansh Gusain on 05/02/22.
+// Created by Akshansh Gusain on 05/03/24.
 //
+#include "BT_000.cpp"
+#include "../Graph/Graph_000.cpp"
 
-#include<stdc++.h>
 
-using namespace std;
+bool isCyclic(int node, Graph &graph, vector<bool> &used, int parent) {
+    used[node] = 1;
 
-struct Node {
-    char data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+    for (auto it: graph.adj[node]) {
+        if (!used[it]) {
+            if (isCyclic(it, graph, used, node)) {
+                return true;
+            }
+        } else if (it != parent) {
+            return true;
+        }
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void printVector(const vector<int>& v, int i)
-{
-    for (int j = i; j < v.size(); j++)
-        cout << v[j] << " ";
-    cout << endl;
+    return false;
 }
 
-void printPath(Node *root, vector<int> &path, int k, int SUM_SO_FAR){
 
-    if(root== nullptr){
-        return;
+bool isTree(Graph &g) {
+    vector<bool> visited(g.V, false);
+
+    // The call to isCyclicUtil serves multiple purposes.
+    // It returns true if graph reachable from vertex 0
+    // is cyclcic. It also marks all vertices reachable
+    // from 0.
+
+    if (isCyclic(0, g, visited, -1)) {
+        return false;
     }
-
-    SUM_SO_FAR += root->data;
-    path.push_back(root->data);
-
-    if(SUM_SO_FAR == k){
-        printVector(path, 0);
+    // If we find a vertex which is not reachable from 0
+    // then we return false
+    for (int u = 0; u < g.V; u++) {
+        if (!visited[u]) {
+            return false;
+        }
     }
-
-    printPath(root->left, path, k, SUM_SO_FAR);
-    printPath(root->right, path, k, SUM_SO_FAR);
-
-
-    // Remove last element from path
-    // and move back to parent
-    path.pop_back();
+    return true;
 }
 
 int main() {
-//    Node *root = new Node(1);
-//    root->left = new Node(3);
-//    root->left->left = new Node(2);
-//    root->left->right = new Node(1);
-//    root->left->right->left = new Node(1);
-//    root->right = new Node(-1);
-//    root->right->left = new Node(4);
-//    root->right->left->left = new Node(1);
-//    root->right->left->right = new Node(2);
-//    root->right->right = new Node(5);
-//    root->right->right->right = new Node(2);
-//
-//    int k = 5;
-    Node *root = new Node(10);
-    root->left = new Node(28);
-    root->right = new Node(13);
+    Graph graph(5);
+    graph.addEdgeU(1, 0);
+    graph.addEdgeU(0, 2);
+    graph.addEdgeU(0, 3);
+    graph.addEdgeU(3, 4);
 
-    root->right->left = new Node(14);
-    root->right->right = new Node(15);
+    isTree(graph) ? cout << "Graph is Tree\n" : cout << "Graph is not a Tree\n";
 
-    root->right->left->left = new Node(21);
-    root->right->left->right = new Node(22);
-    root->right->right->left = new Node(23);
-    root->right->right->right = new Node(24);
-
-    int k = 38;
-
-    vector<int> path;
-    int SUM_SO_FAR = 0;
-    printPath(root, path, k, SUM_SO_FAR);
-
+    Graph g2(5);
+    g2.addEdge(1, 0);
+    g2.addEdge(0, 2);
+    g2.addEdge(2, 1);
+    g2.addEdge(0, 3);
+    g2.addEdge(3, 4);
+    isTree(g2) ? cout << "Graph is Tree\n" : cout << "Graph is not Tree\n";
     return 0;
 }

@@ -1,85 +1,53 @@
 //
-// Created by Akshansh Gusain on 25/01/22.
+// Created by Akshansh Gusain on 26/02/24.
 //
-#include<stdc++.h>
-using namespace std;
+#include "BT_000.cpp"
 
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-//https://www.geeksforgeeks.org/convert-given-binary-tree-doubly-linked-list-set-3/
-// Time: O(N)
-
-// root --> Root of Binary Tree
-// head --> Pointer to head node of created doubly linked list
-void binaryTree2DoubleLinkedList(Node *root, Node* &head, Node* &previous){
-    if(root == nullptr){
-        return;
-    }
-
-    /*
-     * When the static keyword is used in this context, it ensures that the variable previous retains its value between
-     * different function calls. The variable is initialized only once, and subsequent calls to the function will
-     * preserve the value assigned to previous from the previous call.
-     */
-    //static Node *previous = nullptr;
-
-    binaryTree2DoubleLinkedList(root->left, head, previous);
-
-    if(previous == nullptr){
-        head = root;
-    }else{
-        root->left = previous;
-        previous->right = root;
-    }
-    previous = root;
-
-    binaryTree2DoubleLinkedList(root->right, head, previous);
+bool isLeaf(TreeNode *root) {
+    return (root->left == nullptr and root->right == nullptr);
 }
 
-void printList(Node *node)
-{
-    while (node!=nullptr)
-    {
-        cout << node->data << " ";
-        node = node->right;
+bool isSumTree(TreeNode *root) {
+    if (root == nullptr or isLeaf(root)) {
+        return true;
+    }
+
+    if (isSumTree(root->left) and isSumTree(root->right)) {
+        // calculate the sum of values of left and right subtrees
+        int leftSubTreeSum;
+        int rightSubTreeSum;
+
+        if (root->left == nullptr) {
+            leftSubTreeSum = 0;
+        } else if (isLeaf(root->left)) {
+            leftSubTreeSum = root->left->val;
+        } else {
+            leftSubTreeSum = 2 * (root->left->val);
+        }
+
+        if (root->right == nullptr) {
+            rightSubTreeSum = 0;
+        } else if (isLeaf(root->right)) {
+            rightSubTreeSum = root->right->val;
+        } else {
+            rightSubTreeSum = 2 * (root->right->val);
+        }
+
+        return (root->val == leftSubTreeSum + rightSubTreeSum);
     }
 }
 
 int main() {
-    Node *root = new Node(10);
-    root->left = new Node(12);
-    root->right = new Node(15);
-    root->left->left = new Node(25);
-    root->left->right = new Node(30);
-    root->right->left = new Node(36);
+    auto *root = new TreeNode(26);
+    root->left = new TreeNode(10);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(6);
+    root->right->right = new TreeNode(3);
 
-    // Convert to DLL
-    Node *head = nullptr;
-    Node *previous = nullptr;
-    binaryTree2DoubleLinkedList(root, head, previous);
-
-    // Print the converted list
-    printList(head); // 25 12 30 10 36 15
+    if (isSumTree(root))
+        cout << "The given tree is a SumTree ";
+    else
+        cout << "The given tree is not a SumTree ";
     return 0;
 }

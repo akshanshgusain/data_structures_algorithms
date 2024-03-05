@@ -1,59 +1,52 @@
 //
-// Created by Akshansh Gusain on 02/02/22.
+// Created by Akshansh Gusain on 02/03/24.
 //
-#include<stdc++.h>
 
-using namespace std;
+#include "BT_000.cpp"
 
-struct Node {
-    char data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+void getInorder(TreeNode* root, vector<int>& result) {
+    if (root) {
+        getInorder(root->left, result);
+        result.push_back(root->val);
+        getInorder(root->right, result);
     }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-bool areMirror(Node *A, Node *B) {
-    if (A == nullptr and B == nullptr) {
-        return true;
-    }
-
-    if (A == nullptr or B == nullptr) {
-        return false;
-    }
-
-    return (A->data == B->data) and areMirror(A->left, B->right) and areMirror(A->right, B->left);
 }
 
-int main() {
-    Node *A = new Node(1);
-    Node *B = new Node(1);
-    A->left = new Node(2);
-    A->right = new Node(3);
-    A->left->left = new Node(4);
-    A->left->right = new Node(5);
+int findMinSwaps(TreeNode *root){
+    vector<int> inorder;
+    getInorder(root, inorder);
 
-    B->left = new Node(3);
-    B->right = new Node(2);
-    B->right->left = new Node(5);
-    B->right->right = new Node(4);
+    int swaps = 0;
+    vector<int> temp = inorder;
+    int n = inorder.size();
 
-    areMirror(A, B) ? cout << "Yes" : cout << "No";
+    map<int, int> h;
+
+    sort(temp.begin(), temp.end());
+    for (int i = 0; i < n; i++) {
+        h[inorder[i]] = i;
+    }
+    for (int i = 0; i < n; i++) {
+        if (inorder[i] != temp[i]) {
+            swaps++;
+            int init = inorder[i];
+            swap(inorder[i], inorder[h[temp[i]]]);
+            h[init] = h[temp[i]];
+            h[temp[i]] = i;
+        }
+    }
+    return swaps;
+}
+
+
+int main(){
+    auto root = new TreeNode(5);
+    root->left = new TreeNode(6);
+    root->left->left = new TreeNode(8);
+    root->left->right = new TreeNode(9);
+    root->right = new TreeNode(7);
+    root->right->left = new TreeNode(10);
+    root->right->right = new TreeNode(11);
+    cout<< "Min swaps: "<<findMinSwaps(root);
     return 0;
-
 }

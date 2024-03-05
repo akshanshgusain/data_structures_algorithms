@@ -1,120 +1,64 @@
 //
-// Created by Akshansh Gusain on 19/01/22.
+// Created by Akshansh Gusain on 30/01/24.
 //
 
-#include<stdc++.h>
+#include "BT_000.cpp"
 
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-int height(Node *root) {
-    if (root == nullptr) {
-        return -1;
-    } else {
-        int leftHeight = height(root->left);
-        int rightHeight = height(root->right);
-
-        if (leftHeight > rightHeight) {
-            return (leftHeight + 1);
-        } else {
-            return (rightHeight + 1);
-        }
-    }
-}
-
-int heightOptimised(Node *root, int &ans) {
-    if (root == nullptr) {
-        return -1;
-    } else {
-        int leftHeight = height(root->left);
-        int rightHeight = height(root->right);
-
-        ans = max(ans, leftHeight + rightHeight + 1);
-
-        if (leftHeight > rightHeight) {
-            return (leftHeight + 1);
-        } else {
-            return (rightHeight + 1);
-        }
-    }
-}
-
-int diameter(Node *root) {
-    // Find Out max of left-height and right-height for every node
-    // max(For every node - max(left-height, right-height))
-    // Max diameter is going to be one of the following:
-
-    //  1. Diameter Passes through current node.
-    //  2. Diameter DOES NOT pass thought the current Node:
-    //      2.1. Diameter of Left Sub Tree.
-    //      2.2. Diameter of Right Sub Tree.
-
-    if (root == nullptr) {
+int heightOfBinaryTree(TreeNode *&head) {
+    if (head == nullptr) {
         return 0;
     }
-    int leftHeight = height(root->left);
-    int rightHeight = height(root->right);
 
-    // call for left and right subtree
-    int diameterOfLeftSubTree = diameter(root->left);
-    int diameterOfRightSubTree = diameter(root->right);
+    int leftHeight = heightOfBinaryTree(head->left);
+    int rightHeight = heightOfBinaryTree(head->right);
 
-    return max(
-            (leftHeight + rightHeight + 1),
-            max(diameterOfLeftSubTree, diameterOfRightSubTree)
-            );
+    return 1 + max(leftHeight , rightHeight);
 }
 
-int diameterOptimised(Node *root) {  //Time: O(N)
-    if (root == nullptr) {
+// Time: O(N^2)
+void diameterOfBinaryTree(TreeNode* &root, int &diameter){
+    if(root == nullptr){
+        return;
+    }
+
+    int leftHeight = heightOfBinaryTree(root->left);
+    int rightHeight = heightOfBinaryTree(root->right);
+    diameter = max(diameter, leftHeight + rightHeight);
+
+    diameterOfBinaryTree(root->left, diameter);
+    diameterOfBinaryTree(root->right, diameter);
+}
+
+// Optimised version, using the find height code
+// Time: O(N)
+int diameterOfBinaryTreeO(TreeNode *&head, int &diameter) {
+    if (head == nullptr) {
         return 0;
     }
-    int ans = INT_MIN;
-    heightOptimised(root, ans);
-    return ans;
+
+    int leftHeight = diameterOfBinaryTreeO(head->left, diameter);
+    int rightHeight = diameterOfBinaryTreeO(head->right, diameter);
+    diameter = max(diameter, leftHeight + rightHeight);
+
+    return 1 + max(leftHeight , rightHeight);
 }
 
-// The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two end nodes.
 
-int main() {
-    /* Constructed binary tree is
-            1
-            / \
-        2     3
-        / \
-    4     5
-    */
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
+int main(){
+    auto* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->right = new TreeNode(6);
+    root->left->left->left = new TreeNode(7);
+    root->left->left->right = new TreeNode(8);
 
-    // Function Call
-    cout << "Diameter of the given binary tree is " <<
-         diameterOptimised(root);
+    // Get the diameter of the binary tree
+    int treeDiameter = INT_MIN;
+    diameterOfBinaryTreeO(root, treeDiameter);
 
+    // Print the result
+    cout << "Diameter of the Binary Tree: " << treeDiameter << endl;
     return 0;
 }

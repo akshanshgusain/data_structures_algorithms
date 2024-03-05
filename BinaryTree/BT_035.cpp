@@ -1,122 +1,53 @@
 //
-// Created by Akshansh Gusain on 08/02/22.
+// Created by Akshansh Gusain on 05/03/24.
 //
-#include<stdc++.h>
+#include "BT_000.cpp"
 
-using namespace std;
+unordered_map<TreeNode*, int> memo;
 
-struct Node {
-    int data;
-    struct Node *left, *right;
+int getSumGrandchildren(TreeNode *root) {
+    int sum = 0;
 
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-
-Node *findLCA(Node *root, int n1, int n2, int &d1, int &d2, int &dist, int level) {
     if (root == nullptr) {
-        return nullptr;
+        return sum;
     }
 
-    if (root->data == n1) {
-        d1 = level;
-        return root;
+    if (root->left != nullptr) {
+        sum += getSumGrandchildren(root->left->left) + getSumGrandchildren(root->left->right);
     }
-    if (root->data == n2) {
-        d2 = level;
-        return root;
+    if (root->right != nullptr) {
+        sum += getSumGrandchildren(root->right->left) + getSumGrandchildren(root->right->right);
     }
 
-    Node *leftLCA = findLCA(root->left, n1, n2, d1, d2, dist, level + 1);
-    Node *rightLCA = findLCA(root->right, n1, n2, d1, d2, dist, level + 1);
-
-    if (leftLCA != nullptr and rightLCA != nullptr) {
-        dist = d1 + d2 - 2 * level;
-        return root;
-    }
-    if (leftLCA != nullptr) {
-        return leftLCA;
-    } else {
-        return rightLCA;
-    }
+    return sum;
 }
 
-int findLevel(Node *root, int k, int level) {
+
+int getMaxSum(TreeNode *root) {
     if (root == nullptr) {
-        return -1;
+        return 0;
     }
 
-    if (root->data == k) {
-        return level;
+    if(memo.find(root) != memo.end()){
+        return memo[root];
     }
 
-    int l = findLevel(root->left, k, level + 1);
-    if (l != -1) {
-        return l;
-    } else {
-        return findLevel(root->right, k, level + 1);
-    };
+    int includingCurrentRoot = root->val + getSumGrandchildren(root);
+
+    int excludingCurrentRoot = getMaxSum(root->left) + getMaxSum(root->right);
+
+    return memo[root] = max(includingCurrentRoot, excludingCurrentRoot);
 }
-
-// Dist(n1, n2) = Dist(root, n1) + Dist(root, n2) - 2*Dist(root, lca)
-int findDistance(Node *root, int n1, int n2) {
-    int d1 = -1, d2 = -1, dist, level = 1;
-    Node *LCA = findLCA(root, n1, n2, d1, d2, dist, level);
-
-    // if both the values are present in the binary tree
-    if (d1 != -1 and d2 != -1) {
-        return dist;
-    }
-
-    // If n1 is ancestor of n2, consider n1 as root
-    // and find level of n2 in subtree rooted with n1
-    if (d1 != -1) {
-        dist = findLevel(LCA, n2, 0);
-        return dist;
-    }
-    // If n2 is ancestor of n1, consider n2 as root
-    // and find level of n1 in subtree rooted with n2
-    if (d2 != -1) {
-        dist = findLevel(LCA, n1, 0);
-        return dist;
-    }
-
-    return -1;
-
-}
-
 
 int main() {
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
-    root->right->left->right = new Node(8);
+    auto root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->right->left = new TreeNode(4);
+    root->right->right = new TreeNode(5);
+    root->left->left = new TreeNode(1);
 
-    cout << "Dist(4, 5) = " << findDistance(root, 4, 5);
-    cout << "\nDist(4, 6) = " << findDistance(root, 4, 6);
-    cout << "\nDist(3, 4) = " << findDistance(root, 3, 4);
-    cout << "\nDist(2, 4) = " << findDistance(root, 2, 4);
-    cout << "\nDist(8, 5) = " << findDistance(root, 8, 5);
+    cout << getMaxSum(root);
 
     return 0;
 }

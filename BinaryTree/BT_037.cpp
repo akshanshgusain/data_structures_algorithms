@@ -1,67 +1,53 @@
 //
-// Created by Akshansh Gusain on 09/02/22.
+// Created by Akshansh Gusain on 05/03/24.
 //
-#include<stdc++.h>
+#include "BT_000.cpp"
 
-using namespace std;
+unordered_map<long long, int> lookup;
+int cnt = 0;
 
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+void countPathSum(TreeNode *root, int target, long long sum) {
+    if (root == nullptr){
+        return;
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
+    sum += root->val;        //Path sum from root
+    if (sum == target){
+        cnt++;
+    }
+    //checking whether any target sum path present in the path from root to the current node
+    if (lookup.find(sum - target) !=lookup.end()){
+        cnt += lookup[sum - target];
     }
 
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
+    lookup[sum]++;
+    countPathSum(root->left, target, sum);
+    countPathSum(root->right, target, sum);
 
-
-// Run a inorder - traversal
-string findAllDuplicates(Node *root, unordered_map<string, int> &map) {
-    if (root == nullptr) {
-        return "";
-    }
-    string str = "(";
-    str += findAllDuplicates(root->left, map);
-    str += to_string(root->data);
-    str += findAllDuplicates(root->right, map);
-    str += ")";
-    // Subtree already present (Note that we use
-    // unordered_map instead of unordered_set
-    // because we want to print multiple duplicates
-    // only once, consider example of 4 in above
-    // subtree, it should be printed only once.
-    if(map[str] == 1){
-        cout<<root->data<<" ";
-    }
-    map[str]++;
-
-    return str;
+    //After visiting the left and right subtree, we have to reduce this path sum count from map since we are leaving this path
+    lookup[sum]--;
 }
 
+int pathSum(TreeNode *root, int targetSum) {
+    countPathSum(root, targetSum, 0);
+    return cnt;
+}
 
 int main() {
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->right->left = new Node(2);
-    root->right->left->left = new Node(4);
-    root->right->right = new Node(4);
-    unordered_map<string, int> hashMap;
-    findAllDuplicates(root, hashMap);
+    auto root = new TreeNode(1);
+    root->left = new TreeNode(3);
+    root->left->left = new TreeNode(2);
+    root->left->right = new TreeNode(1);
+    root->left->right->left = new TreeNode(1);
+    root->right = new TreeNode(-1);
+    root->right->left = new TreeNode(4);
+    root->right->left->left = new TreeNode(1);
+    root->right->left->right = new TreeNode(2);
+    root->right->right = new TreeNode(5);
+    root->right->right->right = new TreeNode(2);
+
+    int k = 5;
+    cout << pathSum(root, k);
+
     return 0;
 }

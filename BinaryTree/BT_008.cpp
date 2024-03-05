@@ -1,154 +1,62 @@
 //
-// Created by Akshansh Gusain on 21/01/22.
+// Created by Akshansh Gusain on 11/02/24.
 //
+#include "BT_000.cpp"
 
-//https://www.geeksforgeeks.org/print-binary-tree-vertical-order-set-2/
-// Opti:
-// https://www.geeksforgeeks.org/print-binary-tree-vertical-order/
+vector<vector<int>> verticalOrderTraversal(TreeNode *&root) {
+    map<int, map<int, multiset<int >>> nodes;
+    queue<pair<TreeNode *, pair<int, int >>> queue;
 
+    queue.push({root,{0,0}}); //initial vertical and level
 
-// Time: O(w*n) where w is width of Binary Tree and n is number of nodes in Binary Tree.
-// In worst case, the value of w can be O(n) (consider a complete tree for example)
-// and time complexity can become O(n^2).
-#include<stdc++.h>
+    while (!queue.empty()) {
+        auto p = queue.front();
+        queue.pop();
+        TreeNode *temp = p.first;
 
-using namespace std;
+        //x -> vertical , y->level
+        int x = p.second.first, y = p.second.second;
+        nodes[x][y].insert(temp->val); //inserting to multiset
 
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void findMinMaxDistance(Node *root, int *minD, int *maxD, int hd) {
-    if(root == nullptr){
-        return;
-    }
-    if(hd < *minD){
-        *minD = hd;
-    }else if(hd >*maxD){
-        *maxD = hd;
-    }
-
-    if(root->left != nullptr){
-        findMinMaxDistance(root->left, minD, maxD, hd-1);
-    }
-    if(root->right != nullptr){
-        findMinMaxDistance(root->right, minD, maxD, hd+1);
-    }
-}
-
-void printVerticalLine(Node *root, int ln, int hd){
-    if(root == nullptr){
-        return;
-    }
-
-    if(ln == hd){
-        cout<<root->data <<" ";
-    }
-
-    if(root->left != nullptr){
-        printVerticalLine(root->left, ln, hd - 1);
-    }
-
-    if(root->right != nullptr){
-        printVerticalLine(root->right, ln, hd + 1);
-    }
-}
-
-void bottomView(Node *root) {
-
-    // find the min and max distance from the root
-    // min --> Minimum horizontal distance from root
-    // max --> Maximum horizontal distance from root
-    // hd  --> Horizontal distance of current node from root
-    int minD = 0, maxD = 0 ,hd = 0;
-    findMinMaxDistance(root, &minD, &maxD, hd);
-
-    // Iterate through all possible vertical lines starting from the leftmost line and print node line by line
-    for(int ln = minD; ln <= maxD; ln++){
-        printVerticalLine(root, ln, hd);
-        cout<<endl;
-    }
-}
-
-
-
-/// Optimisation
-
-// Time: O(NlogN)
-void findMinMaxDistanceOptimised(Node *root,int hd, map < int,vector<int> > &m) {
-    if(root == nullptr){
-        return;
-    }
-
-    m[hd].push_back(root->data);
-    if(root->left != nullptr){
-        findMinMaxDistanceOptimised(root->left,  hd-1, m);
-    }
-
-
-    if(root->right != nullptr){
-        findMinMaxDistanceOptimised(root->right,  hd+1, m);
-    }
-}
-
-
-void verticalOrderOptimised(Node *root) {
-    // hd  --> Horizontal distance of current node from root
-    int hd = 0;
-
-    // Create a map and store vertical order in map using
-    map < int,vector<int> > m;
-
-    findMinMaxDistanceOptimised(root, hd, m);
-
-    //Traverse the map and print nodes at every horizontal
-    for(auto it : m){
-        for(int i : it.second){
-            cout<<i<<" ";
+        if (temp->left) {
+            queue.push({temp->left,{x - 1,y + 1}});
         }
-        cout<<endl;
+        if (temp->right) {
+            queue.push({temp->right,{x + 1,y + 1}});
+        }
     }
+    vector<vector<int >> ans;
+    for (auto p: nodes) {
+        vector<int> col;
+        for (auto q: p.second) {
+            col.insert(col.end(), q.second.begin(), q.second.end());
+        }
+        ans.push_back(col);
+    }
+    return ans;
 }
-
 
 int main() {
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
-    root->right->left->right = new Node(8);
-    root->right->right->right = new Node(9);
-//    Node *root = new Node(1);
-//    root->left = new Node(2);
-//    root->right = new Node(3);
-//    root->left->right = new Node(4);
-//    root->left->right->right = new Node(5);
-//    root->left->right->right->right = new Node(6);
+    auto *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
+    root->right->left->right = new TreeNode(8);
+    root->right->right->right = new TreeNode(9);
 
     cout << "Vertical order traversal is \n";
-    verticalOrderOptimised(root);
+    vector<vector<int>> vTraversal;
+    vTraversal = verticalOrderTraversal(root);
+
+    for (auto vertical: vTraversal) {
+        for (auto nodeVal: vertical) {
+            cout << nodeVal << " ";
+        }
+        cout << endl;
+    }
 
     /*
      Vertical order traversal is

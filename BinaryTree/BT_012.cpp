@@ -1,123 +1,58 @@
 //
-// Created by Akshansh Gusain on 21/01/22.
+// Created by Akshansh Gusain on 15/02/24.
 //
-#include<stdc++.h>
-using namespace std;
+#include "BT_000.cpp"
 
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-// with respect to the vertical distance from root.
-// <horizontalDistance, <nodeValue, level>>
-void findMinMaxDistance(Node *root, int  hd, int level , map<int, pair<int, int> > &m) {
-    if (root == nullptr) {
+void diagonalTraversalHelper(TreeNode *root, int diagonalDistance, map<int, vector<int>> &map){
+    if(root == nullptr){
         return;
     }
 
-    if(m.count(hd) == 0){
-        m[hd] = make_pair(root->data, level);
-    }else if(m[hd].second > level){
-        m[hd] = make_pair(root->data, level);
-    }
-
-    if (root->left != nullptr) {
-        findMinMaxDistance(root->left, hd - 1, level + 1, m);
-    }
-    if (root->right != nullptr) {
-        findMinMaxDistance(root->right, hd + 1, level + 1, m);
-    }
+    map[diagonalDistance].push_back(root->val);
+    diagonalTraversalHelper(root->left, diagonalDistance+1, map);
+    diagonalTraversalHelper(root->right, diagonalDistance, map);
 }
 
+vector<vector<int>> diagonalTraversal(TreeNode *&root){
+    // <DiagonalDistance, vector<Node at tha diagonalDistance>>
+    map<int, vector<int>> map;
+    int diagonalDistance = 0;
+    vector<vector<int>> result;
 
-void topView(Node *root) {
+    diagonalTraversalHelper(root, diagonalDistance, map);
 
-    /// map to store the pair of node value and its level
-    // with respect to the vertical distance from root.
-    // <horizontalDistance, <nodeValue, level>>
-    map<int, pair<int, int> > m;
-
-    // Horizontal Distance from the root
-    int hd = 0;
-    // Tree Level
-    int level = 0;
-
-    findMinMaxDistance(root, hd, level, m);
-
-    for (auto & it : m) {
-        cout << it.second.first << " ";
+    for(auto it : map){
+        vector<int> temp;
+        for(auto node: it.second){
+            temp.push_back(node);
+        }
+        result.push_back(temp);
     }
+    return result;
 }
 
-//void findVerticalOrder(Node *root,int hd ,map<int, vector<int>> &map){
-//    if(root == nullptr){
-//        return;
-//    }
-//
-//    map[hd].push_back(root->data);
-//    findVerticalOrder(root->left, hd-1, map);
-//    findVerticalOrder(root->right, hd+1, map);
-//}
-//
-//void top2(Node *root){
-//    map<int, vector<int>> ma;
-//    findVerticalOrder(root, 0,ma);
-//
-//    for(auto it: ma){
-//        cout<<it.second[0]<<" ";
-//    }
-//}
+int main(){
+    auto root = new TreeNode(8);
+    root->left = new TreeNode(3);
+    root->right = new TreeNode(10);
+    root->left->left = new TreeNode(1);
+    root->left->right = new TreeNode(6);
+    root->right->right = new TreeNode(14);
+    root->right->right->left = new TreeNode(13);
+    root->left->right->left = new TreeNode(4);
+    root->left->right->right = new TreeNode(7);
 
-int main() {
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->right = new Node(4);
-    root->left->right->right = new Node(5);
-    root->left->right->right->right = new Node(6);
-//    Node *root = new Node(1);
-//    root->left = new Node(2);
-//    root->right = new Node(3);
-//    root->left->left = new Node(4);
-//    root->left->right = new Node(5);
-//    root->right->left = new Node(6);
-//    root->right->right = new Node(7);
-//    root->right->left->right = new Node(8);
-//    root->right->right->right = new Node(9);
 
-    cout << "Vertical order traversal is \n";
-    topView(root);
-    //top2(root);
-
-    /*
-     Vertical order traversal is
-        4
-        2
-        1 5 6
-        3 8
-        7
-        9
-     */
+    vector<vector<int>> traversal = diagonalTraversal(root);
+    //Diagonal Traversal of binary tree :
+    //8 10 14
+    //3 6 7 13
+    //1 4
+    for(auto it: traversal){
+        for(auto itt: it){
+            cout<<itt<<" ";
+        }
+        cout<<endl;
+    }
     return 0;
 }
-

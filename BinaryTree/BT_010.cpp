@@ -1,62 +1,56 @@
 //
-// Created by Akshansh Gusain on 21/01/22.
+// Created by Akshansh Gusain on 13/02/24.
 //
-#include<stdc++.h>
+#include "BT_000.cpp"
 
-using namespace std;
+vector<int> inorderMorisTraversal(TreeNode *&root) {
+    vector<int> inorder;
+    auto currentNode = root;
 
-struct Node {
-    int data;
-    struct Node *left, *right;
+    while(currentNode != nullptr){
+        // case 1: currentNode has no left tree
+        if(currentNode->left == nullptr){
+            inorder.push_back(currentNode->val);
+            currentNode = currentNode->right;
+        }else{
+            // currentNode has a left subtree
+            // go to the right most TreeNode of the left subtree
+            auto previousNode  = currentNode->left;
+            while(previousNode->right != nullptr and previousNode->right != currentNode){
+                previousNode = previousNode->right;
+            }
 
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+            // case 2: right most child is pointing to nullptr
+            if(previousNode->right == nullptr){
+                previousNode->right = currentNode;
+                currentNode = currentNode->left;
+            }else{
+                // case 3: right most child is pointing to currentNode
+                inorder.push_back(currentNode->val);
+                previousNode->right = nullptr;
+                currentNode = currentNode->right;
+            }
+
+        }
     }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void leftView(Node *root, int currentLevel, int &maxLevel){
-    if(root == nullptr){
-        return;
-    }
-
-    if(currentLevel > maxLevel){
-        cout<<root->data<<" ";
-        maxLevel = currentLevel;
-    }
-
-    if(root->left != nullptr){
-        leftView(root->left, currentLevel + 1, maxLevel);
-    }
-    if(root->right != nullptr){
-        leftView(root->right, currentLevel + 1, maxLevel);
-    }
+    return inorder;
 }
 
 int main() {
-    Node* root = new Node(10);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(7);
-    root->left->right = new Node(8);
-    root->right->right = new Node(15);
-    root->right->left = new Node(12);
-    root->right->right->left = new Node(14);
+    auto *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->left->right->right = new TreeNode(6);
 
-    int maxLevel = INT_MIN;
-    leftView(root, 1, maxLevel);
+    vector<int> inorder;
+    inorder = inorderMorisTraversal(root);
+
+    cout << "The Inorder Traversal is: ";
+    for (int i : inorder) {
+        cout << i << " ";
+    }
+    // 4 2 5 6 1 3
     return 0;
 }

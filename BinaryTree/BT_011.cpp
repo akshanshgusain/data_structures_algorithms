@@ -1,74 +1,97 @@
 //
-// Created by Akshansh Gusain on 21/01/22.
+// Created by Akshansh Gusain on 14/02/24.
 //
-#include<stdc++.h>
+#include "BT_000.cpp"
 
+bool isLeaf(TreeNode *root) {
+    return (root->left == nullptr) and (root->right == nullptr);
+}
 
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+void addLeftBoundary(TreeNode *root, vector<int> &result) {
+    auto current = root->left;
+    while (current != nullptr) {
+        if (!isLeaf(current)) {
+            result.push_back(current->val);
+        }
+        if (current->left != nullptr) {
+            current = current->left;
+        } else {
+            current = current->right;
+        }
     }
+}
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
+void addLeafNodes(TreeNode *root, vector<int> &result) {
+    if (isLeaf(root)) {
+        result.push_back(root->val);
     }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-void rightView(Node *root, int currentLevel, int *maxLevel) {
-    if (root == nullptr) {
-        return;
-    }
-
-    if (currentLevel > *maxLevel) {
-        cout << root->data << " ";
-        *maxLevel = currentLevel;
-    }
-
-    if (root->right != nullptr) {
-        rightView(root->right, currentLevel + 1, maxLevel);
-    }
-
+    // recursively call the left and the right subtrees
     if (root->left != nullptr) {
-        rightView(root->left, currentLevel + 1, maxLevel);
+        addLeafNodes(root->left, result);
+    }
+    if (root->right != nullptr) {
+        addLeafNodes(root->right, result);
+    }
+}
+
+void addRightBoundary(TreeNode *root, vector<int> &result) {
+    auto current = root->right;
+    vector<int> tmp; // because we need to reverse
+    while (current) {
+        if (!isLeaf(current)) {
+            tmp.push_back(current->val);
+        }
+        if (current->right != nullptr) {
+            current = current->right;
+        } else {
+            current = current->left;
+        }
+    }
+    for (int i = tmp.size() - 1; i >= 0; --i) {
+        result.push_back(tmp[i]);
+    }
+}
+
+
+vector<int> printBoundary(TreeNode *root) {
+    vector<int> result;
+    if (root == nullptr) {
+        return result;
     }
 
+    if (!isLeaf(root)) {
+        result.push_back(root->val);
+    }
+
+    addLeftBoundary(root, result);
+    addLeafNodes(root, result);
+    addRightBoundary(root, result);
+
+    return result;
 }
 
 int main() {
-//    Node* root = new Node(10);
-//    root->left = new Node(2);
-//    root->right = new Node(3);
-//    root->left->left = new Node(7);
-//    root->left->right = new Node(8);
-//    root->right->right = new Node(15);
-//    root->right->left = new Node(12);
-//    root->right->right->left = new Node(14);
+    auto *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->left->left = new TreeNode(3);
+    root->left->left->right = new TreeNode(4);
+    root->left->left->right->left = new TreeNode(5);
+    root->left->left->right->right = new TreeNode(6);
+    root->right = new TreeNode(7);
+    root->right->right = new TreeNode(8);
+    root->right->right->left = new TreeNode(9);
+    root->right->right->left->left = new TreeNode(10);
+    root->right->right->left->right = new TreeNode(11);
 
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
-    root->right->right->right = new Node(8);
+    vector<int> boundaryTraversal;
+    boundaryTraversal = printBoundary(root);
 
-    int maxLevel = INT_MIN;
-    rightView(root, 1, &maxLevel); //1 3 7 8
+    cout << "The Boundary Traversal is : ";
+    for (int i : boundaryTraversal) {
+        cout << i << " ";
+    }
+
+    // 1 2 3 4 5 6 10 11 9 8 7
+
     return 0;
 }

@@ -1,66 +1,45 @@
 //
-// Created by Akshansh Gusain on 28/01/22.
+// Created by Akshansh Gusain on 27/02/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-using namespace std;
+TreeNode *buildTreeHelper
+        (vector<int> &preorder, vector<int> &inorder,
+         int preStart, int preEnd, int inStart, int inEnd,
+         map<int, int> &map) {
 
-
-void inorder(vector<int> &arr, vector<int> &v, int &n, int index) {
-
-    if (index >= n) {
-        return;
+    if (preStart > preEnd || inStart > inEnd) {
+        return nullptr;
     }
-    inorder(arr, v, n, 2 * index + 1);
-    v.push_back(arr[index]);
-    inorder(arr, v, n, 2 * index + 2);
+
+    auto root = new TreeNode(preorder[preStart]);
+    int elem = map[root->val]; // get index of root in inorder
+    int nElem = elem - inStart;
+
+    root -> left = buildTreeHelper(preorder, inorder, preStart + 1, preStart + nElem,
+                                 inStart, elem - 1, map);
+
+    root -> right = buildTreeHelper(preorder, inorder,preStart + nElem + 1, preEnd,
+                                  elem + 1, inEnd, map);
+    return root;
 }
 
+TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
+    int preStart = 0, preEnd = preorder.size() - 1;
+    int inStart = 0, inEnd = inorder.size() - 1;
 
-int minSwaps(vector<int> &v) {
-    vector<pair<int, int>> t(v.size());
-    int ans = 0;
-
-    for (int i = 0; i < v.size(); i++) {
-        t[i].first = v[i];
-        t[i].second = i;
+    map<int, int> map; // <element, index>
+    for (int i = inStart; i <= inEnd; i++) {
+        map[inorder[i]] = i;
     }
 
-    sort(t.begin(), t.end());
-
-    for (int i = 0; i < t.size(); i++) {
-        // second element is equal to i
-        if (i == t[i].second)
-            continue;
-        else {
-            // swapping of elements
-            swap(t[i].first, t[t[i].second].first);
-            swap(t[i].second, t[t[i].second].second);
-        }
-
-        // Second is not equal to i
-        if (i != t[i].second)
-            --i;
-        ans++;
-    }
-    return ans;
+    return buildTreeHelper(preorder, inorder, preStart, preEnd, inStart, inEnd, map);
 }
 
 int main() {
-    // Complete BT
-    vector<int> a = {5, 6, 7, 8, 9, 10, 11};
-    vector<int> v;
-    int n = int(a.size());
-
-    // Find the IN-Order if given complete BT.
-    inorder(a, v, n, 0);
-
-    for (auto it: v) {
-        cout << it << " ";
-    }//8 6 9 5 10 7 11
-    cout << endl;
-
-    cout << minSwaps(v) << endl; // 3
-
+    vector<int> preorder{10, 20, 40, 50, 30, 60};
+    vector<int> inorder{40, 20, 50, 10, 60, 30};
+    auto root = buildTree(preorder, inorder);
+    delete root;
     return 0;
 }

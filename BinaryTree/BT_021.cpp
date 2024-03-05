@@ -1,63 +1,45 @@
 //
-// Created by Akshansh Gusain on 28/01/22.
+// Created by Akshansh Gusain on 26/02/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-#include "BT.cpp"
-
-using namespace std;
-
-
-void printInOrder(TreeNode *root) {
-    if (root == nullptr) {
-        return;
-    }
-
-    if (root->left != nullptr) {
-        printInOrder(root->left);
-    }
-    cout << char(root->data) << " ";
-
-    if (root->right != nullptr) {
-        printInOrder(root->right);
+void printList(TreeNode *node) {
+    while (node != nullptr) {
+        cout << node->val << " ";
+        node = node->right;
     }
 }
 
-TreeNode *buildTree(vector<char> &preOrder, int preStart, int preEnd,
-                    vector<char> &inOrder, int inStart, int inEnd, unordered_map<int, int> &inMap) {
-    if (preStart > preEnd || inStart > inEnd) {
-        return nullptr;
+// Morris traversal
+void flatten(TreeNode *root) {
+    auto current = root;
+    while(current != nullptr){
+        if(current->left != nullptr){
+            auto previous = current->left;
+            while(previous->right != nullptr){
+                previous = previous->right;
+            }
+
+            previous->right = current->right;
+            current->right = current->left;
+            current->left = nullptr;
+        }
+        current = current->right;
     }
-
-    TreeNode *root = new TreeNode(preOrder[preStart]);
-
-    int inRoot = inMap[root->data];
-    int numsLeft = inRoot - inStart;// # of elements after preOrder[preStart] will form the new preorder
-
-    root->left = buildTree(preOrder, preStart + 1, preStart + numsLeft,
-                           inOrder, inStart, inRoot - 1, inMap);
-    root->right = buildTree(preOrder, preStart + numsLeft + 1, preEnd,
-                            inOrder, inRoot + 1, inEnd, inMap);
-
-    return root;
-
 }
 
 int main() {
-    vector<char> in = {'D', 'B', 'E', 'A', 'F', 'C'};
-    vector<char> pre = {'A', 'B', 'D', 'E', 'C', 'F'};
-    unordered_map<int, int> inMap;
+    auto root = new TreeNode(1);
+    root -> left = new TreeNode(2);
+    root -> left -> left = new TreeNode(3);
+    root -> left -> right = new TreeNode(4);
+    root -> right = new TreeNode(5);
+    root -> right -> right = new TreeNode(6);
+    root -> right -> right -> left = new TreeNode(7);
 
-    for (int i = 0; i < in.size(); i++) {
-        inMap[in[i]] = i;
-    }
+    flatten(root);
 
-    TreeNode *root = buildTree(pre, 0, int(pre.size()) - 1,
-                               in, 0, int(in.size()) - 1,
-                               inMap);
-
-
-    cout << "Inorder traversal of the constructed tree is \n";
-    printInOrder(root); //D B E A F C
+    // Print the converted list
+    printList(root); // 1 2 3 4 5 6 7
     return 0;
 }

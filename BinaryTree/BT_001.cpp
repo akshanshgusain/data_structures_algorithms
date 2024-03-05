@@ -1,121 +1,60 @@
 //
-// Created by Akshansh Gusain on 18/01/22.
+// Created by Akshansh Gusain on 28/01/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
+// time complexity is O(N)
+// space complexity is O(W), where W is the maximum width (maximum number of nodes at any level) of the binary tree
+vector<vector<int>> levelOrder(TreeNode* &root){
+    vector<vector<int>> result;
 
-using namespace std;
-
-struct TreeNode {
-    int data;
-    struct TreeNode *left, *right;
-
-    TreeNode() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+    if(root == nullptr){
+        return result;
     }
 
-    explicit TreeNode(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    TreeNode(int key, TreeNode *left, TreeNode *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-//class TreeNode {
-//public:
-//    int data;
-//    TreeNode *left, *right;
-//
-//    TreeNode() {
-//        data = 0;
-//        left = nullptr;
-//        right = nullptr;
-//    }
-//
-//    explicit TreeNode(int key) {
-//        data = key;
-//        left = nullptr;
-//        right = nullptr;
-//    }
-//
-//    TreeNode(int key, TreeNode *left, TreeNode *right) {
-//        data = key;
-//        this->left = left;
-//        this->right = right;
-//    }
-//};
-
-void printLevelOrder(TreeNode* root) {
-    if (root == nullptr) {
-        return;
-    }
-
-    queue<TreeNode *> q;
+    queue<TreeNode*> q;
     q.push(root);
 
-    while (!q.empty()) {
+    while(!q.empty()){
+        int levelSize = q.size();
+        vector<int> currentLevel;
 
-        TreeNode *node = q.front();//print the front of the queue and remove it
-        cout << node->data << " - ";
-        q.pop();
+        for(int i = 0; i < levelSize; i++){
+            auto node = q.front();
+            q.pop();
 
-        if (node->left != nullptr) {
-            q.push(node->left);
+            currentLevel.push_back(node->val);
+
+            if(node->left!=nullptr){
+                q.push(node->left);
+            }
+            if(node->right!=nullptr){
+                q.push(node->right);
+            }
         }
-        if (node->right != nullptr) {
-            q.push(node->right);
-        }
+
+        result.push_back(currentLevel);
     }
-    cout<<endl;
+
+    return result;
 }
 
-int main() {
-//    TreeNode *root = newNode(1);
-    auto *root = new TreeNode(1);
-    /* following is the tree after above statement
-             1
-       /           \
-     nullptr     nullptr
-    */
+int main(){
+    auto root = new TreeNode(3);
+    root->left = new TreeNode(9);
+    root->right = new TreeNode(20);
+    root->right->left = new TreeNode(15);
+    root->right->right = new TreeNode(7);
 
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    /* 2 and 3 become left and right children of 1
-            1
-      /           \
-     2            3
-    / \          / \
-    NULL NULL NULL NULL
-    */
+    vector<vector<int>> result = levelOrder(root);
 
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    /* 4 becomes left child of 2
-         1
-       /   \
-      2     3
-     / \    / \
-    4   5 NULL NULL
-    /   \
-    NULL NULL
-    */
-
-
-    cout << " Level order traversal of Binary Tree is: \n";
-    //1 - 2 - 3 - 4 - 5
-    printLevelOrder(root);
-    printLevelOrder(root);
-
-
-    delete root;
+    cout << "Level Order Traversal:\n";
+    for (const auto& level : result) {
+        for (int value : level) {
+            std::cout << value << " ";
+        }
+        cout << endl;
+    }
 
     return 0;
 }

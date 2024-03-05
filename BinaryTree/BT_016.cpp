@@ -1,106 +1,62 @@
 //
-// Created by Akshansh Gusain on 25/01/22.
+// Created by Akshansh Gusain on 15/02/24.
 //
+#include "BT_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-
-void printLeaves(Node *root) {
+vector<int> topView(TreeNode *root) {
+    vector<int> result;
     if (root == nullptr) {
-        return;
+        return result;
+    }
+    // pari<TreeNode, Horizontal-Distance>
+    queue<pair<TreeNode *, int>> nodeQueue;
+    // <Horizontal-Distance, TreeNode->val>
+    map<int, int> map;
+    nodeQueue.emplace(root, 0);
+    while (!nodeQueue.empty()) {
+        auto currentNode = nodeQueue.front().first;
+        int currentHD = nodeQueue.front().second;
+        nodeQueue.pop();
+        if(map.find(currentHD) == map.end()){
+            map[currentHD] = currentNode->val;
+        }
+        if (currentNode->left != nullptr) {
+            nodeQueue.emplace(currentNode->left, currentHD - 1);
+        }
+        if (currentNode->right != nullptr) {
+            nodeQueue.emplace(currentNode->right, currentHD + 1);
+        }
     }
 
-    printLeaves(root->left);
-
-    if ((root->left == nullptr) and (root->right == nullptr)) {
-        cout << root->data << " ";
+    for(auto it: map){
+        result.push_back(it.second);
     }
-
-    printLeaves(root->right);
-}
-
-
-void printBoundaryLeft(Node *root) {
-    if (root == nullptr) {
-        return;
-    }
-    if (root->left != nullptr) {
-        // to ensure top down order, print the node
-        // before calling itself for left subtree
-
-        cout << root->data << " ";
-        printBoundaryLeft(root->left);
-    } else if (root->right != nullptr) {
-        cout << root->data << " ";
-        printBoundaryLeft(root->right);
-    }
-    // do nothing if it is a leaf node, this way we avoid
-    // duplicates in output
-}
-
-
-void printBoundaryRight(Node *root) {
-    if (root == nullptr) {
-        return;
-    }
-    if (root->right != nullptr) {
-        // to ensure bottom up order, first call for right
-        // subtree, then print this node
-        printBoundaryRight(root->right);
-        cout << root->data << " ";
-    } else if (root->left != nullptr) {
-        printBoundaryRight(root->left);
-        cout << root->data << " ";
-    }
-    // do nothing if it is a leaf node, this way we avoid
-    // duplicates in output
-}
-
-void printBoundary(Node *root) {
-    if (root != nullptr) {
-        cout << root->data << " ";
-    }
-
-    printBoundaryLeft(root->left);
-    printLeaves(root);
-    printBoundaryRight(root->right);
+    return result;
 }
 
 int main() {
-    Node *root = new Node(20);
-    root->left = new Node(8);
-    root->left->left = new Node(4);
-    root->left->right = new Node(12);
-    root->left->right->left = new Node(10);
-    root->left->right->right = new Node(14);
-    root->right = new Node(22);
-    root->right->right = new Node(25);
+    //                 1
+    //             /      \
+    //            2        3
+    //         /   \      /   \
+    //      4       5    6     7
+    //            /   \
+    //          8      9
 
-    printBoundary(root); // 20 8 4 10 14 25 22
+    auto root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->left->right->left = new TreeNode(8);
+    root->left->right->right = new TreeNode(9);
+    root->right->right = new TreeNode(7);
+    root->right->left = new TreeNode(6);
+
+    vector<int> traversal = topView(root);
+
+    for (auto it: traversal) {
+        cout << it << " ";
+    }
     return 0;
 }

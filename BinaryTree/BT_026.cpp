@@ -1,78 +1,57 @@
 //
-// Created by Akshansh Gusain on 02/02/22.
+// Created by Akshansh Gusain on 29/02/24.
 //
-#include<stdc++.h>
-using namespace std;
+#include "BT_000.cpp"
 
-struct Node {
-    char data;
-    struct Node *left, *right;
+void findAncestors(TreeNode *root, vector<int> &ancestors) {
+    ancestors[root->val] = -1;
+    queue<TreeNode*> nodeQueue;
+    nodeQueue.push(root);
 
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+    while(!nodeQueue.empty()){
+        auto front = nodeQueue.front();
+        nodeQueue.pop();
+
+        if(front->left != nullptr){
+            ancestors[front->left->val] = front->val;
+            nodeQueue.push(front->left);
+        }
+        if(front->right != nullptr){
+            ancestors[front->right->val] = front->val;
+            nodeQueue.push(front->right);
+        }
+    }
+}
+
+int KthAncestor(TreeNode *root, int numberOfNodes, int k, int node) {
+    // create a vector to store the 1st Ancestor
+    vector<int> ancestors(numberOfNodes + 1, 0);
+
+    findAncestors(root, ancestors);
+    int count = 0;
+    while (node != -1) {
+        node = ancestors[node];
+        count++;
+        if (count == k) {
+            break;
+        }
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-// The idea is to serialize subtrees as strings and store the strings in hash table. Once we find a serialized tree
-// (which is not a leaf) already existing in hash-table, we return true.
-
-string serializeTree(Node *root, unordered_set<string> &subTree) {
-    string serialised = "";
-    if (root == nullptr) {
-        return serialised + '$';
-    }
-
-    string LST = serializeTree(root->left, subTree);
-    if (LST == serialised) {
-        return "";
-    }
-    string RST = serializeTree(root->right, subTree);
-    if (RST == serialised) {
-        return "";
-    }
-
-    serialised = serialised + root->data + LST + RST;
-
-    if (serialised.length() > 3 and subTree.find(serialised) != subTree.end()) {
-        return "";
-    }
-    subTree.insert(serialised);
-    return serialised;
+    return node;
 }
 
 int main() {
-    Node *root = new Node('A');
-    root->left = new Node('B');
-    root->right = new Node('C');
-    root->left->left = new Node('D');
-    root->left->right = new Node('E');
-    root->right->right = new Node('B');
-    root->right->right->right = new Node('E');
-    root->right->right->left = new Node('D');
-//    root->right->right->left->right = new Node('T');
+    auto root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
 
-    //Hash
-    unordered_set<string> subTrees;
-    string serializedTree = serializeTree(root, subTrees);
-    if (serializedTree == "") {
-        cout << "YES";
-    } else {
-        cout << "NO";
-    }
+    int numberOfNodes = 5;
+    int k = 1;
+    int node = 5;
+
+    // print kth ancestor of given node
+    cout << KthAncestor(root, numberOfNodes, k, node);
     return 0;
-
 }
