@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(Final500DS
         BinaryTree/new/BT_032.cpp
         BinaryTree/new/BT_033.cpp
+        BinaryTree/new/BT_034.cpp
 )
