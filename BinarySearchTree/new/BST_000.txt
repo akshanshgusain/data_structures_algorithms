@@ -6,7 +6,7 @@ https://leetcode.com/problems/inorder-successor-in-bst/
 https://leetcode.com/problems/delete-node-in-a-bst/
 04. Find min and Max value in a BST.
 05. Check if the given tree is a BST.
-
+https://leetcode.com/problems/validate-binary-search-tree/
 06. Find LCA of 2 Nodes in a BST. (Different from LCA in BTs).
 07.Moris Traversal. O(1) Space BST Traversal(In-Order and PreOrder). <T>
 
