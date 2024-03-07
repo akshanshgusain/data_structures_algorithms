@@ -50,6 +50,7 @@ void inOrderTraversal(Node *root, Node *key, Node *successor) {
 
     inOrderTraversal(root->left, key, successor);
 
+    // need to find the first value that is greater that key
     if (root->data > key->data and successor->data == -1) {
         successor->data = root->data;
         return;
