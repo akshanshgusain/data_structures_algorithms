@@ -1,33 +1,34 @@
 01. Find a value in a BST.
+https://leetcode.com/problems/search-in-a-binary-search-tree/
 02. Deletion of a node in a BST.
 03. Find min and Max value in a BST.
-04. Find inorder successor and inorder predecessor in a BST.<T>
-05. Check if the given tree is a BST.
+04. Check if the given tree is a BST.
+05. Find inorder successor and inorder predecessor in a BST.<T>
 06. Populate Inorder successor of all nodes. (Actually a BT Question).
 07. Find LCA of 2 Nodes in a BST. (Different from LCA in BTs).
-08.Construct BST from given preorder traversal. (O(N^2))
+08.Moris Traversal. O(1) Space BST Traversal(In-Order and PreOrder). <T>
 
-conversions
 
-09.Binary Tree to Binary Search Tree Conversion. (O(NlogN))
+conversions/construction
+
+09.Construct BST from given preorder traversal. (O(N^2))
 10.Construct BST from a sorted array. O(N) --- Technique: take middle element as root and recur for left and right subtrees.
-11.Convert a Normal BST to a Balanced BST. --- Technique: Same as above.
-12.Merge Two Balanced Binary Search Trees.  --- Technique: convert BST to array and apply the above concept.
+11.Binary Tree to Binary Search Tree Conversion. (O(NlogN))
+12.Height Balance a BST
+13.Merge Two Balanced Binary Search Trees.  --- Technique: convert BST to array and apply the above concept.
 
-13.Kth Largest Element in a BST.
-14.Kth Smallest Element in a BST.
-15.Count pairs from 2 BST whose sum is equal to given value X.<T>  --- Technique: Traverse 1 BST in inc order and 1 BST in dec order and check if their sum is equal to X.
+Implementation
 
-16.Moris Traversal. O(1) Space BST Traversal(In-Order and PreOrder). <T>
-17.Find median of a BST in O(1) space. --- Technique: use Moris Traversal.
-23. Flatten a BST to a sorted List.
-
-18.Count BST nodes that lie inn a given range.
-19.Replace every element with the least greater element on its right. (Skip this method use stacks).
-20.Given "n" appointments, find the conflicting appointments.
-21.Check if a given array can represent Preorder Traversal of Binary Search Tree. --- Technique: Create BST from preorder.
-22.Check whether BST contains Dead End or not. ---Technique: check if for any value n, n+1 and n-1 exist.
-
+14.Find median of a BST in O(1) space. --- Technique: use Moris Traversal.
+15.Kth Largest Element in a BST.
+16.Kth Smallest Element in a BST.
+17.Count pairs from 2 BST whose sum is equal to given value X.<T>  --- Technique: Traverse 1 BST in inc order and 1 BST in dec order and check if their sum is equal to X.
+18. Flatten a BST to a sorted List.
+19.Count BST nodes that lie inn a given range.
+20.Replace every element with the least greater element on its right. (Skip this method use stacks).
+21.Given "n" appointments, find the conflicting appointments.
+22.Check if a given array can represent Preorder Traversal of Binary Search Tree. --- Technique: Create BST from preorder.
+23.Check whether BST contains Dead End or not. ---Technique: check if for any value n, n+1 and n-1 exist.
 24. Largest BST in a BT.<T>
 
 
