@@ -50,3 +50,12 @@ void printBST(TreeNode * root){
     printBST(root->left);
     printBST(root->right);
 }
+
+void buildInOrderArray(TreeNode *root, vector<int> &arr) {
+    if (root == nullptr) {
+        return;
+    }
+    buildInOrderArray(root->left, arr);
+    arr.push_back(root->val);
+    buildInOrderArray(root->right, arr);
+}

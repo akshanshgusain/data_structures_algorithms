@@ -8,15 +8,16 @@ https://leetcode.com/problems/delete-node-in-a-bst/
 05. Check if the given tree is a BST.
 https://leetcode.com/problems/validate-binary-search-tree/
 06. Find LCA of 2 Nodes in a BST. (Different from LCA in BTs).
-07.Moris Traversal. O(1) Space BST Traversal(In-Order and PreOrder). <T>
-
+07. Moris Traversal. O(1) Space BST Traversal(In-Order and PreOrder)
 
 conversions/construction
 
-08.Construct BST from given preorder traversal. (O(N^2))
-09.Construct BST from a sorted array. O(N) --- Technique: take middle element as root and recur for left and right subtrees.
-10.Binary Tree to Binary Search Tree Conversion. (O(NlogN))
-11.Height Balance a BST
+08.Convert a sorted array to BST.
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+09.Construct BST from given preorder traversal.
+https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
+10.Binary Tree to Binary Search Tree Conversion.
+11.Height Balance a BST.
 12.Merge Two Balanced Binary Search Trees.  --- Technique: convert BST to array and apply the above concept.
 
 Implementation

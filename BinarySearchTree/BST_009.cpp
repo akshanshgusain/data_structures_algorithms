@@ -134,5 +134,8 @@ int main() {
     cout <<"Following is Inorder Traversal of the converted BST:" << endl ;
     inOrder(root);
 
+    //Following is Inorder Traversal of the converted BST:
+    //5 10 15 20 30
+
     return 0;
 }
