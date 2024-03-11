@@ -5,7 +5,10 @@
 
 vector<vector<int>> verticalOrderTraversal(TreeNode *&root) {
     map<int, map<int, multiset<int >>> nodes;
+
+    // <TreeNode, Vertical, Level>
     queue<pair<TreeNode *, pair<int, int >>> queue;
+
 
     queue.push({root,{0,0}}); //initial vertical and level
 

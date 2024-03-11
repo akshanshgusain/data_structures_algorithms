@@ -15,19 +15,19 @@ vector<int> inorderMorisTraversal(TreeNode *&root) {
         }else{
             // currentNode has a left subtree
             // go to the right most TreeNode of the left subtree
-            auto previousNode  = currentNode->left;
-            while(previousNode->right != nullptr and previousNode->right != currentNode){
-                previousNode = previousNode->right;
+            auto nextNode  = currentNode->left;
+            while(nextNode->right != nullptr and nextNode->right != currentNode){
+                nextNode = nextNode->right;
             }
 
             // case 2: right most child is pointing to nullptr
-            if(previousNode->right == nullptr){
-                previousNode->right = currentNode;
+            if(nextNode->right == nullptr){
+                nextNode->right = currentNode;
                 currentNode = currentNode->left;
             }else{
                 // case 3: right most child is pointing to currentNode
                 inorder.push_back(currentNode->val);
-                previousNode->right = nullptr;
+                nextNode->right = nullptr;
                 currentNode = currentNode->right;
             }
 
