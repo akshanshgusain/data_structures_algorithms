@@ -22,9 +22,10 @@ https://leetcode.com/problems/construct-binary-search-tree-from-preorder-travers
 
 Implementation
 
-13.Find median of a BST in O(1) space. --- Technique: use Moris Traversal.
-14.Kth Largest Element in a BST.
-15.Kth Smallest Element in a BST.
+
+13.Kth Largest Element in a BST.
+14.Kth Smallest Element in a BST.
+15.Find median of a BST in O(1) space. --- Technique: use Moris Traversal.
 16.Count pairs from 2 BST whose sum is equal to given value X.<T>  --- Technique: Traverse 1 BST in inc order and 1 BST in dec order and check if their sum is equal to X.
 17. Flatten a BST to a sorted List.
 18.Count BST nodes that lie inn a given range.
