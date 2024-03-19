@@ -51,13 +51,13 @@ void kthLargestElement(TreeNode *root, int &counter, int k) {
         return;
     }
 
-    kthLargestElement(root->left, counter, k);
+    kthLargestElement(root->right, counter, k);
     counter++;
     if (counter == k) {
         cout << k << "th Largest number: " << root->val << endl;
         return;
     }
-    kthLargestElement(root->right, counter, k);
+    kthLargestElement(root->left, counter, k);
 }
 
 int main() {
