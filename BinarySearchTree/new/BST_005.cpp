@@ -41,6 +41,12 @@ bool checkBST2(TreeNode *root, long long l, long long r) {
     return false;
 }
 
+bool isValidBST(TreeNode* root) {
+    long long int min = -1000000000000, max = 1000000000000;
+    return checkBST2(root, min, max);
+}
+
+
 
 int main() {
     TreeNode *root = nullptr;
@@ -61,5 +67,8 @@ int main() {
     root2->left->right = new TreeNode(4);
 
     cout << checkBST(root2) << endl;
+
+    cout << checkBST2(root, INT_MIN, INT_MAX) << endl;
+
     return 0;
 }

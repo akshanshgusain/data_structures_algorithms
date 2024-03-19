@@ -7,15 +7,12 @@ void inOrderTraversal(TreeNode *root, TreeNode *key, TreeNode *successor) {
     if (root == nullptr) {
         return;
     }
-
     inOrderTraversal(root->left, key, successor);
-
     // need to find the first value that is greater that key
     if (root->val > key->val and successor->val == -1) {
         successor->val = root->val;
         return;
     }
-
     inOrderTraversal(root->right, key, successor);
 }
 
@@ -23,7 +20,7 @@ TreeNode *binarySearchS(TreeNode *root, TreeNode *key) {
     TreeNode *successor = nullptr;
 
     while (root != nullptr) {
-        if (key->val >= root->val) {
+        if ( root->val <= key->val) {
             root = root->right;
         } else {
             successor = root;

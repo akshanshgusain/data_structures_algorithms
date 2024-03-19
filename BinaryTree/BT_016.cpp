@@ -17,9 +17,11 @@ vector<int> topView(TreeNode *root) {
         auto currentNode = nodeQueue.front().first;
         int currentHD = nodeQueue.front().second;
         nodeQueue.pop();
+
         if(map.find(currentHD) == map.end()){
             map[currentHD] = currentNode->val;
         }
+
         if (currentNode->left != nullptr) {
             nodeQueue.emplace(currentNode->left, currentHD - 1);
         }

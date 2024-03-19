@@ -107,6 +107,6 @@ int main() {
     auto *mergedTree = mergeTrees(root1, root2, 5, 3);
 
     cout << "Following is Inorder traversal of the merged tree \n";
-    inOrder(mergedTree);
+    printBST(mergedTree);
     return 0;
 }
