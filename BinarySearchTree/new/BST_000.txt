@@ -29,11 +29,9 @@ Implementation
 16.Count pairs from 2 BST whose sum is equal to given value X.<T>  --- Technique: Traverse 1 BST in inc order and 1 BST in dec order and check if their sum is equal to X.
 17.Flatten a BST to a sorted List.
 18.Count BST nodes that lie in a given range.
-19.Replace every element with the least greater element on its right. (Skip this method use stacks).
-20.Given "n" appointments, find the conflicting appointments.
-21.Check if a given array can represent Preorder Traversal of Binary Search Tree. --- Technique: Create BST from preorder.
-22.Check whether BST contains Dead End or not. ---Technique: check if for any value n, n+1 and n-1 exist.
-23.Largest BST in a BT.<T>
+19.Check if a given array can represent Preorder Traversal of Binary Search Tree. --- Technique: Create BST from preorder.
+20.Check whether BST contains Dead End or not. ---Technique: check if for any value n, n+1 and n-1 exist.
+21.Largest BST in a BT.<T>
 
 
 
