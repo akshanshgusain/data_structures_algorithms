@@ -8,6 +8,9 @@
 // The task is to check whether the BST contains a dead end or not. Here Dead End
 // means, we are not able to insert any element after that node.
 
+bool isLeaf(TreeNode *root){
+    return (root->left == nullptr and root->right == nullptr);
+}
 void storeNodes(
         TreeNode *root,
         unordered_set<int> &allNodes,
@@ -19,7 +22,7 @@ void storeNodes(
 
     allNodes.insert(root->val);
 
-    if (root->left == nullptr and root->right == nullptr) {
+    if (isLeaf(root)) {
         allLeafNodes.insert(root->val);
         return;
     }
@@ -32,6 +35,8 @@ void storeNodes(
 // check if there is a leaf node with value x such that x+1 and x-1 exist in BST
 // with the exception of x = 1. For x = 1, we can’t insert 0 as the problem statement
 // says BST contains positive integers only.
+
+// time: O(N), space: O(N)
 bool isDeadEnd(TreeNode *root) {
     if (root == nullptr) {
         return root;

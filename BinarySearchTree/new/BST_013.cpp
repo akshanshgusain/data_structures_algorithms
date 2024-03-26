@@ -6,7 +6,6 @@
 // constant space: O(1)
 // inorder morris traversal - reversed
 void kthLargestElementOptimised(TreeNode* root, int k){
-
     auto currentNode = root;
     int counter = 0;
     int kthLargest = 0;
@@ -54,7 +53,6 @@ void kthLargestElement(TreeNode *root, int &counter, int k) {
     if (root == nullptr or counter >= k) {
         return;
     }
-
     kthLargestElement(root->right, counter, k);
     counter++;
     if (counter == k) {

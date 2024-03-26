@@ -1,6 +1,6 @@
 //
 // Created by Akshansh Gusain on 19/03/24.
-//
+//›
 #include "BST_000.cpp"
 
 int findMedian(TreeNode *root) {
@@ -52,10 +52,9 @@ int findMedianOptimised(TreeNode *root) {
     if (root == nullptr) {
         return 0;
     }
-
     int count = countNodes(root);
     int currCount = 0;
-    TreeNode *curr = root, *prev, *predecessor;
+    TreeNode *curr = root, *prev, *extra;
 
     while (curr != nullptr) {
         if (curr->left == nullptr) {
@@ -68,10 +67,10 @@ int findMedianOptimised(TreeNode *root) {
             if (count % 2 != 0 && currCount == (count + 1) / 2) {
                 return curr->val;
             } else if (count % 2 == 0 && currCount == (count / 2) + 1) {
-                return (predecessor->val + curr->val) / 2;
+                return (extra->val + curr->val) / 2;
             }
-            // Update predecessor for even no. of nodes
-            predecessor = curr;
+            // Update extra for even no. of nodes
+            extra = curr;
 
             curr = curr->right;
         } else {
@@ -86,15 +85,15 @@ int findMedianOptimised(TreeNode *root) {
                 prev->right = nullptr;
 
                 // process the node
-                predecessor = prev;
+                extra = prev;
                 currCount++;
                 if (count % 2 != 0 && currCount == (count + 1) / 2) {
                     return curr->val;
                 } else if (count % 2 == 0 && currCount == (count / 2) + 1) {
-                    return (predecessor->val + curr->val) / 2;
+                    return (extra->val + curr->val) / 2;
                 }
 
-                predecessor = curr;
+                extra = curr;
                 curr = curr->right;
             }
         }

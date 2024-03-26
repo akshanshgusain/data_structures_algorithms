@@ -37,9 +37,9 @@ bool canRepresentBST(vector<int> preorder) {
     for (int i = 0; i < n; i++) {
         // If we find a node who is on right side
         // and smaller than root, return false
-        if (preorder[i] < root)
+        if (preorder[i] < root){
             return false;
-
+        }
         // If pre[i] is in right subtree of stack top,
         // Keep removing items smaller than pre[i]
         // and make the last removed item as new

@@ -6,12 +6,9 @@
 // constant space: O(1)
 // inorder morris traversal
 void kthSmallestElementOptimised(TreeNode* root, int k){
-
     auto currentNode = root;
     int counter = 0;
-
     int kthSmallest=0;
-
     while(currentNode != nullptr){
         // case 1: currentNode has no left tree
         if(currentNode->left == nullptr){
@@ -48,7 +45,6 @@ void kthSmallestElementOptimised(TreeNode* root, int k){
 
         }
     }
-
     cout << k << "th Smallest number: " << kthSmallest << endl;
 }
 
