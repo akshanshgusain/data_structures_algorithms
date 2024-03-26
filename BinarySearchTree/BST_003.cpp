@@ -1,89 +1,69 @@
 //
-// Created by Akshansh Gusain on 17/02/22.
+// Created by Akshansh Gusain on 07/03/24.
 //
+#include "BST_000.cpp"
 
-#include<stdc++.h>
-
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+// Left-Most value will be the minimum
+TreeNode *minValue(TreeNode *root) {
+    auto *successor = root;
+    while(successor != nullptr and successor->left != nullptr){
+        successor = successor->left;
     }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    __attribute__((unused)) Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
+    return successor;
 }
 
-void inOrder(Node *head) {
-    if (head == nullptr) {
-        return;
-    }
-    inOrder(head->left);
-    cout << head->data << " ";
-    inOrder(head->right);
-}
-
-Node *findMin(Node *root){
-    Node *current = root;
-    while(current != nullptr and current->left!= nullptr){
-        current = current->left;
-    }
-    return current;
-}
-
-Node *findMax(Node *root){
-    Node *current = root;
-    while(current != nullptr and current->right!= nullptr){
-        current = current->right;
-    }
-    return current;
-}
-
-Node *findMin2(Node *root){
-    if(root->left == nullptr){
+TreeNode* deleteNode(TreeNode* root, int key){
+    if(root == nullptr){
         return root;
     }
-    return findMin2(root->left);
+
+    // find the key
+    if(root->val > key){
+        root->left = deleteNode(root->left, key);
+    }else if(root->val < key){
+        root->right = deleteNode(root->right, key);
+    }else{
+
+        // case 1: no children
+        if(root->left  == nullptr and root-> right == nullptr){
+            delete(root);
+            return nullptr;
+        }
+        // case 2: only one child
+        else if(root->left == nullptr){
+            auto temp = root->right;
+            delete(root);
+            return temp;
+        }else if(root->right == nullptr){
+            auto temp = root->left;
+            delete(root);
+            return temp;
+        }
+
+        //case 2: both children present
+        else{
+            // get the inOrder Successor (Smallest value in the right subtree)
+            // or ge the inOrder Predecessor (Largest Value in the Left subtree)
+            auto temp = minValue(root->right);
+            root->val = temp->val;
+
+            // recursively delete inorder successor
+            root->right = deleteNode(root->right, temp->val);
+        }
+    }
+
+    return root;
 }
 
-int main() {
+int main(){
     /* Let us create following BST
-            50
-         /      \
-        30      70
-     /    \    /   \
-    20    40  60    80 */
+           50
+        /      \
+       30      70
+    /    \    /   \
+   20    40  60    80 */
 
-    Node *root = nullptr;
+    TreeNode *root = nullptr;
     root = insertInBST(root, 50);
     insertInBST(root, 30);
     insertInBST(root, 20);
@@ -92,8 +72,27 @@ int main() {
     insertInBST(root, 60);
     insertInBST(root, 80);
 
-    cout<<findMin2(root)->data<<endl;
-    cout<<findMax(root)->data<<endl;
+    cout << "Inorder traversal of the given tree \n";
+    printBST(root);
+    cout<<endl<<endl;
+
+    cout << "Case 1:Leaf Node: Delete 20" << endl;
+    root = deleteNode(root, 20);
+    cout << "Inorder traversal of the modified tree \n";
+    printBST(root);
+    cout<<endl<<endl;
+
+    cout << "Case 2:Node with one child:  Delete 30" << endl;
+    root = deleteNode(root, 30);
+    cout << "Inorder traversal of the modified tree \n";
+    printBST(root);
+    cout<<endl<<endl;
+
+    cout << "Case 3:Node with two children: Delete 50" << endl;
+    root = deleteNode(root, 50);
+    cout << "Inorder traversal of the modified tree \n";
+    printBST(root);
+    cout<<endl<<endl;
 
     return 0;
 }

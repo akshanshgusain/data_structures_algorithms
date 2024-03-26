@@ -1,69 +1,69 @@
 //
-// Created by Akshansh Gusain on 21/02/22.
+// Created by Akshansh Gusain on 19/03/24.
 //
+#include "BST_000.cpp"
 
-#include<stdc++.h>
+// constant space: O(1)
+// inorder morris traversal - reversed
+void kthLargestElementOptimised(TreeNode* root, int k){
+    auto currentNode = root;
+    int counter = 0;
+    int kthLargest = 0;
 
-using namespace std;
+    while(currentNode != nullptr){
+        // case 1: currentNode has no right tree
+        if(currentNode->right == nullptr){
+            // process current node
+            counter++;
+            if(counter == k){
+                kthLargest = currentNode->val;
+                break;
+            }
+            currentNode = currentNode->left;
+        }else{
+            // currentNode has a right subtree
+            // go to the left most TreeNode of the right subtree
+            auto nextNode  = currentNode->right;
+            while(nextNode->left != nullptr and nextNode->left != currentNode){
+                nextNode = nextNode->left;
+            }
 
-struct Node {
-    int data;
-    struct Node *left, *right, *next;
+            // case 2: right most child is pointing to nullptr
+            if(nextNode->left == nullptr){
+                nextNode->left = currentNode;
+                currentNode = currentNode->right;
+            }else{
+                // case 3: right most child is pointing to currentNode
+                // process current node
+                counter++;
+                if(counter == k){
+                    kthLargest = currentNode->val;
+                    break;
+                }
+                nextNode->left = nullptr;
+                currentNode = currentNode->left;
+            }
 
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
+        }
     }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-        next = nullptr;
-    }
-};
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
+    cout << k << "th Largest number: " << kthLargest << endl;
 }
 
-void inOrder(Node *head, int &counter, int k) {
-    if (head == nullptr or counter >= k) {
+void kthLargestElement(TreeNode *root, int &counter, int k) {
+    if (root == nullptr or counter >= k) {
         return;
     }
-    inOrder(head->right, counter, k);
+    kthLargestElement(root->right, counter, k);
     counter++;
-    if(counter == k){
-        cout<<"Kth Largest: "<<head->data<<endl;
+    if (counter == k) {
+        cout << k << "th Largest number: " << root->val << endl;
         return;
     }
-    inOrder(head->left, counter, k);
-
-
+    kthLargestElement(root->left, counter, k);
 }
-
 
 int main() {
-    Node *root = nullptr;
+    TreeNode *root = nullptr;
     root = insertInBST(root, 50);
     insertInBST(root, 30);
     insertInBST(root, 20);
@@ -73,8 +73,8 @@ int main() {
     insertInBST(root, 80);
     int counter = 0;
 
-    inOrder(root,counter, 4 );
-
+//    kthLargestElement(root, counter, 4);
+    kthLargestElementOptimised(root, 3);
 
     return 0;
 }

@@ -1,65 +1,29 @@
 //
-// Created by Akshansh Gusain on 14/02/22.
+// Created by Akshansh Gusain on 06/03/24.
 //
+#include "BST_000.cpp"
 
-#include<stdc++.h>
 
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+TreeNode* inOrder(TreeNode* root, int val){
+    if(root == nullptr){
+        return nullptr;
     }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
-}
-
-bool inOrder(Node *head, int key){
-    if(head == nullptr){
-        return false;
-    }
-    inOrder(head->left, key);
-    if(head->data == key){
-        //cout<<"True";
-        return true;
+    if(val < root->val){
+        return inOrder(root->left, val);
+    }else if(val > root->val){
+        return inOrder(root->right, val);
     }else{
-        return false;
+        return root;
     }
-//    cout<<head->data<<" ";
-    inOrder(head->right, key);
 }
 
-int main() {
-    Node *root = nullptr;
+
+TreeNode* searchBST(TreeNode* root, int val) {
+    return inOrder(root, val);
+}
+
+int main(){
+    TreeNode* root = nullptr;
     root = insertInBST(root, 50);
     insertInBST(root, 30);
     insertInBST(root, 20);
@@ -67,6 +31,8 @@ int main() {
     insertInBST(root, 70);
     insertInBST(root, 60);
     insertInBST(root, 80);
-    cout<<inOrder(root, 55);
+
+    auto foundRoot = searchBST(root, 30);
+    printBST(foundRoot);
     return 0;
 }

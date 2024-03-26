@@ -1,116 +1,70 @@
 //
-// Created by Akshansh Gusain on 17/02/22.
+// Created by Akshansh Gusain on 07/03/24.
 //
-#include<stdc++.h>
+#include "BST_000.cpp"
 
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
-}
-
-void inOrder(Node *head) {
-    if (head == nullptr) {
+void inOrderTraversal(TreeNode *root, TreeNode *key, TreeNode *successor) {
+    if (root == nullptr) {
         return;
     }
-    inOrder(head->left);
-    cout << head->data << " ";
-    inOrder(head->right);
+    inOrderTraversal(root->left, key, successor);
+    // need to find the first value that is greater that key
+    if (root->val > key->val and successor->val == -1) {
+        successor->val = root->val;
+        return;
+    }
+    inOrderTraversal(root->right, key, successor);
 }
 
-// Left-Most value will be the minimum
-Node *minValue(Node *root) {
-    Node *current = root;
-    while(current != nullptr and current->left != nullptr){
-        current = current->left;
+TreeNode *binarySearchS(TreeNode *root, TreeNode *key) {
+    TreeNode *successor = nullptr;
+
+    while (root != nullptr) {
+        if ( root->val <= key->val) {
+            root = root->right;
+        } else {
+            successor = root;
+            root = root->left;
+        }
     }
-    return current;
+
+    return successor;
 }
 
-Node *deleteNode(Node *root, int key) {
-    if (root == nullptr) {
-        return root;
+TreeNode *binarySearchP(TreeNode *root, TreeNode *key) {
+    TreeNode *successor = nullptr;
+
+    while (root != nullptr) {
+        if (key->val <= root->val) {
+            root = root->left;
+        } else {
+            successor = root;
+            root = root->right;
+        }
     }
 
-    if (key < root->data) {
-        root->left = deleteNode(root->left, key);
-    } else if (key > root->data) {
-        root->right = deleteNode(root->right, key);
-    } else {
-        /// Case 1: No Children - Leaf Node:
-        if (root->left == nullptr and root->right == nullptr) {
-            free(root);
-            return nullptr;
-        }
+    return successor;
+}
 
-            /// Case 2  Node with One child
-        else if (root->left == nullptr) {
-            Node *temp = root->right;
-            free(root);
-            return temp;
-        } else if (root->right == nullptr) {
-            Node *temp = root->left;
-            free(root);
-            return temp;
-        }
 
-        /// Case 3: Node with Two children
-        // get the inOrder Successor (Smallest value in the right subtree)
-        // or ge the inOrder Predecessor (Largest Value in the Left subtree)
-        Node *temp = minValue(root->right); // or Node *temp = maxValue(root->left)
 
-        // Copy the inorder successor's content to this node
-        root->data = temp->data;
 
-        // Delete the inorder Successor
-        root->right = deleteNode(root->right, temp->data);
-    }
+TreeNode *findInOrderSuccessor(TreeNode *root, TreeNode *key) {
+    auto *successor = new TreeNode(-1);
+//    inOrderTraversal(root, key, successor); // time: O(n)
+//    return successor;
+    return binarySearchS(root, key); // time: O(H)
+}
 
-    return root;
+TreeNode *findInOrderPredecessor(TreeNode *root, TreeNode *key) {
+    auto *successor = new TreeNode(-1);
+//    inOrderTraversal2(root, key, successor); // time: O(n)
+//    return successor;
+    return binarySearchP(root, key); // time: O(H)
 }
 
 int main() {
-    /* Let us create following BST
-            50
-         /      \
-        30      70
-     /    \    /   \
-    20    40  60    80 */
-
-    Node *root = nullptr;
+    TreeNode *root = nullptr;
     root = insertInBST(root, 50);
     insertInBST(root, 30);
     insertInBST(root, 20);
@@ -119,43 +73,25 @@ int main() {
     insertInBST(root, 60);
     insertInBST(root, 80);
 
-    cout << "Inorder traversal of the given tree \n";
-    inOrder(root);
-    cout<<endl<<endl;
+    TreeNode *temp = root->right->left;
 
-    cout << "Case 1:Leaf Node: Delete 20" << endl;
-    root = deleteNode(root, 20);
-    cout << "Inorder traversal of the modified tree \n";
-    inOrder(root);
-    cout<<endl<<endl;
+    auto *successor = findInOrderSuccessor(root, temp);
+    if (successor != nullptr) {
+        cout << "Inorder Successor of " << temp->val << " is " << successor->val <<endl;
+    } else {
+        cout << "Inorder Successor doesn't exit"<<endl;
+    }
 
-    cout << "Case 2:Node with one child:  Delete 30" << endl;
-    root = deleteNode(root, 30);
-    cout << "Inorder traversal of the modified tree \n";
-    inOrder(root);
-    cout<<endl<<endl;
+//      Inorder Successor of 60 is 70
+//      Inorder Predecessor of 60 is 50
 
-    cout << "Case 3:Node with two children: Delete 50" << endl;
-    root = deleteNode(root, 50);
-    cout << "Inorder traversal of the modified tree \n";
-    inOrder(root);
-    cout<<endl<<endl;
+    auto *predecessor = findInOrderPredecessor(root, temp);
+
+    if (predecessor != nullptr) {
+        cout << "Inorder predecessor of " << temp->val << " is " << predecessor->val<<endl;
+    } else {
+        cout << "Inorder predecessor doesn't exit"<<endl;
+    }
 
     return 0;
 }
-
-/*
-
-Inorder traversal of the given tree
-20 30 40 50 60 70 80
-Case 1:Leaf Node: Delete 20
-Inorder traversal of the modified tree
-20 30 40 50 60 70 80
-Case 2:Node with one child:  Delete 30
-Inorder traversal of the modified tree
-20 40 50 60 70 80
-Case 3:Node with two children: Delete 50
-Inorder traversal of the modified tree
-20 40 60 60 70 80
-
- */

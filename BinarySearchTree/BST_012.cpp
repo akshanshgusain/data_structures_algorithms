@@ -1,63 +1,7 @@
 //
-// Created by Akshansh Gusain on 21/02/22.
+// Created by Akshansh Gusain on 08/03/24.
 //
-
-#include<stdc++.h>
-
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right, *next;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-        next = nullptr;
-    }
-};
-
-void inOrder(Node *head) {
-    if (head == nullptr) {
-        return;
-    }
-    inOrder(head->left);
-    cout << head->data << " ";
-    inOrder(head->right);
-}
-
-
-void preOrder(Node *node) {
-    if (node == NULL)
-        return;
-    printf("%d ", node->data);
-    preOrder(node->left);
-    preOrder(node->right);
-}
-
-void buildArray(Node *root, vector<int> &arr) {
-    if (root == nullptr) {
-        return;
-    }
-    buildArray(root->left, arr);
-    arr.push_back(root->data);
-    buildArray(root->right, arr);
-}
+#include "BST_000.cpp"
 
 vector<int> mergeTwoSortedArrays(vector<int> arr1, vector<int> arr2) {
     int m = arr1.size();
@@ -67,13 +11,10 @@ vector<int> mergeTwoSortedArrays(vector<int> arr1, vector<int> arr2) {
 
     while (i < m and j < n) {
         // Pick the smaller element and put it in mergedArr
-        if (arr1[i] < arr2[j])
-        {
+        if (arr1[i] < arr2[j]) {
             mergedArr[k] = arr1[i];
             i++;
-        }
-        else
-        {
+        } else {
             mergedArr[k] = arr2[j];
             j++;
         }
@@ -81,56 +22,39 @@ vector<int> mergeTwoSortedArrays(vector<int> arr1, vector<int> arr2) {
     }
 
     // If there are more elements in first array
-    while (i < m)
-    {
+    while (i < m) {
         mergedArr[k] = arr1[i];
-        i++; k++;
+        i++;
+        k++;
     }
 
     // If there are more elements in second array
-    while (j < n)
-    {
+    while (j < n) {
         mergedArr[k] = arr2[j];
-        j++; k++;
+        j++;
+        k++;
     }
 
     return mergedArr;
 }
 
-Node *BSTFromSortedArray(vector<int> &arr, int start, int end) {
-    if (start > end) {
+// Time complexity: O(n)
+//Space complexity: O(log n)
+TreeNode *helper(vector<int> &nums, int l, int r) {
+    if (l > r) {
         return nullptr;
     }
+    int mid = (l + r) / 2;
+    auto root = new TreeNode(nums[mid]);
 
-    int mid = (start + end) / 2;
-    Node *root = new Node(arr[mid]);
-
-    root->left = BSTFromSortedArray(arr, start, mid - 1);
-    root->right = BSTFromSortedArray(arr, mid + 1, end);
-
+    root->left = helper(nums, l, mid - 1);
+    root->right = helper(nums, mid + 1, r);
     return root;
 }
 
-Node *mergeTrees(Node *root1, Node *root2, int m, int n) {
-    if (m == 0) {
-        return root2;
-    }
-    if (n == 0) {
-        return root1;
-    }
-
-    vector<int> sortedArray1, sortedArray2;
-    buildArray(root1, sortedArray1);
-    buildArray(root2, sortedArray2);
-    vector<int> mergedArrays = mergeTwoSortedArrays(sortedArray1, sortedArray2);
-    return BSTFromSortedArray(mergedArrays, 0 , mergedArrays.size()-1);
-}
-
-
-
-//  Time complexity of this method is O(m+n)
 
 /*
+Time complexity of this method is O(m+n)
 1) Do inorder traversal of first tree and store the traversal in one temp array arr1[]. This step takes O(m)
  time.
 2) Do inorder traversal of second tree and store the traversal in another temp array arr2[]. This step takes
@@ -139,7 +63,23 @@ Node *mergeTrees(Node *root1, Node *root2, int m, int n) {
  m + n. This step takes O(m+n) time.
 4) Construct a balanced tree from the merged array using the technique.
  This step takes O(m+n) time.
- * */
+
+*/
+TreeNode *mergeTrees(TreeNode *root1, TreeNode *root2, int m, int n) {
+    if (m == 0) {
+        return root2;
+    }
+    if (n == 0) {
+        return root1;
+    }
+
+    vector<int> sortedArray1, sortedArray2;
+    buildInOrderArray(root1, sortedArray1);
+    buildInOrderArray(root2, sortedArray2);
+    vector<int> mergedArrays = mergeTwoSortedArrays(sortedArray1, sortedArray2);
+    return helper(mergedArrays, 0, mergedArrays.size() - 1);
+}
+
 
 int main() {
 /* Create following tree as first balanced BST
@@ -149,25 +89,24 @@ int main() {
     /  \
   20    70
     */
-    Node *root1 = new Node(100);
-    root1->left = new Node(50);
-    root1->right = new Node(300);
-    root1->left->left = new Node(20);
-    root1->left->right = new Node(70);
+    auto root1 = new TreeNode(100);
+    root1->left = new TreeNode(50);
+    root1->right = new TreeNode(300);
+    root1->left->left = new TreeNode(20);
+    root1->left->right = new TreeNode(70);
 
     /* Create following tree as second balanced BST
             80
           /    \
         40     120
     */
-    Node *root2 = new Node(80);
-    root2->left = new Node(40);
-    root2->right = new Node(120);
+    auto root2 = new TreeNode(80);
+    root2->left = new TreeNode(40);
+    root2->right = new TreeNode(120);
 
-    Node *mergedTree = mergeTrees(root1, root2, 5, 3);
+    auto *mergedTree = mergeTrees(root1, root2, 5, 3);
 
     cout << "Following is Inorder traversal of the merged tree \n";
-    inOrder(mergedTree);
-
+    printBST(mergedTree);
     return 0;
 }

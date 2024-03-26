@@ -1,78 +1,55 @@
 //
-// Created by Akshansh Gusain on 18/02/22.
+// Created by Akshansh Gusain on 07/03/24.
 //
-#include<stdc++.h>
+#include "BST_000.cpp"
 
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
-}
-
-void inorder(Node *root, vector<int> &ans) {
+void storeInorder(TreeNode *root, vector<int> &ans) {
     if (root == nullptr) {
         return;
     }
 
-    inorder(root->left, ans);
-    ans.push_back(root->data);
-    inorder(root->right, ans);
+    storeInorder(root->left, ans);
+    ans.push_back(root->val);
+    storeInorder(root->right, ans);
 }
 
-bool checkBST(Node *root) {
-
-
+bool checkBST(TreeNode *root) {
     vector<int> inorderTraversal;
-    inorder(root, inorderTraversal);
+    storeInorder(root, inorderTraversal);
 
-    for(auto it: inorderTraversal){
-        cout<<it <<" ";
+    for (auto it: inorderTraversal) {
+        cout << it << " ";
     }
-    cout<<endl;
+    cout << endl;
 
     for (int i = 1; i < inorderTraversal.size(); i++) {
-        if(inorderTraversal[i-1] >= inorderTraversal[i]){
+        if (inorderTraversal[i - 1] >= inorderTraversal[i]) {
             return false;
         }
     }
     return true;
 }
 
+bool checkBST2(TreeNode *root, long long l, long long r) {
+    if (root == nullptr) {
+        return true;
+    }
+    if (root->val < r and root->val > l) {
+        return checkBST2(root->left, l, root->val) and
+               checkBST2(root->right, root->val, r);
+    }
+    return false;
+}
+
+bool isValidBST(TreeNode* root) {
+    long long int min = -1000000000000, max = 1000000000000;
+    return checkBST2(root, min, max);
+}
+
+
+
 int main() {
-    Node *root = nullptr;
+    TreeNode *root = nullptr;
     root = insertInBST(root, 50);
     insertInBST(root, 30);
     insertInBST(root, 20);
@@ -81,15 +58,17 @@ int main() {
     insertInBST(root, 60);
     insertInBST(root, 80);
 
-    cout<<checkBST(root)<<endl;
+    cout << checkBST(root) << endl;
 
-    Node *root2 = new Node(1);
-    root2->left = new Node(10);
-    root2->right = new Node(3);
-    root2->left->left = new Node(5);
-    root2->left->right = new Node(4);
+    auto root2 = new TreeNode(1);
+    root2->left = new TreeNode(10);
+    root2->right = new TreeNode(3);
+    root2->left->left = new TreeNode(5);
+    root2->left->right = new TreeNode(4);
 
-    cout<<checkBST(root2)<<endl;
+    cout << checkBST(root2) << endl;
+
+    cout << checkBST2(root, INT_MIN, INT_MAX) << endl;
 
     return 0;
 }

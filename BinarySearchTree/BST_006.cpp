@@ -1,85 +1,38 @@
 //
-// Created by Akshansh Gusain on 21/02/22.
+// Created by Akshansh Gusain on 07/03/24.
 //
-#include<stdc++.h>
+#include "BST_000.cpp"
 
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right, *next;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
+TreeNode *findLCA(TreeNode *root, int n1, int n2) {
+    // base cases
+    if (root == nullptr) {
+        return new TreeNode(-1);
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
+    if (root->val > n1 and root->val > n2) {
+        return findLCA(root->left, n1, n2);
     }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-        next = nullptr;
+    if (root->val < n1 and root->val < n2) {
+        return findLCA(root->right, n1, n2);
     }
-};
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
-}
-
-void inOrder(Node *head) {
-    if (head == nullptr) {
-        return;
-    }
-    inOrder(head->left);
-    cout << head->data << " ";
-    inOrder(head->right);
-}
-
-void inorderSuccessor(Node *head, vector<int> &ordered){
-    if(head == nullptr){
-        return;
-    }
-    inorderSuccessor(head->left, ordered);
-    ordered.push_back(head->data);
-    inorderSuccessor(head->right, ordered);
+    return root;
 }
 
 int main() {
-    Node *root = nullptr;
-    root = insertInBST(root, 50);
-    insertInBST(root, 30);
-    insertInBST(root, 20);
-    insertInBST(root, 40);
-    insertInBST(root, 70);
-    insertInBST(root, 60);
-    insertInBST(root, 80);
-    inOrder(root);
-    cout<<endl;
-    vector<int> ans;
-    inorderSuccessor(root, ans);
+    TreeNode *root = nullptr;
+    root = insertInBST(root, 20);
+    insertInBST(root, 8);
+    insertInBST(root, 22);
+    insertInBST(root, 4);
+    insertInBST(root, 12);
+    insertInBST(root, 10);
+    insertInBST(root, 14);
 
-    for(int i = 0; i < ans.size()-1; i++){
-        cout<<"Next of"<<ans[i]<<" is: "<<ans[i+1]<<endl;
-    }
+    printBST(root);cout<<endl;
+
+    int n1 = 4, n2 = 14;
+    auto LCA = findLCA(root, n1, n2);
+    cout<<"LCA of "<<n1<<" and "<<n2<<" is :"<<LCA->val<<endl;
 
     return 0;
 }

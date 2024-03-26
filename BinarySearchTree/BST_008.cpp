@@ -1,85 +1,29 @@
 //
-// Created by Akshansh Gusain on 21/02/22.
+// Created by Akshansh Gusain on 08/03/24.
 //
-#include<stdc++.h>
+#include "BST_000.cpp"
 
-using namespace std;
-
-struct Node {
-    int data;
-    struct Node *left, *right, *next;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
+// Time complexity: O(n)
+//Space complexity: O(log n)
+TreeNode* helper(vector<int> &nums, int l, int r) {
+    if(l > r){
+        return nullptr;
     }
+    int mid = (l + r) / 2;
+    auto root = new TreeNode(nums[mid]);
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-        next = nullptr;
-    }
-};
-
-/// O(N^2) Solution :
-
-
-
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
+    root->left = helper(nums, l, mid - 1);
+    root->right = helper(nums, mid + 1, r);
+    return root;
 }
 
-void inOrder(Node *head) {
-    if (head == nullptr) {
-        return;
-    }
-    inOrder(head->left);
-    cout << head->data << " ";
-    inOrder(head->right);
+TreeNode* sortedArrayToBST(vector<int>& nums) {
+    return helper(nums, 0, nums.size()-1);
 }
 
-
-
-int main() {
-    Node *root = nullptr;
-//    root = insertInBST(root, 20);
-//    insertInBST(root, 8);
-//    insertInBST(root, 22);
-//    insertInBST(root, 4);
-//    insertInBST(root, 12);
-//    insertInBST(root, 10);
-//    insertInBST(root, 14);
-
-    vector<int> nodeData = { 10, 5, 1, 7, 40, 50 };
-    root = insertInBST(root , nodeData[0]);
-
-    for(auto it = 1; it < nodeData.size(); it++){
-        insertInBST(root,nodeData[it]);
-    }
-    inOrder(root);
-    cout<<endl;
-
-
+int main(){
+    vector<int> nums = {-10,-3,0,5,9};
+    auto root = sortedArrayToBST(nums);
+    printBST(root);
     return 0;
 }

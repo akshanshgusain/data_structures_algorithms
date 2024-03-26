@@ -1,163 +1,74 @@
 //
-// Created by Akshansh Gusain on 22/02/22.
+// Created by Akshansh Gusain on 24/03/24.
 //
+#include "BST_000.cpp"
 
-#include<stdc++.h>
+// Time: O(N^2)
+// Sol 1: Find the first greater value on right side of current node.
+//   Let the index of this node be j. Return true if following
+//   conditions hold. Else return false
+//    (i)  All values after the above found greater value are
+//         greater than current node.
+//    (ii) Recursive calls for the sub arrays pre[i+1..j-1] and
+//         pre[j+1..n-1] also return true.
 
-using namespace std;
+// Time: O(N)
+// Sol 2: Find Next Greater Element, using stacks
+//1) Create an empty stack.
+//2) Initialize root as INT_MIN.
+//3) Do following for every element pre[i]
+//     a) If pre[i] is smaller than current root, return false.
+//     b) Keep removing elements from stack while pre[i] is greater
+//        then stack top. Make the last removed item as new root (to
+//        be compared next).
+//        At this point, pre[i] is greater than the removed root
+//        (That is why if we see a smaller element in step a), we
+//        return false)
+//     c) push pre[i] to stack (All elements in stack are in decreasing
+//        order)
 
-struct Node {
-    int data;
-    struct Node *left, *right, *next;
+bool canRepresentBST(vector<int> preorder) {
+    int n = preorder.size();
+    stack<int> s;
 
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
+    int root = INT_MIN;
 
-    explicit Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    __attribute__((unused)) Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-        next = nullptr;
-    }
-};
-
-/* Helper Functions */
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
-}
-
-vector<int> getInOrder(Node *root) {
-    vector<int> inorder;
-    Node *curr = root;
-    while (curr != nullptr) {
-        if (curr->left == nullptr) {
-            inorder.push_back(curr->data);
-            curr = curr->right;
-        } else {
-            Node *prev = curr->left;
-            while (prev->right and prev->right != curr) {
-                prev = prev->right;
-            }
-            if (prev->right == nullptr) {
-                prev->right = curr;
-                curr = curr->left;
-            } else {
-                prev->right = nullptr;
-                inorder.push_back(curr->data);
-                curr = curr->right;
-            }
+    // Traverse given array
+    for (int i = 0; i < n; i++) {
+        // If we find a node who is on right side
+        // and smaller than root, return false
+        if (preorder[i] < root){
+            return false;
         }
-    }
-
-    return inorder;
-}
-
-vector<int> getPreOrder(Node *root) {
-    vector<int> inorder;
-    Node *curr = root;
-    while (curr != nullptr) {
-        if (curr->left == nullptr) {
-            inorder.push_back(curr->data);
-            curr = curr->right;
-        } else {
-            Node *prev = curr->left;
-            while (prev->right and prev->right != curr) {
-                prev = prev->right;
-            }
-            if (prev->right == nullptr) {
-                prev->right = curr;
-                inorder.push_back(curr->data);
-                curr = curr->left;
-            } else {
-                prev->right = nullptr;
-                curr = curr->right;
-            }
+        // If pre[i] is in right subtree of stack top,
+        // Keep removing items smaller than pre[i]
+        // and make the last removed item as new
+        // root.
+        while (!s.empty() && s.top() < preorder[i]) {
+            root = s.top();
+            s.pop();
         }
+
+        // At this point either stack is empty or
+        // pre[i] is smaller than root, push pre[i]
+        s.push(preorder[i]);
     }
-
-    return inorder;
-}
-
-/* Helper Functions */
-
-/* A utility function to insert a new node with
-   given data in BST and find its successor */
-Node *insert(Node *node, int data, Node *&succ) {
-
-    /* If the tree is empty, return a new node */
-    if (node == NULL)
-        return node = new Node(data);
-
-    // If key is smaller than root's key, go to left
-    // subtree and set successor as current node
-    if (data < node->data) {
-        succ = node;
-        node->left = insert(node->left, data, succ);
-    }
-
-        // go to right subtree
-    else if (data > node->data)
-        node->right = insert(node->right, data, succ);
-    return node;
-}
-
-// Function to replace every element with the
-// least greater element on its right
-void replace(vector<int> arr) {
-    Node *root = nullptr;
-    int n = arr.size();
-    // start from right to left
-    for (int i = n - 1; i >= 0; i--) {
-        Node *succ = nullptr;
-
-        // insert current element into BST and
-        // find its inorder successor
-        root = insert(root, arr[i], succ);
-
-        // replace element by its inorder
-        // successor in BST
-        if (succ)
-            arr[i] = succ->data;
-        else // No inorder successor
-            arr[i] = -1;
-    }
+    return true;
 }
 
 int main() {
-//    Node *root = nullptr;
-//    root = insertInBST(root, 10);
-//    insertInBST(root, 5);
-//    insertInBST(root, 50);
-//    insertInBST(root, 1);
-//    insertInBST(root, 40);
-//    insertInBST(root, 100);
-    vector<int> arr = {8, 58, 71, 18, 31, 32, 63, 92,
-                       43, 3, 91, 93, 25, 80, 28};
-    replace(arr);
-    for (int i = 0; i < arr.size(); i++){
-        cout << arr[i] << " ";
-    }
+    TreeNode *root = nullptr;
+    root = insertInBST(root, 10);
+    insertInBST(root, 5);
+    insertInBST(root, 50);
+    insertInBST(root, 1);
+    insertInBST(root, 40);
+    insertInBST(root, 100);
 
+    vector<int> preorder2 = {5, 3, 4, 1, 6, 10};
+    if (canRepresentBST(preorder2))
+        cout << "\npreorder2 can represent BST";
+    else
+        cout << "\npreorder2 can not represent BST";
     return 0;
 }

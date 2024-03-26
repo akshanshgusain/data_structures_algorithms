@@ -1,88 +1,83 @@
 //
-// Created by Akshansh Gusain on 21/02/22.
+// Created by Akshansh Gusain on 07/03/24.
 //
-#include<stdc++.h>
+#include "BST_000.cpp"
 
-using namespace std;
 
-struct Node {
-    int data;
-    struct Node *left, *right, *next;
+// Thread binary tree
 
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
+vector<int> getInOrder(TreeNode *root) {
+    vector<int> inorder;
+    auto *curr = root;
+    while (curr != nullptr) {
+        if (curr->left == nullptr) {
+            inorder.push_back(curr->val);
+            curr = curr->right;
+        } else {
+            auto *prev = curr->left;
+            while (prev->right and prev->right != curr) {
+                prev = prev->right;
+            }
+            if (prev->right == nullptr) {
+                prev->right = curr;
+                curr = curr->left;
+            } else {
+                prev->right = nullptr;
+                inorder.push_back(curr->val);
+                curr = curr->right;
+            }
+        }
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-        next = nullptr;
-    }
-};
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
+    return inorder;
 }
 
-void inOrder(Node *head) {
-    if (head == nullptr) {
-        return;
+vector<int> getPreOrder(TreeNode *root) {
+    vector<int> inorder;
+    auto *curr = root;
+    while (curr != nullptr) {
+        if (curr->left == nullptr) {
+            inorder.push_back(curr->val);
+            curr = curr->right;
+        } else {
+            auto *prev = curr->left;
+            while (prev->right and prev->right != curr) {
+                prev = prev->right;
+            }
+            if (prev->right == nullptr) {
+                prev->right = curr;
+                inorder.push_back(curr->val);
+                curr = curr->left;
+            } else {
+                prev->right = nullptr;
+                curr = curr->right;
+            }
+        }
     }
-    inOrder(head->left);
-    cout << head->data << " ";
-    inOrder(head->right);
+
+    return inorder;
 }
 
-Node *findLCA(Node *root, int n1, int n2){
-    // base cases
-    if(root == nullptr){
-        return new Node(-1);
-    }
-
-    if(root->data > n1 and root->data > n2){
-        return findLCA(root->left, n1, n2);
-    }
-    if(root->data < n1 and root->data < n2){
-        return findLCA(root->right, n1, n2);
-    }
-    return root;
-}
 
 int main() {
-    Node *root = nullptr;
-    root = insertInBST(root, 20);
-    insertInBST(root, 8);
-    insertInBST(root, 22);
+    TreeNode *root = nullptr;
+    root = insertInBST(root, 5);
+    insertInBST(root, 3);
+    insertInBST(root, 7);
+    insertInBST(root, 2);
     insertInBST(root, 4);
-    insertInBST(root, 12);
-    insertInBST(root, 10);
-    insertInBST(root, 14);
-    inOrder(root);cout<<endl;
+    insertInBST(root, 6);
+    insertInBST(root, 8);
 
-    int n1 = 4, n2 = 14;
-    Node *LCA = findLCA(root, n1, n2);
-    cout<<"LCA of "<<n1<<" and "<<n2<<" is :"<<LCA->data<<endl;
+    vector<int> ino = getInOrder(root);
+    for (auto it: ino) {
+        cout << it << " ";
+    }
+    vector<int> preo = getPreOrder(root);
+    cout << endl;
+    for (auto it: preo) {
+        cout << it << " ";
+    }
 
     return 0;
 }

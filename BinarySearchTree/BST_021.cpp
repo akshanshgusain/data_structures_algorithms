@@ -1,147 +1,62 @@
 //
-// Created by Akshansh Gusain on 22/02/22.
+// Created by Akshansh Gusain on 24/03/24.
 //
-#include<stdc++.h>
 
-using namespace std;
+#include "BST_000.cpp"
 
-struct Node {
-    int data;
-    struct Node *left, *right, *next;
+struct NodeValue {
+    int maxNode;
+    int minNode;
+    int maxSize;
 
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    explicit Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    __attribute__((unused)) Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-        next = nullptr;
+    NodeValue(int maxValue, int minValue, int maxSize) {
+        this->maxNode = maxValue;
+        this->minNode = minValue;
+        this->maxSize = maxSize;
     }
 };
 
-/* Helper Functions */
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
+NodeValue largestBST(TreeNode *root) {
+    if(root == nullptr){
+        return {INT_MAX, INT_MIN, 0};
     }
 
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
+
+    // get values from the left and the right subtrees
+    auto left = largestBST(root->left);
+    auto right = largestBST(root->right);
+
+    // if the current node is greater than the largest node on the left and
+    // is smaller than the smallest node on the right, it's a BST
+    if(left.maxNode < root->val and right.minNode > root->val){
+        return {min(root->val, left.minNode),
+                max(root->val, right.maxNode),
+                left.maxSize+right.maxSize+1
+        };
     }
 
-    return head;
+    return {INT_MIN, INT_MAX, max(left.maxSize, right.maxSize)};
+
 }
-
-vector<int> getInOrder(Node *root) {
-    vector<int> inorder;
-    Node *curr = root;
-    while (curr != nullptr) {
-        if (curr->left == nullptr) {
-            inorder.push_back(curr->data);
-            curr = curr->right;
-        } else {
-            Node *prev = curr->left;
-            while (prev->right and prev->right != curr) {
-                prev = prev->right;
-            }
-            if (prev->right == nullptr) {
-                prev->right = curr;
-                curr = curr->left;
-            } else {
-                prev->right = nullptr;
-                inorder.push_back(curr->data);
-                curr = curr->right;
-            }
-        }
-    }
-
-    return inorder;
-}
-
-vector<int> getPreOrder(Node *root) {
-    vector<int> inorder;
-    Node *curr = root;
-    while (curr != nullptr) {
-        if (curr->left == nullptr) {
-            inorder.push_back(curr->data);
-            curr = curr->right;
-        } else {
-            Node *prev = curr->left;
-            while (prev->right and prev->right != curr) {
-                prev = prev->right;
-            }
-            if (prev->right == nullptr) {
-                prev->right = curr;
-                inorder.push_back(curr->data);
-                curr = curr->left;
-            } else {
-                prev->right = nullptr;
-                curr = curr->right;
-            }
-        }
-    }
-
-    return inorder;
-}
-
-/* Helper Functions */
-
-//We can check if the given preorder traversal is valid or not for a BST without using stack.
-// The idea is to use the similar concept of “Building a BST using narrowing bound algorithm”.
-// We will recursively visit all nodes, but we will not build the nodes. In the end, if the
-// complete array is not traversed, then that means that array can not represent the preorder
-// traversal of any binary tree.
-
-void buildBST(vector<int> preorder, int n, int &preIndex, int max, int min) {
-    if (preIndex >= n) {
-        return;
-    }
-
-    if (min <= preorder[preIndex] and preorder[preIndex] <= max) {
-        int rootData = preorder[preIndex];
-        preIndex++;
-
-        buildBST(preorder, n, preIndex, min, rootData);
-        buildBST(preorder, n, preIndex, rootData, max);
-    }
-}
-
-bool canRepresentBST(vector<int> preorder) {
-    int max = INT_MAX;
-    int min = INT_MIN;
-    int preIndex = 0;
-    int n = preorder.size();
-    return preIndex == n;
-}
-
 
 int main() {
-    Node *root = nullptr;
-    root = insertInBST(root, 10);
-    insertInBST(root, 5);
-    insertInBST(root, 50);
-    insertInBST(root, 1);
-    insertInBST(root, 40);
-    insertInBST(root, 100);
+    auto *root = new TreeNode(20);
+    root->left = new TreeNode(15);
+    root->left->left = new TreeNode(14);
+    root->left->left->right = new TreeNode(17);
+    root->left->right = new TreeNode(18);
+    root->left->right->left = new TreeNode(16);
+    root->left->right->right = new TreeNode(19);
 
-    vector<int> preorder2 = {5, 3, 4, 1, 6, 10};
-    if (canRepresentBST(preorder2))
-        cout << "\npreorder2 can represent BST";
-    else
-        cout << "\npreorder2 can not represent BST";
+
+    root->right = new TreeNode(40);
+    root->right->left = new TreeNode(30);
+    root->right->right = new TreeNode(60);
+    root->right->right->left = new TreeNode(50);
+
+    auto ans = largestBST(root);
+    cout<<ans.maxSize<<endl; //2
+
+
     return 0;
 }

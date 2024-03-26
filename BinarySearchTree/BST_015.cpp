@@ -1,148 +1,118 @@
 //
-// Created by Akshansh Gusain on 21/02/22.
-//
-#include<stdc++.h>
-using namespace std;
+// Created by Akshansh Gusain on 19/03/24.
+//›
+#include "BST_000.cpp"
 
-struct Node {
-    int data;
-    struct Node *left, *right, *next;
+int findMedian(TreeNode *root) {
+    vector<int> inorder;
+    buildInOrderArray(root, inorder);
+    int median = 0;
 
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
+    int inOrderSize = inorder.size();
+
+    if (inOrderSize % 2 == 0) {
+        median = (inorder[(inOrderSize - 1) / 2] + inorder[(inOrderSize - 1) / 2 + 1]) / 2;
+    } else {
+        median = inorder[(inOrderSize - 1) / 2];
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-        next = nullptr;
-    }
-
-    __attribute__((unused)) Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-        next = nullptr;
-    }
-};
-
-Node *insertInBST(Node *head, int key) {
-    if (head == nullptr) {
-        return new Node(key);
-    }
-
-    if (key < head->data) {
-        head->left = insertInBST(head->left, key);
-    } else if (key > head->data) {
-        head->right = insertInBST(head->right, key);
-    }
-
-    return head;
+    return median;
 }
 
-
-int countPairs(Node *root1, Node *root2, int X) {
-    if (root1 == nullptr or root2 == nullptr) {
-        return 0;
-    }
-
-    stack<Node *> st1, st2;
-    Node *top1, *top2;
-
+int countNodes(TreeNode *root) {
     int count = 0;
-
-    // Loop will break when either of two traversals gets completed
-    while (true) {
-        // to find next node in inorder
-        // traversal of BST 1
-        while (root1 != nullptr) {
-            st1.push(root1);
-            root1 = root1->left;
-        }
-
-        // Similarly, to find next node in REVERSE
-        // inorder traversal of BST 2
-        while (root2 != NULL) {
-            st2.push(root2);
-            root2 = root2->right;
-        }
-
-        // if either gets empty then corresponding
-        // tree traversal is completed
-        if (st1.empty() || st2.empty()) {
-            break;
-        }
-        top1 = st1.top();
-        top2 = st2.top();
-
-        // if the sum of the nodes is equal to 'X'
-        if ((top1->data + top2->data) == X) {
-            // increment count
+    if (root == nullptr) {
+        return count;
+    }
+    auto *curr = root;
+    while (curr != nullptr) {
+        if (curr->left == nullptr) {
             count++;
-
-            // pop nodes from the respective stacks
-            st1.pop();
-            st2.pop();
-
-            // insert next possible node in the
-            // respective stacks
-            root1 = top1->right;
-            root2 = top2->left;
-        }
-
-            // move to next possible node in the
-            // inorder traversal of BST 1
-        else if ((top1->data + top2->data) < X) {
-            st1.pop();
-            root1 = top1->right;
-        }
-
-            // move to next possible node in the
-            // reverse inorder traversal of BST 2
-        else {
-            st2.pop();
-            root2 = top2->left;
+            curr = curr->right;
+        } else {
+            auto *prev = curr->left;
+            while (prev->right and prev->right != curr) {
+                prev = prev->right;
+            }
+            if (prev->right == nullptr) {
+                prev->right = curr;
+                curr = curr->left;
+            } else {
+                prev->right = nullptr;
+                count++;
+                curr = curr->right;
+            }
         }
     }
     return count;
 }
 
+// O(1) space,
+int findMedianOptimised(TreeNode *root) {
+    if (root == nullptr) {
+        return 0;
+    }
+    int count = countNodes(root);
+    int currCount = 0;
+    TreeNode *curr = root, *prev, *extra;
 
+    while (curr != nullptr) {
+        if (curr->left == nullptr) {
+            // process node
 
-// 1. Traverse BST 1 from smallest value to node to largest.
-// 2. Traverse BST 2 from largest value node to smallest.
-// 3 . Sum up the corresponding node’s value from both the BSTs at a particular instance of traversals.
-//      - If sum == x, then increment count.
-//      - If x > sum, then move to the inorder successor of the current node of BST 1.
-//      - else move to the inorder predecessor of the current node of BST 2
-// Perform these operations until either of the two traversals gets completed.
+            // count curr node
+            currCount++;
+            // check if curr node is the median
+            // Odd case and even cases
+            if (count % 2 != 0 && currCount == (count + 1) / 2) {
+                return curr->val;
+            } else if (count % 2 == 0 && currCount == (count / 2) + 1) {
+                return (extra->val + curr->val) / 2;
+            }
+            // Update extra for even no. of nodes
+            extra = curr;
 
+            curr = curr->right;
+        } else {
+            prev = curr->left;
+            while (prev->right != nullptr && prev->right != curr) {
+                prev = prev->right;
+            }
+            if (prev->right == nullptr) {
+                prev->right = curr;
+                curr = curr->left;
+            } else {
+                prev->right = nullptr;
+
+                // process the node
+                extra = prev;
+                currCount++;
+                if (count % 2 != 0 && currCount == (count + 1) / 2) {
+                    return curr->val;
+                } else if (count % 2 == 0 && currCount == (count / 2) + 1) {
+                    return (extra->val + curr->val) / 2;
+                }
+
+                extra = curr;
+                curr = curr->right;
+            }
+        }
+    }
+}
 
 int main() {
-    Node *root = nullptr;
-    root = insertInBST(root, 5);
-    insertInBST(root, 3);
-    insertInBST(root, 7);
-    insertInBST(root, 2);
-    insertInBST(root, 4);
-    insertInBST(root, 6);
-    insertInBST(root, 8);
+    TreeNode *root = nullptr;
+    root = insertInBST(root, 50);
+    insertInBST(root, 30);
+    insertInBST(root, 20);
+    insertInBST(root, 40);
+    insertInBST(root, 70);
+    insertInBST(root, 60);
+    insertInBST(root, 80);
 
-    Node *root2 = nullptr;
-    root2 = insertInBST(root2, 10);
-    root2 = insertInBST(root2, 6);
-    root2 = insertInBST(root2, 15);
-    root2 = insertInBST(root2, 3);
-    root2 = insertInBST(root2, 8);
-    root2 = insertInBST(root2, 11);
-    root2 = insertInBST(root2, 18);
 
-    int X = 6;
-    cout << "Pairs = " << countPairs(root, root2, X);
+//    cout << findMedian(root);
+    cout << findMedianOptimised(root);
 
     return 0;
 }
