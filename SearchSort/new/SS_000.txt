@@ -1,0 +1,39 @@
+Searching: Binary Search
+
+01. Find first and last positions of an element in a sorted array. <Binary Search>
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+02. Search in a rotated sorted array
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+04. square root of an integer
+05. Maximum and minimum of an array using minimum number of comparisons
+06. Optimum location of point to minimize total distance
+07. Find the repeating and the missing
+08. find majority element
+09. Searching in an array where adjacent differ by at most k
+10. find a pair with a given difference
+11. find four elements that sum to a given value
+12. maximum sum such that no 2 elements are adjacent
+13. Count triplet with sum smaller than a given value
+14. merge 2 sorted arrays
+15. print all subarrays with 0 sum
+16. Product array Puzzle
+17. Sort array according to count of set bits
+18. minimum no. of swaps required to sort the array
+19. Bishu and Soldiers
+20. Rasta and Kheshtak
+21. Kth smallest number again
+22. Find pivot element in a sorted array
+23. K-th Element of Two Sorted Arrays
+24. Aggressive cows
+25. Book Allocation Problem
+26. Job Scheduling Algo
+
+27. Missing Number in AP
+28. Smallest number with atleastn trailing zeroes infactorial
+29. Painters Partition Problem:
+30. ROTI-Prata SPOJ
+31. DoubleHelix SPOJ
+32. Subset Sums
+33. Find the inversion count
+34. Implement Merge-sort in-place
+35. Partitioning and Sorting Arrays with Many Repeated Entries

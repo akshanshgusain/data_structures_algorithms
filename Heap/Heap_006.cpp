@@ -43,6 +43,7 @@ using namespace std;
 
 vector<int> mergeKArrays(vector<vector<int>> &arr){
     priority_queue<int, vector<int>,greater<>> heap;
+
     for(auto i : arr){
         for(auto it: i){
             heap.push(it);

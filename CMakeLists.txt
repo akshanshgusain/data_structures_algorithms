@@ -4,5 +4,5 @@ project(Final500DSA)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Final500DS
-        BinarySearchTree/BST_021.cpp
+        SearchSort/new/SS_002.cpp
 )

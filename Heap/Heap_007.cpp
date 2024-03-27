@@ -11,31 +11,27 @@
 
 using namespace std;
 
-void maxHeapify(vector<int> &merged, int index){
-
-    if(index > merged.size()){
+void maxHeapify(vector<int> &merged, int idx){
+    if(idx > merged.size()){
         return;
     }
 
-    int l = (2 * index) + 1;
-    int r = (2 * index) + 2;
+    int leftChildIdx = (2 * idx) + 1;
+    int rightChildIdx = (2 * idx) + 2;
+    int largestIdx = idx;
 
     // Find largest of node and its children
-    int max;
-    if(l < merged.size() and merged[l] > merged[index]){
-        max = l;
-    }else{
-        max = index;
+    if(leftChildIdx < merged.size() and merged[leftChildIdx] > merged[largestIdx]){
+        largestIdx = leftChildIdx;
     }
-    if(r < merged.size() and merged[r] > merged[index]){
-        max = r;
+    if(rightChildIdx < merged.size() and merged[rightChildIdx] > merged[largestIdx]){
+        largestIdx = rightChildIdx;
     }
 
     // Put maximum value at the root and recur for the child with the max. value
-    if(max != index){
-        swap(merged[max], merged[index]);
-
-        maxHeapify(merged, max);
+    if(largestIdx != idx){
+        swap(merged[largestIdx], merged[idx]);
+        maxHeapify(merged, largestIdx);
     }
 }
 
@@ -65,7 +61,7 @@ int32_t main() {
     vector<int> a = {10, 5, 6, 2};
     vector<int> b = {12, 7, 9};
     vector<int> merged;
-    mergeHeaps(a, b, merged);
+    mergeHeaps(merged, a, b);
     for (auto it: merged) {
         cout << it << " ";
     }

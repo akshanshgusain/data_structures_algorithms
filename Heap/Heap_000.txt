@@ -5,7 +5,7 @@
 03. Maximum of all sub-arrays of size k.
 04. kth-largest element in an array.
 05. kth smallest and largest element in an unsorted array.
-06. Merge “K” sorted arrays.<T>
+06. Merge “K” sorted arrays.
 07. Merge 2 Binary Max Heaps.
 08. Kth-largest sum continuous sub-arrays.
 09. Reorganize String. <GG>
