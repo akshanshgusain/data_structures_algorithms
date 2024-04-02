@@ -115,7 +115,6 @@ int evaluate(string token) {
 
                 values.push(applyOp(val1, val2, op));
             }
-
             // Push current token to 'ops'.
             operators.push(token[i]);
         }
@@ -138,10 +137,8 @@ int evaluate(string token) {
 
         values.push(applyOp(val1, val2, op));
     }
-
     // Top of 'values' contains result, return it.
     return values.top();
-
 }
 
 int main() {

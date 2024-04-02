@@ -44,18 +44,16 @@ struct Node {
 //        }
 //    }
 //
-//    void insertBottom(Stack &A, int t) {
-//
-//        Node *temp = this->top;
-//
-//        if (top == nullptr) {
-//            A.push(t);  // if stack is empty insert the element
-//        } else {
-//            int x = A.pop(); //Popping all elements
-//            insertBottom(A, t);  //Inserting the given elements
-//            A.push(x);  // Pushing all the popped elements
-//        }
-//    }
+    void insertBottom(stack<int> &A, int t) {
+        if (A.empty()) {
+            A.push(t);  // if stack is empty insert the element
+        } else {
+            int x = A.top();
+            A.pop(); //Popping all elements
+            insertBottom(A, t);  //Inserting the given elements
+            A.push(x);  // Pushing all the popped elements
+        }
+    }
 //};
 class Stack {
 private:

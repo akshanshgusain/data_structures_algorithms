@@ -1,0 +1,18 @@
+Akshay: Hi Ycombinator, I’m Akshay and I’m the co-founder and CEO of BackStract
+
+Akshansh: Hi, I’m Akshansh and I’m the co-founder and CTO of BackStract
+
+Akshay: BackStract is low code Backend as a Service platform allowing developers to quickly create, deploy and scale backends.
+
+Akshansh: Our mission is to create a fast and easy API development platform which will help individuals and teams build
+and ship software in a fraction of time and engineering resources.
+
+Akshay: BackStract reduces go to market time for products and thus reduces cost for building software as less time and less Human Resource is required to build + maintain.
+
+Akshansh: We have been building this platform from the last 1 year after doing 6 months of research & target customer
+interviews. We are going live in 1st week of June.
+
+Akshay: We have signed purchase orders from 4 different companies that will get us a revenue of $20,000 ARR in the first month of launch
+
+
+Akshay: That’s it from us, hope we get accepted into the program. Thank you.
