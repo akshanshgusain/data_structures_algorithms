@@ -1,5 +1,5 @@
 //
-// Created by Akshansh Gusain on 16/03/22.
+// Created by Akshansh Gusain on 08/02/24
 //
 /*Method 1 (Divide the space in two halves)
 A simple way to implement two stacks is to divide the array in two halves and assign the half half space to two stacks,
