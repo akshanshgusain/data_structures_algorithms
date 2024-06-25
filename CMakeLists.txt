@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(
         DSA
         BasicAlgorithms/kadane.cpp
+        BasicAlgorithms/graphs/dfs.cpp
 )
