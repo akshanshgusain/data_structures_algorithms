@@ -1,74 +1,33 @@
 //
-// Created by Akshansh Gusain on 23/01/24.
+// Created by Akshansh Gusain on 26/10/21.
 //
 
-#include<bits/stdc++.h>
- 
+#include<stdc++.h>
 using namespace std;
+int t[100][100];
 
-int knapsack(vector<int> &val, vector<int> &wt, int W, int n) {
-    if (W == 0 or n == 0) {
+int knapsack(int val[], int wt[], int W, int n){
+    if(n== 0 or W ==0){
         return 0;
     }
 
-    // If weight of the nth element is greater than the capacity of the bag then this item cant be included
-    if (wt[n - 1] > W) {
-        knapsack(val, wt, W, n - 1);
-    } else {
-        return max(
-                knapsack(val, wt, W, n - 1),
-                val[n - 1] + knapsack(val, wt, W - wt[n - 1], n - 1)
-        );
+    if( t[n][W] != -1){
+        return t[n][W];
+    }
+    if(wt[n-1] < W){
+        return  t[n][W] = max(val[n-1] + knapsack(val, wt, W - wt[n-1], n-1),
+                   knapsack(val ,wt, W, n-1));
+    }else{
+        return t[n][W] = knapsack(val ,wt, W, n-1);
     }
 }
 
-int knapsackMem(vector<int> &val, vector<int> &wt, int W, int n, vector<vector<int>> &dp) {
-    if (W == 0 or n == 0) {
-        return 0;
-    }
-
-    if (dp[W][n] != -1) {
-        return dp[W][n];
-    }
-
-    // If weight of the nth element is greater than the capacity of the bag then this item cant be included
-    if (wt[n - 1] > W) {
-        return dp[W][n] = knapsackMem(val, wt, W, n - 1, dp);
-    } else {
-        return dp[W][n] = max(
-                knapsackMem(val, wt, W, n - 1, dp),
-                val[n - 1] + knapsackMem(val, wt, W - wt[n - 1], n - 1, dp)
-        );
-    }
-}
-
-int knapsackTD(vector<int> &val, vector<int> &wt, int W, int n) {
-    vector<vector<int>> dp(W + 1, vector<int>(n + 1, -1));
-    int i, j;
-
-    for (i = 0; i <= W; i++) {
-        for (j = 0; j <= n; j++) {
-            if (i == 0 or j == 0) {
-                dp[i][j] = 0;
-            } else if (wt[j - 1] > i) { // cant pick this item
-                dp[i][j] = dp[i][j - 1];
-            } else {
-                dp[i][j] = max(dp[i][j - 1], val[j - 1] + dp[i - wt[j - 1]][j - 1]);
-            }
-        }
-    }
-
-    return dp[W][n];
-}
-
-
-int main() {
-    vector<int> val = {60, 100, 120};
-    vector<int> wt = {10, 20, 30};
+int main(){
+    memset(t, -1, sizeof(t));
+    int val[] = {60, 100, 120};
+    int wt[] = {10, 20, 30};
     int W = 50;
-    vector<vector<int>> dp(W + 1, vector<int>(val.size() + 1, -1));
-
-    cout << knapsackMem(val, wt, W, val.size(), dp) << endl; //220
-    cout << knapsack(val, wt, W, val.size()); //220
+    int n = sizeof(val) / sizeof(val[0]);
+    cout << knapsack(val, wt, W, n); //180
     return 0;
 }
