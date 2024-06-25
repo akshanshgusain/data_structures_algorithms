@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.19)
-project(Final500DSA)
+project(DSA)
 
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(
-        Final500DS
-        Heap/Heap_012.cpp
-        Basics/searching/binarySearch.cpp
+        DSA
+        BasicAlgorithms/kadane.cpp
 )
