@@ -7,4 +7,5 @@ add_executable(
         DSA
         BasicAlgorithms/kadane.cpp
         BasicAlgorithms/graphs/dfs.cpp
+        BasicAlgorithms/graphs/bfs.cpp
 )
