@@ -13,8 +13,8 @@ input array. It assumes that the input consists of integers within a specific ra
 well when the range of input values is not significantly larger than the number of elements in the input array.
 */
 
-// Time: O(N+M), where N and M are the size of inputArray[] and countArray[]
-// Space: O(N+M), where N and M are the space taken by outputArray[] and countArray[]
+// Time: O(N+K), where N is the size of the inputArray and K is the range of the values(maxValue - minValue)
+// Space: O(N+K)
 
 vector<int> countSort(vector<int> &ip) {
     int maxi = INT16_MIN;
@@ -32,6 +32,8 @@ vector<int> countSort(vector<int> &ip) {
 
     // Calculating prefix sum at every index
     // of array countArray[]
+
+    // helps to preserve the relative order of elements with equal values.
     for (int i = 1; i <= maxi; i++){
         countArray[i] += countArray[i - 1];
     }
